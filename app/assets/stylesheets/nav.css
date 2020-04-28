@@ -1,0 +1,37 @@
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    height: 40px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.greeting-nav{
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
+}
+
+.greeting-nav a{
+    display: inline-block;
+    color: #333;
+    /* margin: 5px 10px 5px 10px; */
+    padding: 9px 15px;
+    text-decoration: none;
+
+}
+
+#nav-button{
+    background-color: #333;
+    color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.main-nav p{
+    margin-right: 20px;
+}
+
+

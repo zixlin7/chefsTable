@@ -1,0 +1,100 @@
+.background-content{
+    background-color:rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    color: #333;
+}
+
+.sign-in{
+    color:black;
+    position: absolute;
+    z-index: 1000;
+    top:50%;
+    left: 50%;
+    width: 400px;
+    height: 650px;
+    margin-left: -300px;
+    background-color: white;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #666;
+}
+
+.sign-in hr{
+    width: 100%;
+    border: lightgray 1px solid;
+    align-self: flex-start;
+    margin-bottom: 21px;
+    margin-top: 10px;
+}
+
+.sign-in h2{
+    font-weight: 500;
+    line-height: 0px;
+    align-self: flex-start;
+    
+}
+
+.sign-in input{
+    height: 45px;
+    width: 90%;
+    padding: 2px;
+    margin: 17px;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 10px;
+    border: lightgray solid 1px;
+}
+
+.sign-in input:focus{
+    box-shadow: 1px 1px 2px #999999;
+    outline: none;
+}
+
+.sign-in label{
+    font-size: 18px;
+    font-weight: 300;
+    margin-left: 18px;
+}
+
+.sign-in form{
+ width: 100%;
+ justify-self: center;
+}
+
+.form-button{
+    font-size: 18px;
+    margin-top: 28px;
+    height: 54px;
+    width: 95%;
+    background-color: #333;
+    margin-left: 14px;
+    color: white;
+}
+
+.sign-in div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.sign-in a{
+    color: rgb(241, 177, 15);
+    margin-left: 12px;
+
+}
+
+.hide-sign-in{
+    display: none;
+}
+
+::placeholder{
+    color: #666;
+    opacity: 0.7;
+}
+

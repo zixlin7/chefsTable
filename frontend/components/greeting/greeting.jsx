@@ -7,17 +7,19 @@ const Greeting = props =>{
 
     const loggedIn = () => {
         return (
-            <div>
-                <p>Hi, {currentUser.firstname}!</p>
-                <button onClick={props.logout}>Log Out</button>
-            </div>
-        )
+          <div className="greeting-nav">
+            <p>Hi, {props.currentUser.firstname}!</p>
+            <button id="nav-button" onClick={props.logout}>
+              Log Out
+            </button>
+          </div>
+        );
     }
 
     const notLoggedIn = ()=>{
         return (
-            <nav>
-                <Link to="/signUp">Sign Up</Link>
+            <nav className="greeting-nav">
+                <Link id="nav-button" to="/signUp">Sign Up</Link>
                 <br/>
                 <Link to="/signIn">Sign In</Link>
             </nav>
