@@ -5,13 +5,14 @@
 }
 
 .sign-in{
+    margin-top: 10px;
     color:black;
     position: absolute;
     z-index: 1000;
     top:50%;
     left: 50%;
-    width: 400px;
-    height: 650px;
+    width: 30%;
+    height: auto;
     margin-left: -300px;
     background-color: white;
     transform: translateY(-50%);
@@ -68,8 +69,8 @@
 
 .form-button{
     font-size: 18px;
-    margin-top: 28px;
-    height: 54px;
+    margin-top: 30px;
+    height: 50px;
     width: 95%;
     background-color: #333;
     margin-left: 14px;

@@ -406,6 +406,7 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demo = _this.demo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -430,6 +431,15 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       this.props.login(this.state);
     }
   }, {
+    key: "demo",
+    value: function demo(e) {
+      e.preventDefault();
+      this.props.login({
+        email: "demo1@user.com",
+        password: "123456"
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var errors = this.props.errors.session;
@@ -452,7 +462,10 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "form-button",
         type: "submit"
-      }, "Sign In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "New to Chef's Table?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Sign In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "form-button",
+        onClick: this.demo
+      }, "Demo User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "New to Chef's Table?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signUp"
       }, "Create an account"))));
     }
@@ -555,15 +568,13 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      user: {
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: ""
-      },
-      errors: _this.props.errors.session
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: ""
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.body = document.querySelector("body");
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demo = _this.demo.bind(_assertThisInitialized(_this)); // this.body = document.querySelector("body");
 
     return _this;
   }
@@ -571,9 +582,6 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   _createClass(SignupForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.setState({
-        errors: []
-      });
       document.querySelector("body").classList.add("background-content");
     }
   }, {
@@ -582,19 +590,14 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        return _this2.setState({
-          user: _defineProperty({}, type, e.target.value)
-        });
+        return _this2.setState(_defineProperty({}, type, e.target.value));
       };
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.signup(this.state.user);
-      this.setState({
-        errors: this.props.errors.session
-      });
+      this.props.signup(this.state);
     }
   }, {
     key: "togglePassword",
@@ -602,20 +605,30 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       e.target.type = "password";
     }
   }, {
+    key: "demo",
+    value: function demo(e) {
+      e.preventDefault();
+      this.props.login({
+        email: "demo1@user.com",
+        password: "123456"
+      });
+    }
+  }, {
     key: "addValue",
     value: function addValue(type) {
       var _this3 = this;
 
       return function (e) {
-        return e.target.value = _this3.state.user[type];
+        return e.target.value = _this3.state[type];
       };
     }
   }, {
     key: "render",
     value: function render() {
+      var errors = this.props.errors.session;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-in"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Welcome to Chef's Table!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), this.state.errors.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.errors.map(function (error, idx) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Welcome to Chef's Table!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), errors.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errors.map(function (error, idx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
         }, error);
@@ -639,13 +652,16 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter password *",
-        value: this.state.user.password,
+        value: this.state.password,
         onClick: this.togglePassword,
         onChange: this.update("password")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "form-button",
         type: "submit"
-      }, "Sign Up")));
+      }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "form-button",
+        onClick: this.demo
+      }, "Demo User")));
     }
   }, {
     key: "componentWillUnmount",
@@ -687,6 +703,9 @@ var mDTP = function mDTP(dispatch) {
   return {
     signup: function signup(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signup"])(user));
+    },
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
     }
   };
 };

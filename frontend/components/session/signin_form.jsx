@@ -8,7 +8,8 @@ class SigninForm extends React.Component {
             email: "",
             password: ""
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.demo = this.demo.bind(this);
         
     }
 
@@ -24,6 +25,11 @@ class SigninForm extends React.Component {
         e.preventDefault();
         this.props.login(this.state)
         
+    }
+
+    demo(e){
+        e.preventDefault();
+        this.props.login({email: "demo1@user.com", password: "123456"})
     }
 
     render(){
@@ -64,6 +70,7 @@ class SigninForm extends React.Component {
                     </label>
                     <br/>
                     <button className="form-button" type="submit">Sign In</button>
+                    <button className="form-button" onClick={this.demo}>Demo User</button>
 
                     <div>
                         <p>New to Chef's Table?</p>
