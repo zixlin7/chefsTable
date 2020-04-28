@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chef_id: 1
+  name: MyString
+  cuisine: MyString
+  address: MyString
+  country: MyString
+  state: MyString
+  city: MyString
+  zip: 1
+  capacity: 1
+  price_range: 1
+  overview: MyText
+  website_url: MyText
+  open_hour: 2020-04-28 12:13:36
+  closing_hour: 2020-04-28 12:13:36
+
+two:
+  chef_id: 1
+  name: MyString
+  cuisine: MyString
+  address: MyString
+  country: MyString
+  state: MyString
+  city: MyString
+  zip: 1
+  capacity: 1
+  price_range: 1
+  overview: MyText
+  website_url: MyText
+  open_hour: 2020-04-28 12:13:36
+  closing_hour: 2020-04-28 12:13:36

@@ -16,7 +16,7 @@ class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-    
+    this.props.clearErrors();
     document.querySelector("body").classList.add("background-content");
   }
 
@@ -47,7 +47,7 @@ class SignupForm extends React.Component {
       const errors = this.props.errors.session;
     return (
       <div className="sign-in">
-        <h2>Welcome to Chef's Table!</h2>
+        <h2>Welcome to Chef's Table</h2>
         <hr />
         {errors.length ? (
           <ul>

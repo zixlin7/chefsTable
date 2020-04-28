@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_180527) do
+ActiveRecord::Schema.define(version: 2020_04_28_191336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "restaurants", force: :cascade do |t|
+    t.integer "chef_id", null: false
+    t.string "name", null: false
+    t.string "cuisine"
+    t.text "address", null: false
+    t.string "country", null: false
+    t.string "state", null: false
+    t.string "city", null: false
+    t.integer "zip", null: false
+    t.integer "capacity", null: false
+    t.integer "price_range"
+    t.text "overview"
+    t.text "website_url"
+    t.string "phone_number"
+    t.datetime "open_hour"
+    t.datetime "close_hour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chef_id"], name: "index_restaurants_on_chef_id"
+    t.index ["city"], name: "index_restaurants_on_city"
+    t.index ["country"], name: "index_restaurants_on_country"
+    t.index ["cuisine"], name: "index_restaurants_on_cuisine"
+    t.index ["name"], name: "index_restaurants_on_name"
+    t.index ["price_range"], name: "index_restaurants_on_price_range"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "firstname", null: false
