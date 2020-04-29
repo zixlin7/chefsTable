@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 class RestaurantsIndexItem extends React.Component {
   mapPriceRange(price) {
@@ -30,15 +31,19 @@ class RestaurantsIndexItem extends React.Component {
 
   render() {
     const { restaurant } = this.props;
+    debugger
     return (
       <div>
-        <h3>{restaurant.name}</h3>
+        <Link to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
+        <br/>
         <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
         <span name="cuisine">{restaurant.cuisine}</span>
         <span name="city">{restaurant.city}</span>
-        {this.getTimeSlots(restaurant.open_hour, restaurant.close_hour).map((time, i) => (
+        {this.getTimeSlots(restaurant.open_hour, restaurant.close_hour).map(
+          (time, i) => (
             <div key={i}> {time} </div>
-        ))}
+          )
+        )}
       </div>
     );
   }

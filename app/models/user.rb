@@ -4,6 +4,12 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6, allow_nil: true}
 
     before_validation :ensure_session_token
+
+    has_many :reservations, class_name::Reservation
+    has_many :reserved_restaurants,
+        through::reservation,
+        source::restaurant
+    
     attr_reader :password
     def password=(password)
         @password = password

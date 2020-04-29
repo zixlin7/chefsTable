@@ -12,10 +12,6 @@ class RestaurantsIndex extends React.Component{
     }
 
 
-    getTimeSlots(open, close){
-
-    }
-
     render(){
         // const { restaurants } = this.props
         

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :show, :create] 
     resource :session, only:[:create, :destroy]
     resources :restaurants, only:[:index, :show]
+    resources :reservations, except:[:new, :edit]
   end
   root "staticpages#root"
 end
