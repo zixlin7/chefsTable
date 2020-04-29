@@ -5,10 +5,11 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
-    has_many :reservations, class_name::Reservation
+    has_many :reservations, 
+        class_name: :Reservation
     has_many :reserved_restaurants,
-        through::reservation,
-        source::restaurant
+        through: :reservations,
+        source: :restaurant
     
     attr_reader :password
     def password=(password)

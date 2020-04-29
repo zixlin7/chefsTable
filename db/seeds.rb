@@ -9,6 +9,7 @@ require 'date'
 
 User.destroy_all
 Restaurant.destroy_all
+Reservation.destroy_all
 demouser = User.create!(firstname: "demo", lastname: "user", email: "demo1@user.com", password: "123456")
 demouser1 = User.create!(firstname: "demo2", lastname: "user", email: "demo2@user.com", password: "123456")
 demouser2 = User.create!(firstname: "demo3", lastname: "user", email: "demo3@user.com", password: "123456")
@@ -147,6 +148,20 @@ res8 = Restaurant.create!(
     website_url: "pujol.com.mx",
     open_hour: DateTime.parse("20:30:00"),
     close_hour: DateTime.parse("04:00:00"),
+)
+
+rsvt1 = Reservation.create!(
+    user_id: 1,
+    restaurant_id: 1,
+    number_of_party: 4,
+    time: DateTime.parse("3rd May 2020 00:00:00")
+)
+
+rsvt1 = Reservation.create!(
+    user_id: 1,
+    restaurant_id: 2,
+    number_of_party: 2,
+    time: DateTime.parse("4th May 2020 00:00:00")
 )
 
 
