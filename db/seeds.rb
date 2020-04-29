@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'date'
 
-
+User.destroy_all
+Restaurant.destroy_all
 demouser = User.create!(firstname: "demo", lastname: "user", email: "demo1@user.com", password: "123456")
 demouser1 = User.create!(firstname: "demo2", lastname: "user", email: "demo2@user.com", password: "123456")
 demouser2 = User.create!(firstname: "demo3", lastname: "user", email: "demo3@user.com", password: "123456")
@@ -27,23 +28,6 @@ res1 = Restaurant.create!(
     website_url: "https://www.alinearestaurant.com/",
     open_hour: DateTime.parse("17:00:00"),
     close_hour: DateTime.parse("22:00:00"),
-)
-
-res2 = Restaurant.create!(
-    chef_id: 2,
-    name: "Blue Hill at Stone Barns",
-    cuisine: "New American",
-    country: "US",
-    address: "630 Bedford Rd",
-    state: "NY",
-    city: "Tarrytown",
-    zip: 10591,
-    capacity: 200,
-    price_range: 4,
-    overview: "High-end farm-to-table restaurant serving tasting menus in a refurbished barn on gorgeous grounds.",
-    website_url: "https://www.bluehillfarm.com/",
-    open_hour: DateTime.parse("16:00:00"),
-    close_hour: DateTime.parse("21:00:00"),
 )
 
 res2 = Restaurant.create!(
