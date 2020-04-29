@@ -10,10 +10,11 @@ const receiveAllReservations = (reservations) => ({
   reservations
 });
 
-const receiveReservation = (reservation) => ({
-  type: RECEIVE_RESERVATION,
-  reservation
-});
+const receiveReservation = (reservation) => {
+    debugger
+  return({type: RECEIVE_RESERVATION,
+  reservation})
+};
 
 const removeReservation = (reservationId) => ({
   type: REMOVE_RESERVATION,

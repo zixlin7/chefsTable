@@ -10,6 +10,7 @@ require 'date'
 User.destroy_all
 Restaurant.destroy_all
 Reservation.destroy_all
+
 demouser = User.create!(firstname: "demo", lastname: "user", email: "demo1@user.com", password: "123456")
 demouser1 = User.create!(firstname: "demo2", lastname: "user", email: "demo2@user.com", password: "123456")
 demouser2 = User.create!(firstname: "demo3", lastname: "user", email: "demo3@user.com", password: "123456")

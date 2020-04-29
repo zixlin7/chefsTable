@@ -119,6 +119,7 @@ var receiveAllReservations = function receiveAllReservations(reservations) {
 };
 
 var receiveReservation = function receiveReservation(reservation) {
+  debugger;
   return {
     type: RECEIVE_RESERVATION,
     reservation: reservation
@@ -373,6 +374,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./restaurants/restaurants_index_container */ "./frontend/components/restaurants/restaurants_index_container.js");
 /* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./restaurants/restaurant_show_container */ "./frontend/components/restaurants/restaurant_show_container.js");
+/* harmony import */ var _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./reservations/new_reservation_form_container */ "./frontend/components/reservations/new_reservation_form_container.js");
+/* harmony import */ var _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./reservations/edit_reservation_container */ "./frontend/components/reservations/edit_reservation_container.js");
+
+
 
 
 
@@ -401,6 +406,14 @@ var App = function App() {
     exact: true,
     path: "/restaurants",
     component: _restaurants_restaurants_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    exact: true,
+    path: "/restaurants/:id/reservations/new",
+    component: _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+    exact: true,
+    path: "/reservations/:id/edit",
+    component: _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }));
 };
 
@@ -482,6 +495,207 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_greeting__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/reservations/edit_reservation_container.js":
+/*!************************************************************************!*\
+  !*** ./frontend/components/reservations/edit_reservation_container.js ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_reservations_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/reservations_actions */ "./frontend/actions/reservations_actions.js");
+/* harmony import */ var _reservation_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservation_form */ "./frontend/components/reservations/reservation_form.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var EditReservationForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(EditReservationForm, _React$Component);
+
+  var _super = _createSuper(EditReservationForm);
+
+  function EditReservationForm() {
+    _classCallCheck(this, EditReservationForm);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(EditReservationForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchReservation(this.props.match.params.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // DO NOT MODIFY THIS FUNCTION
+      var _this$props = this.props,
+          action = _this$props.action,
+          formType = _this$props.formType,
+          reservation = _this$props.reservation; // Hint: The report will not exist on the first render - what do we need to
+      // do to get it?
+
+      if (!reservation) return null;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        action: action,
+        formType: formType,
+        reservation: reservation
+      });
+    }
+  }]);
+
+  return EditReservationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mSTP = function mSTP(state, ownProps) {
+  return {
+    reservation: state.entities.reservations[ownProps.match.params.id],
+    formType: "Update Reservation"
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    fetchReservation: function fetchReservation(reservationId) {
+      return dispatch(Object(_actions_reservations_actions__WEBPACK_IMPORTED_MODULE_2__["fetchReservation"])(reservationId));
+    },
+    action: function action(reservation) {
+      return dispatch(Object(_actions_reservations_actions__WEBPACK_IMPORTED_MODULE_2__["updateReservation"])(reservation));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(EditReservationForm));
+
+/***/ }),
+
+/***/ "./frontend/components/reservations/new_reservation_form_container.js":
+/*!****************************************************************************!*\
+  !*** ./frontend/components/reservations/new_reservation_form_container.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_reservations_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reservations_actions */ "./frontend/actions/reservations_actions.js");
+/* harmony import */ var _reservation_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reservation_form */ "./frontend/components/reservations/reservation_form.jsx");
+
+
+
+
+var mSTP = function mSTP(state, ownProps) {
+  return {
+    reservation: {
+      user_id: state.session.id,
+      restaurant_id: ownProps.match.params.id,
+      number_of_party: null,
+      time: null
+    },
+    formType: "Create Reservation"
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    action: function action(reservation) {
+      return dispatch(Object(_actions_reservations_actions__WEBPACK_IMPORTED_MODULE_1__["createReservation"])(reservation));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_reservation_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/reservations/reservation_form.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/reservations/reservation_form.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var ReservationForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(ReservationForm, _React$Component);
+
+  var _super = _createSuper(ReservationForm);
+
+  function ReservationForm() {
+    _classCallCheck(this, ReservationForm);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(ReservationForm, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "reservation form");
+    }
+  }]);
+
+  return ReservationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ReservationForm);
 
 /***/ }),
 
@@ -1311,6 +1525,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var reservationsReducer = function reservationsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  debugger;
 
   var nextState = _objectSpread({}, state);
 
@@ -1584,6 +1799,7 @@ var fetchAllReservations = function fetchAllReservations() {
   });
 };
 var fetchReservation = function fetchReservation(reservationId) {
+  debugger;
   return $.ajax({
     url: "api/reservations/".concat(reservationId),
     method: "GET"
