@@ -1,4 +1,5 @@
 import React from "react";
+import RestaurantsIndexItem from "./restaurant_index_item";
 
 class RestaurantsIndex extends React.Component{
     constructor(props){
@@ -10,9 +11,9 @@ class RestaurantsIndex extends React.Component{
         
     }
 
-    mapPriceRange(price){
-        const range = ["", "$", "$$", "$$$", "$$$$"]
-        return range[price];
+
+    getTimeSlots(open, close){
+
     }
 
     render(){
@@ -22,16 +23,8 @@ class RestaurantsIndex extends React.Component{
         
         return (
           <div>
-            {this.props.restaurants.map((restaurant) => (
-              <div>
-                <h3>{restaurant.name}</h3>
-                <span>{this.mapPriceRange(restaurant.price_range)}</span>
-                <span>{restaurant.cuisine}</span>
-                <span>{restaurant.city}</span>
-                <span>{new Date(restaurant.open_hour).toLocaleString()}</span>
-                <span> |  </span>
-                <span>{restaurant.open_hour}</span>
-              </div>
+            {this.props.restaurants.map((restaurant,i) => (
+              <RestaurantsIndexItem key={i} restaurant={restaurant} requestRestaurant={this.props.requestRestaurant}/>
             ))}
           </div>
         );
