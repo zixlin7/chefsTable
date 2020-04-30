@@ -1,5 +1,5 @@
 import React from "react";
-import RestaurantsIndexItem from "./restaurant_index_item";
+import RestaurantsIndexItem from "../restaurants/restaurant_index_item";
 
 class RestaurantsIndex extends React.Component{
     constructor(props){

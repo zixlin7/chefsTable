@@ -10,6 +10,8 @@ const mSTP = (state, ownProps) =>({
         number_of_party: null,
         time: null
     },
+    user: state.entities.users,
+    restaurantName: state.entities.restaurants[ownProps.match.params.id],
     formType: "Create Reservation"
 })
 
