@@ -1,9 +1,10 @@
 .main-nav{
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
-    font-weight: 600;
+    
     height: 40px;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 12px;
@@ -29,34 +30,53 @@
 #nav-button{
     background-color: #333;
     color: white;
-    margin-right: 10px;
     border-radius: 5px;
-    padding: 10px;
     font-weight: 600;
     
 }
 
 .main-nav p{
     margin-right: 20px;
+    font-size: 14px;
 }
 #logo{
     display:flex;
-    margin-top: 26px;
+    
 }
 
-#logo h1{
+
+
+#logo p{
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 3px;
+    font-weight: 400;
+}
+
+#logout-button{
+    background-color: #333;
+    color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 9px;
+    width: 76px;
+    height: 35px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+#c{
     display: inline-block;
     margin-left:10px;
     font-size: 34px;
-    font-weight: 600;
+    font-weight: 300;
     color: black;
     margin-top:0px;
 }
 
-
-#logo p{
+p#table{
     font-weight: 600;
-    font-size: 16px;
+    margin-left: 0;
 }
-
 

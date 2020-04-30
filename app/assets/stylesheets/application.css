@@ -16,4 +16,16 @@
 
  html{
     min-width: 500px;
+    width: 100%;
+
  }
+
+ body{
+     width: 100%;
+     margin:0;
+     padding: 0;
+ }
+
+#landing-img{
+    width: 100%;
+}

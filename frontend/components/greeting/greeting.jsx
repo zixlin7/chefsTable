@@ -9,7 +9,7 @@ const Greeting = props =>{
         return (
           <div className="greeting-nav">
             <p>Hi, {props.currentUser.firstname}!</p>
-            <button id="nav-button" onClick={props.logout}>
+            <button id="logout-button" onClick={props.logout}>
               Log Out
             </button>
           </div>
