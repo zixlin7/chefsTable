@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 50px;
     border-radius: 5px;
     box-shadow: 1px 1px 3px #666;
@@ -35,7 +35,7 @@
 }
 
 .sign-in h2{
-    font-weight: 500;
+    font-weight: 600;
     line-height: 0px;
     align-self: flex-start;
     
@@ -53,13 +53,13 @@
 }
 
 .sign-in input:focus{
-    box-shadow: 1px 1px 2px #999999;
+    box-shadow: 1px 1px 2px rgb(15, 200, 208);
     outline: none;
 }
 
 .sign-in label{
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     margin-left: 18px;
 }
 
@@ -81,13 +81,15 @@
 .sign-in div{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
+    font-size: 14px;
 }
 .sign-in a{
-    color: rgb(241, 177, 15);
-    margin-left: 12px;
+    color: rgb(15, 200, 208);
+    margin-left: 16px;
 
 }
 

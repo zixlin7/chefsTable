@@ -18,7 +18,7 @@ class RestaurantsIndex extends React.Component{
         if (!this.props.restaurants.length) return null;
         
         return (
-          <div>
+          <div className="restaurant-index">
             {this.props.restaurants.map((restaurant,i) => (
               <RestaurantsIndexItem key={i} restaurant={restaurant} requestRestaurant={this.props.requestRestaurant}/>
             ))}

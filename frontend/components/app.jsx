@@ -12,7 +12,10 @@ import EditReservationForm from "./reservations/edit_reservation_container";
 const App = () => (
   <div>
     <nav className="main-nav">
-      <h1>Chef's Table</h1>
+      <div id="logo">
+        <h1>C</h1>
+        <p>hef's Table</p>
+      </div>
       <GreetingContainer />
     </nav>
 

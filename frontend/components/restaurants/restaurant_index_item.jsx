@@ -31,19 +31,20 @@ class RestaurantsIndexItem extends React.Component {
 
   render() {
     const { restaurant } = this.props;
-    debugger
     return (
-      <div>
+      <div className="restaurant">
         <Link to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
-        <br/>
+        <br />
         <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
         <span name="cuisine">{restaurant.cuisine}</span>
         <span name="city">{restaurant.city}</span>
-        {this.getTimeSlots(restaurant.open_hour, restaurant.close_hour).map(
-          (time, i) => (
-            <div key={i}> {time} </div>
-          )
-        )}
+        <div className="time-slots">
+          {this.getTimeSlots(restaurant.open_hour, restaurant.close_hour).map(
+            (time, i) => (
+              <div key={i}> {time} </div>
+            )
+          )}
+        </div>
       </div>
     );
   }
