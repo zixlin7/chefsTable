@@ -1,7 +1,9 @@
-export const fetchAllRestaurants = () => {
+export const fetchAllRestaurants = (filters) => {
+  debugger
     return $.ajax({
         url: `api/restaurants`,
-        method: "GET"
+        method: "GET",
+        data: {filters}
     })
 }
 

@@ -6,14 +6,10 @@ class RestaurantsIndex extends React.Component{
         super(props)
     }
 
-    componentDidMount(){
-        this.props.requestRestaurants();
-        
-    }
-
-
+ 
     render(){
-        // const { restaurants } = this.props
+      
+        const { restaurants } = this.props
         
         if (!this.props.restaurants.length) return null;
         

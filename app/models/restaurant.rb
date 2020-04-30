@@ -5,4 +5,8 @@ class Restaurant < ApplicationRecord
     has_many :reserved_users,
         through: :reservations,
         source: :user
+
+    def self.search(value)
+        self.where("country = ?", value["country"])
+    end
 end

@@ -213,9 +213,9 @@ var receiveRestaurant = function receiveRestaurant(restaurant) {
   };
 };
 
-var requestRestaurants = function requestRestaurants() {
+var requestRestaurants = function requestRestaurants(filters) {
   return function (dispatch) {
-    return Object(_util_res_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllRestaurants"])().then(function (restaurants) {
+    return Object(_util_res_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllRestaurants"])(filters).then(function (restaurants) {
       return dispatch(receiveAllRestaurants(restaurants));
     });
   };
@@ -225,6 +225,38 @@ var requestRestaurant = function requestRestaurant(restaurantId) {
     return Object(_util_res_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchRestaurant"])(restaurantId).then(function (restaurant) {
       return dispatch(receiveRestaurant(restaurant));
     });
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/search_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/search_actions.js ***!
+  \********************************************/
+/*! exports provided: UPDATE_SEARCH, updateSearch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_SEARCH", function() { return UPDATE_SEARCH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSearch", function() { return updateSearch; });
+/* harmony import */ var _restaurants_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./restaurants_actions */ "./frontend/actions/restaurants_actions.js");
+
+var UPDATE_SEARCH = "UPDATE_SEARCH";
+
+var changeSearch = function changeSearch(field, value) {
+  return {
+    type: UPDATE_SEARCH,
+    field: field,
+    value: value
+  };
+};
+
+var updateSearch = function updateSearch(field, value) {
+  return function (dispatch, getState) {
+    dispatch(changeSearch(field, value));
+    return Object(_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["requestRestaurants"])(getState().ui.search)(dispatch); // delicious curry!
   };
 };
 
@@ -371,11 +403,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_signin_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session/signin_form_container */ "./frontend/components/session/signin_form_container.js");
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _search_restaurants_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./search/restaurants_index_container */ "./frontend/components/search/restaurants_index_container.js");
-/* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./restaurants/restaurant_show_container */ "./frontend/components/restaurants/restaurant_show_container.js");
-/* harmony import */ var _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./reservations/new_reservation_form_container */ "./frontend/components/reservations/new_reservation_form_container.js");
-/* harmony import */ var _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./reservations/edit_reservation_container */ "./frontend/components/reservations/edit_reservation_container.js");
-/* harmony import */ var _landing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./landing */ "./frontend/components/landing.jsx");
+/* harmony import */ var _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./restaurants/restaurant_show_container */ "./frontend/components/restaurants/restaurant_show_container.js");
+/* harmony import */ var _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./reservations/new_reservation_form_container */ "./frontend/components/reservations/new_reservation_form_container.js");
+/* harmony import */ var _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./reservations/edit_reservation_container */ "./frontend/components/reservations/edit_reservation_container.js");
+/* harmony import */ var _landing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./landing */ "./frontend/components/landing.jsx");
+/* harmony import */ var _components_search_search_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/search/search_container */ "./frontend/components/search/search_container.js");
 
 
 
@@ -400,7 +432,7 @@ var App = function App() {
   }, "Table")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
-    component: _landing__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _landing__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/signIn",
@@ -412,19 +444,19 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/restaurants/:id",
-    component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants",
-    component: _search_restaurants_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_search_search_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants/:id/reservations/new",
-    component: _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/reservations/:id/edit",
-    component: _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }));
 };
 
@@ -1045,16 +1077,11 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(RestaurantsIndex, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestRestaurants();
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this = this;
 
-      // const { restaurants } = this.props
+      var restaurants = this.props.restaurants;
       if (!this.props.restaurants.length) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-index"
@@ -1075,10 +1102,43 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/search/restaurants_index_container.js":
-/*!*******************************************************************!*\
-  !*** ./frontend/components/search/restaurants_index_container.js ***!
-  \*******************************************************************/
+/***/ "./frontend/components/search/search.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/search/search.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _restaurant_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurant_index */ "./frontend/components/search/restaurant_index.jsx");
+/* harmony import */ var _search_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search_form */ "./frontend/components/search/search_form.jsx");
+
+
+
+
+var Search = function Search(_ref) {
+  var restaurants = _ref.restaurants,
+      updateSearch = _ref.updateSearch,
+      requestRestaurant = _ref.requestRestaurant;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    updateSearch: updateSearch
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    restaurants: restaurants,
+    requestRestaurant: requestRestaurant
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Search);
+
+/***/ }),
+
+/***/ "./frontend/components/search/search_container.js":
+/*!********************************************************!*\
+  !*** ./frontend/components/search/search_container.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1086,7 +1146,9 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/restaurants_actions */ "./frontend/actions/restaurants_actions.js");
-/* harmony import */ var _restaurant_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./restaurant_index */ "./frontend/components/search/restaurant_index.jsx");
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search */ "./frontend/components/search/search.jsx");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+
 
 
 
@@ -1101,11 +1163,52 @@ var mDTP = function mDTP(dispatch) {
   return {
     requestRestaurants: function requestRestaurants() {
       return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__["requestRestaurants"])());
+    },
+    requestRestaurant: function requestRestaurant(restaurantId) {
+      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__["requestRestaurant"])(restaurantId));
+    },
+    updateSearch: function updateSearch(field, value) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["updateSearch"])(field, value));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_restaurant_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_search__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/search/search_form.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/search/search_form.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var handleChange = function handleChange(field, updateSearch) {
+  return function (e) {
+    return updateSearch(field, e.currentTarget.value);
+  };
+};
+
+var SearchForm = function SearchForm(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    id: "country",
+    onChange: handleChange("country", props.updateSearch),
+    defaultValue: "US"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "US"
+  }, "US"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Mexico"
+  }, "Mexico")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SearchForm);
 
 /***/ }),
 
@@ -1657,6 +1760,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
+
 
 
 
@@ -1664,9 +1769,43 @@ __webpack_require__.r(__webpack_exports__);
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/search_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/search_reducer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var searchReducer = function searchReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    country: "US"
+  };
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_SEARCH"]:
+      return _defineProperty({}, action.field, action.value);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (searchReducer);
 
 /***/ }),
 
@@ -1739,6 +1878,26 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+
+
+var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  search: _search_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
 /***/ }),
 
@@ -1816,10 +1975,14 @@ var configureStore = function configureStore() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllRestaurants", function() { return fetchAllRestaurants; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRestaurant", function() { return fetchRestaurant; });
-var fetchAllRestaurants = function fetchAllRestaurants() {
+var fetchAllRestaurants = function fetchAllRestaurants(filters) {
+  debugger;
   return $.ajax({
     url: "api/restaurants",
-    method: "GET"
+    method: "GET",
+    data: {
+      filters: filters
+    }
   });
 };
 var fetchRestaurant = function fetchRestaurant(RestaurantId) {

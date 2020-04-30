@@ -14,7 +14,7 @@ const receiveRestaurant = (restaurant) => ({
   restaurant
 });
 
-export const requestRestaurants = () => dispatch => fetchAllRestaurants()
+export const requestRestaurants = (filters) => dispatch => fetchAllRestaurants(filters)
     .then(restaurants => dispatch(receiveAllRestaurants(restaurants)),
     );
 

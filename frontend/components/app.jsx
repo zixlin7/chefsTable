@@ -4,11 +4,11 @@ import {Route} from "react-router-dom";
 import SigninFormContainer from "./session/signin_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import {AuthRoute,ProtectedRoute} from "../util/route_util";
-import RestaurantsIndexContainer from "./search/restaurants_index_container";
 import RestaurantShowContainer from "./restaurants/restaurant_show_container";
 import CreateReservationContainer from "./reservations/new_reservation_form_container";
 import EditReservationForm from "./reservations/edit_reservation_container";
 import Landing from "./landing"
+import SearchContainer from "../components/search/search_container";
 
 const App = () => (
   <div className="main-div">
@@ -28,7 +28,7 @@ const App = () => (
     <ProtectedRoute
       exact
       path="/restaurants"
-      component={RestaurantsIndexContainer}
+      component={SearchContainer}
     />
     <ProtectedRoute
       exact
