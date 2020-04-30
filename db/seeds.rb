@@ -8,11 +8,8 @@
 require 'date'
 
 User.destroy_all
-<<<<<<< HEAD
-=======
 Restaurant.destroy_all
 Reservation.destroy_all
->>>>>>> reservation
 
 demouser = User.create!(firstname: "demo", lastname: "user", email: "demo1@user.com", password: "123456")
 demouser1 = User.create!(firstname: "demo2", lastname: "user", email: "demo2@user.com", password: "123456")

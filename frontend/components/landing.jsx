@@ -2,7 +2,7 @@ import React from "react";
 
 const Landing = props => {
     return (
-      <div>
+      <div className>
         <img id="landing-img" src={window.landingURL} />
       </div>
     );
