@@ -1191,6 +1191,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_time_slots_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/time_slots_util */ "./frontend/util/time_slots_util.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 
@@ -1210,6 +1222,25 @@ var getDate = function getDate() {
   return today;
 };
 
+var getTimeSlots = function getTimeSlots() {
+  var openTime = 15;
+  var closeTime = 23;
+  var timeSlots = [];
+
+  while (openTime < closeTime) {
+    openTime++;
+    timeSlots.push(openTime);
+  }
+
+  var full = timeSlots.map(function (time) {
+    return time < 10 ? "0".concat(time, ":00") : "".concat(time, ":00");
+  });
+  var half = timeSlots.map(function (time) {
+    return time < 10 ? "0".concat(time, ":30") : "".concat(time, ":30");
+  });
+  return [].concat(_toConsumableArray(full), _toConsumableArray(half)).sort();
+};
+
 var SearchForm = function SearchForm(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     defaultValue: getDate(),
@@ -1224,7 +1255,15 @@ var SearchForm = function SearchForm(props) {
     value: "US"
   }, "US"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "Mexico"
-  }, "Mexico")));
+  }, "Mexico")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    id: "time",
+    onChange: handleChange("time", props.updateSearch)
+  }, getTimeSlots().map(function (time, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: i,
+      value: time
+    }, " ", time, " ");
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SearchForm);

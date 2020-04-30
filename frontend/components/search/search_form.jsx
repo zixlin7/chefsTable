@@ -17,6 +17,25 @@ const getDate = () =>{
     return today;
 }
 
+const getTimeSlots = ( ) => {
+    let openTime = 15
+    let closeTime = 23
+    const timeSlots = [];
+    while (openTime < closeTime) {
+        openTime++;
+        timeSlots.push(openTime);
+    }
+    const full = timeSlots.map(time => {
+        return time < 10 ? `0${time}:00` : `${time}:00`
+    })
+
+    const half = timeSlots.map((time) => {
+        return time < 10 ? `0${time}:30` : `${time}:30`;
+    });
+
+    return [...full, ...half].sort();
+}
+
 
 const SearchForm = props => {
     
@@ -31,6 +50,15 @@ const SearchForm = props => {
                 defaultValue="US">
                     <option value="US">US</option>
                     <option value="Mexico">Mexico</option>
+                </select>
+
+                <select id="time"
+                    onChange={handleChange("time", props.updateSearch)}>
+                    {getTimeSlots().map(
+                        (time,i) => (
+                            <option key={i}value={time} > {time} </option>
+                        )
+                    )}
                 </select>
             </div>
         )
