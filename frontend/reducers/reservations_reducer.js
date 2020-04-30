@@ -2,7 +2,6 @@ import {RECEIVE_ALL_RESERVATIONS, RECEIVE_RESERVATION, REMOVE_RESERVATION} from 
 
 
 const reservationsReducer = (state={}, action) => {
-    debugger
     const nextState = { ...state };
     switch (action.type) {
       case RECEIVE_ALL_RESERVATIONS:

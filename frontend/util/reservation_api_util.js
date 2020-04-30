@@ -6,7 +6,6 @@ export const fetchAllReservations = () => {
 };
 
 export const fetchReservation = (reservationId) => {
-    debugger
   return $.ajax({
     url: `api/reservations/${reservationId}`,
     method: "GET",

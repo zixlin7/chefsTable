@@ -1,6 +1,6 @@
 .background-content{
     background-color:rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    z-index: 990;
     color: #333;
 }
 
@@ -9,11 +9,12 @@
     color:black;
     position: absolute;
     z-index: 1000;
+    min-width: 300px;
     top:50%;
     left: 50%;
     width: 30%;
     height: auto;
-    margin-left: -300px;
+    margin-left: -250px;
     background-color: white;
     transform: translateY(-50%);
     display: flex;

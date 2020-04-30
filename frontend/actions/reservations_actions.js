@@ -11,7 +11,6 @@ const receiveAllReservations = (reservations) => ({
 });
 
 const receiveReservation = (reservation) => {
-    debugger
   return({type: RECEIVE_RESERVATION,
   reservation})
 };
