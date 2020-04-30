@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import produceTimeSlots from "../../util/time_slots_util";
 
 class RestaurantsIndexItem extends React.Component {
   mapPriceRange(price) {
@@ -39,7 +40,7 @@ class RestaurantsIndexItem extends React.Component {
         <span name="cuisine">{restaurant.cuisine}</span>
         <span name="city">{restaurant.city}</span>
         <div className="time-slots">
-          {this.getTimeSlots(restaurant.open_hour, restaurant.close_hour).map(
+          {produceTimeSlots(restaurant.open_hour, restaurant.close_hour).map(
             (time, i) => (
               <div key={i}> {time} </div>
             )
