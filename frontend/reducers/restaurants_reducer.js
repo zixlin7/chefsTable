@@ -8,7 +8,7 @@ const restaurantsReducer = (state={}, action) => {
   
     switch (action.type) {
       case RECEIVE_ALL_RESTAURANTS:
-        return Object.values(action.restaurants);
+        return action.restaurants;
       case RECEIVE_RESTAURANT:
         const nextState = {...state}
         nextState[action.restaurant.id] = action.restaurant

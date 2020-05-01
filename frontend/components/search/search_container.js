@@ -5,7 +5,8 @@ import {updateSearch} from "../../actions/search_actions"
 
 
 const mSTP = (state, ownProps) => ({
-    restaurants: state.entities.restaurants
+    restaurants: state.entities.restaurants,
+    search: state.ui.search
 });
 
 const mDTP = (dispatch) => ({

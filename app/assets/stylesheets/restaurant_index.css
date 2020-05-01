@@ -6,7 +6,7 @@
 
 .restaurant{
     padding: 20px 10px;
-    height: 200px;
+    min-height: 200px;
     line-height: 28px;
     border-bottom: 2px solid rgb(228, 226, 226);
 }
@@ -19,7 +19,7 @@
 .time-slots div{
     background-color: rgb(148, 216, 232);
     width: 100px;
-    min-height:30px;
+    height:30px;
    
     text-align: center;
     vertical-align: center;

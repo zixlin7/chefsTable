@@ -1,5 +1,5 @@
 import React from "react";
-import produceTimeSlots from "../../util/time_slots_util";
+
 
 
 const handleChange = (field, updateSearch) => e => {
@@ -36,21 +36,30 @@ const getTimeSlots = ( ) => {
     return [...full, ...half].sort();
 }
 
+const getParty = () => {
+    const arr = [];
+    for(let i = 1; i<=10; i++){
+        arr.push(i)
+    }
+    return arr;
+}
+
 
 const SearchForm = props => {
     
         return(
 
             <div>
+                <select id="party"
+                    onChange={handleChange("party", props.updateSearch)}
+                    defaultValue="2">
+                    {getParty().map((num, i)=>(
+                        <option key={i} value={num} > {num} people </option>
+                    ))}
+                </select>
 
                 <input defaultValue={getDate()}type="date" id="date"
                     onChange={handleChange("date", props.updateSearch)}/>
-                <select id="country" 
-                onChange={handleChange("country", props.updateSearch)}
-                defaultValue="US">
-                    <option value="US">US</option>
-                    <option value="Mexico">Mexico</option>
-                </select>
 
                 <select id="time"
                     onChange={handleChange("time", props.updateSearch)}>
@@ -60,6 +69,15 @@ const SearchForm = props => {
                         )
                     )}
                 </select>
+
+
+                <select id="country" 
+                onChange={handleChange("country", props.updateSearch)}
+                defaultValue="US">
+                    <option value="US">US</option>
+                    <option value="Mexico">Mexico</option>
+                </select>
+
             </div>
         )
     

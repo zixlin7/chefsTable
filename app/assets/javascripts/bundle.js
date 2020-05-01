@@ -685,6 +685,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  debugger;
   return {
     reservation: {
       user_id: state.session.id,
@@ -692,8 +693,9 @@ var mSTP = function mSTP(state, ownProps) {
       number_of_party: null,
       time: null
     },
+    search: state.ui.search,
     user: state.entities.users,
-    restaurantName: state.entities.restaurants[ownProps.match.params.id],
+    restaurantName: state.entities.restaurants[parseInt(ownProps.match.params.id)].name,
     formType: "Create Reservation"
   };
 };
@@ -887,7 +889,9 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
       }, Object(_util_time_slots_util__WEBPACK_IMPORTED_MODULE_2__["default"])(restaurant.open_hour, restaurant.close_hour).map(function (time, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: i
-        }, " ", time, " ");
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/restaurants/".concat(restaurant.id, "/reservations/new")
+        }, time));
       })));
     }
   }]);
@@ -1084,13 +1088,14 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
       var _this = this;
 
       var restaurants = this.props.restaurants;
-      if (!this.props.restaurants.length) return null;
+      if (!Object.values(this.props.restaurants).length) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-index"
-      }, this.props.restaurants.map(function (restaurant, i) {
+      }, Object.values(this.props.restaurants).map(function (restaurant, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurants_restaurant_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           restaurant: restaurant,
+          search: _this.props.search,
           requestRestaurant: _this.props.requestRestaurant
         });
       }));
@@ -1123,12 +1128,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var Search = function Search(_ref) {
   var restaurants = _ref.restaurants,
+      search = _ref.search,
       updateSearch = _ref.updateSearch,
       requestRestaurant = _ref.requestRestaurant;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
     updateSearch: updateSearch
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     restaurants: restaurants,
+    search: search,
     requestRestaurant: requestRestaurant
   }));
 };
@@ -1157,7 +1164,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   return {
-    restaurants: state.entities.restaurants
+    restaurants: state.entities.restaurants,
+    search: state.ui.search
   };
 };
 
@@ -1190,7 +1198,6 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util_time_slots_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/time_slots_util */ "./frontend/util/time_slots_util.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1202,7 +1209,6 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 
@@ -1241,21 +1247,32 @@ var getTimeSlots = function getTimeSlots() {
   return [].concat(_toConsumableArray(full), _toConsumableArray(half)).sort();
 };
 
+var getParty = function getParty() {
+  var arr = [];
+
+  for (var i = 1; i <= 10; i++) {
+    arr.push(i);
+  }
+
+  return arr;
+};
+
 var SearchForm = function SearchForm(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    id: "party",
+    onChange: handleChange("party", props.updateSearch),
+    defaultValue: "2"
+  }, getParty().map(function (num, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: i,
+      value: num
+    }, " ", num, " people ");
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     defaultValue: getDate(),
     type: "date",
     id: "date",
     onChange: handleChange("date", props.updateSearch)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    id: "country",
-    onChange: handleChange("country", props.updateSearch),
-    defaultValue: "US"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "US"
-  }, "US"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "Mexico"
-  }, "Mexico")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "time",
     onChange: handleChange("time", props.updateSearch)
   }, getTimeSlots().map(function (time, i) {
@@ -1263,7 +1280,15 @@ var SearchForm = function SearchForm(props) {
       key: i,
       value: time
     }, " ", time, " ");
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    id: "country",
+    onChange: handleChange("country", props.updateSearch),
+    defaultValue: "US"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "US"
+  }, "US"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Mexico"
+  }, "Mexico")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SearchForm);
@@ -1788,7 +1813,7 @@ var restaurantsReducer = function restaurantsReducer() {
 
   switch (action.type) {
     case _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_RESTAURANTS"]:
-      return Object.values(action.restaurants);
+      return action.restaurants;
 
     case _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANT"]:
       var nextState = _objectSpread({}, state);
