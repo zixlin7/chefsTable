@@ -38,7 +38,7 @@ class ReservationForm extends React.Component{
             restaurant_id: this.state.restaurant_id,
             number_of_party: this.state.number_of_party,
             time
-        }});
+        }}). then(this.setState({success: true}))
     }
 
     render(){
@@ -46,26 +46,38 @@ class ReservationForm extends React.Component{
         
         return(
             <div>
-                <h2>You're almost done!</h2>
+                {(this.state.success) 
+                ? (<div>
+                    <p>Get excited! Your reservation is confirmed. </p>
+                    </div> )
+                    : <h2>You're almost done!</h2>}
+                
                 <div className="info">
                     <h1>{this.props.restaurantName}</h1>
                     <div>
                         <p>{this.formatDate()}</p>
                         <p>{this.props.search.time}</p>
-                        <p>{this.props.search.party}</p>  
-                    </div>
-                    <div>
-                        <p>{user.firstname}</p>
-                        <p>{user.lastname}</p>
-                        <p>{user.email}</p>
-                        
+                        <p>{this.props.search.party}</p> 
+                        {(this.state.success)
+                            ? (<div>
+                                <a>Modify reservation</a>
+                                <a>Cancel reservation</a>
+                            </div>)
+                            : <div>
+                                <p>{user.firstname}</p>
+                                <p>{user.lastname}</p>
+                                <p>{user.email}</p>
+
+                            </div>} 
                     </div>
 
                     <div>
                         <input type="text" placeholder="Enter a occasion"/>
                         <input type="text" placeholder="Add a special request"/>
                     </div>
-                    <button onClick={this.handleClick}>Complete Reservation</button>
+                    {(this.state.success)
+                        ? (null)
+                        : <button onClick={this.handleClick}>Complete Reservation</button>} 
                 </div>
             </div>
         )
