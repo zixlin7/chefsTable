@@ -1,37 +1,21 @@
-import React from "react";
+
 import { connect } from "react-redux";
 import { fetchReservation, updateReservation} from "../../actions/reservations_actions";
-import ReservationForm from "./reservation_form";
+import { fetchRestaurant } from "../../util/res_api_util";
+import EditReservationForm from "./edit_reservation_form"
 
-class EditReservationForm extends React.Component {
-  componentDidMount() {
-    this.props.fetchReservation(this.props.match.params.id);
-  }
-  render() {
-    // DO NOT MODIFY THIS FUNCTION
-    const { action, formType, reservation } = this.props;
 
-    // Hint: The report will not exist on the first render - what do we need to
-    // do to get it?
-    if (!reservation) return null;
-    return (
-      <ReservationForm
-        action={action}
-        formType={formType}
-        reservation={reservation}
-      />
-    );
-  }
-}
+
 
 const mSTP = (state, ownProps) => ({
   reservation: state.entities.reservations[ownProps.match.params.id],
-  formType: "Update Reservation",
+  restaurant: state.entities.restaurants[state.entities.reservations[ownProps.match.params.id]],
+  search: state.ui.search
+  
 });
 
 const mDTP = (dispatch) => ({
-  fetchReservation: (reservationId) =>
-    dispatch(fetchReservation(reservationId)),
+  fetchRestaurant: (restaurantId) => dispatch(fetchRestaurant(restaurantId)),
   action: (reservation) => dispatch(updateReservation(reservation)),
 });
 

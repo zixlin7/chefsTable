@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class ReservationForm extends React.Component{
 
@@ -34,9 +35,9 @@ class ReservationForm extends React.Component{
         e.preventDefault();
         const time = this.combineDateTime()
         this.props.action({reservation: {
-            user_id: this.state.user_id,
-            restaurant_id: this.state.restaurant_id,
-            number_of_party: this.state.number_of_party,
+            user_id: this.props.user.id,
+            restaurant_id: this.props.match.params.id,
+            number_of_party: this.props.search.party,
             time
         }}). then(this.setState({success: true}))
     }
@@ -57,10 +58,10 @@ class ReservationForm extends React.Component{
                     <div>
                         <p>{this.formatDate()}</p>
                         <p>{this.props.search.time}</p>
-                        <p>{this.props.search.party}</p> 
+                        <p>party of {this.props.search.party}</p> 
                         {(this.state.success)
                             ? (<div>
-                                <a>Modify reservation</a>
+                                <Link to={`/reservations/:id/edit`}></Link>
                                 <a>Cancel reservation</a>
                             </div>)
                             : <div>
