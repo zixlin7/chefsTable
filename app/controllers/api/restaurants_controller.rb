@@ -2,7 +2,7 @@ class Api::RestaurantsController < ApplicationController
 
     def index 
         # debugger
-        if !params[:filters]
+        if !params[:filters] || !params[:filters][:country]
             @restaurants = Restaurant.all
         else
             @restaurants = Restaurant.all.where(country: params[:filters][:country])
