@@ -686,17 +686,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   return {
-    reservation: {
-      user_id: state.session.id,
-      restaurant_id: ownProps.match.params.id,
-      number_of_party: state.ui.search.party,
-      time: state.ui.search.time,
-      date: state.ui.search.date
-    },
+    // reservation: {
+    //     user_id: state.session.id,
+    //     restaurant_id: ownProps.match.params.id,
+    //     number_of_party: state.ui.search.party,
+    //     time: state.ui.search.time,
+    //     date: state.ui.search.date
+    // },
     search: state.ui.search,
     user: state.entities.users[state.session.id],
-    restaurantName: state.entities.restaurants[parseInt(ownProps.match.params.id)].name,
-    formType: "Create Reservation"
+    restaurantName: state.entities.restaurants[parseInt(ownProps.match.params.id)].name // formType: "Create Reservation",
+
   };
 };
 
@@ -758,7 +758,9 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ReservationForm);
 
     _this = _super.call(this, props);
-    _this.state = _this.props.reservation;
+    _this.state = {
+      success: false
+    };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -769,7 +771,7 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "formatDate",
     value: function formatDate() {
-      var date = new Date(this.state.date);
+      var date = new Date(this.props.search.date);
       return date.toDateString();
     }
   }, {
@@ -805,7 +807,7 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
       var user = this.props.user;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "You're almost done!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurantName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.party)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.firstname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.lastname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurantName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.search.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.search.party)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.firstname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.lastname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter a occasion"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1133,6 +1135,11 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(RestaurantsIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestRestaurants();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -1181,13 +1188,15 @@ var Search = function Search(_ref) {
   var restaurants = _ref.restaurants,
       search = _ref.search,
       updateSearch = _ref.updateSearch,
-      requestRestaurant = _ref.requestRestaurant;
+      requestRestaurant = _ref.requestRestaurant,
+      requestRestaurants = _ref.requestRestaurants;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
     updateSearch: updateSearch
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     restaurants: restaurants,
     search: search,
     updateSearch: updateSearch,
+    requestRestaurants: requestRestaurants,
     requestRestaurant: requestRestaurant
   }));
 };
@@ -1223,8 +1232,8 @@ var mSTP = function mSTP(state, ownProps) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    requestRestaurants: function requestRestaurants() {
-      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__["requestRestaurants"])());
+    requestRestaurants: function requestRestaurants(filters) {
+      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__["requestRestaurants"])(filters));
     },
     requestRestaurant: function requestRestaurant(restaurantId) {
       return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__["requestRestaurant"])(restaurantId));

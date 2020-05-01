@@ -2,10 +2,11 @@ class Api::RestaurantsController < ApplicationController
 
     def index 
         # debugger
-        @restaurants = Restaurant.all.where(country: params[:filters][:country])
-        @restaurants = Restaurant.search(params[:filters]).length > 0 ? Restaurant.search(params[:filters]) : Restaurant.all
-        # debugger
-
+        if !params[:filters]
+            @restaurants = Restaurant.all
+        else
+            @restaurants = Restaurant.all.where(country: params[:filters][:country])
+        end
         render :index
     end
 

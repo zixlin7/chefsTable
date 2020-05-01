@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
 });
 
 const mDTP = (dispatch) => ({
-    requestRestaurants: () => dispatch(requestRestaurants()),
+    requestRestaurants: (filters) => dispatch(requestRestaurants(filters)),
     requestRestaurant: (restaurantId) => dispatch(requestRestaurant(restaurantId)),
     updateSearch: (field, value) => dispatch(updateSearch(field, value))
 });

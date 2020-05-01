@@ -4,7 +4,7 @@ class ReservationForm extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = this.props.reservation
+        this.state = {success: false}
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -13,7 +13,7 @@ class ReservationForm extends React.Component{
     }
 
     formatDate(){
-        const date = new Date(this.state.date);
+        const date = new Date(this.props.search.date);
         return date.toDateString();
     }
     
@@ -51,8 +51,8 @@ class ReservationForm extends React.Component{
                     <h1>{this.props.restaurantName}</h1>
                     <div>
                         <p>{this.formatDate()}</p>
-                        <p>{this.state.time}</p>
-                        <p>{this.state.party}</p>  
+                        <p>{this.props.search.time}</p>
+                        <p>{this.props.search.party}</p>  
                     </div>
                     <div>
                         <p>{user.firstname}</p>
