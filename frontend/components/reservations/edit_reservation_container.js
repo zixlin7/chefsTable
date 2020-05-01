@@ -1,22 +1,33 @@
 
 import { connect } from "react-redux";
 import { fetchReservation, updateReservation} from "../../actions/reservations_actions";
-import { fetchRestaurant } from "../../util/res_api_util";
-import EditReservationForm from "./edit_reservation_form"
+import {requestRestaurant} from "../../actions/restaurants_actions"
+import EditReservationForm from "./edit_reservation_form";
+import { updateSearch} from "../../actions/search_actions";
 
 
 
 
-const mSTP = (state, ownProps) => ({
-  reservation: state.entities.reservations[ownProps.match.params.id],
-  restaurant: state.entities.restaurants[state.entities.reservations[ownProps.match.params.id]],
-  search: state.ui.search
+const mSTP = (state, ownProps) => {
+  const getReservationId = (restaurantId) => {
+    for(let key in state.entities.reservations){
+      if (state.entities.reservations[key].restaurant_id === restaurantId){
+        return state.entities.reservations[key];
+      }
+    }
+  }
+
+  return({
+  reservation: getReservationId(state.entities.restaurants[ownProps.match.params.id]),
+  restaurant: state.entities.restaurants[ownProps.match.params.id],
+  search: state.ui.search})
   
-});
+};
 
 const mDTP = (dispatch) => ({
-  fetchRestaurant: (restaurantId) => dispatch(fetchRestaurant(restaurantId)),
-  action: (reservation) => dispatch(updateReservation(reservation)),
+  requestRestaurant: (restaurantId) => dispatch(requestRestaurant(restaurantId)),
+  updateReservation: (reservation) => dispatch(updateReservation(reservation)),
+  updateSearch: (field, value) => dispatch(updateSearch(field, value))
 });
 
 export default connect(mSTP, mDTP)(EditReservationForm);

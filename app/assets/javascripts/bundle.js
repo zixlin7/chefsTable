@@ -578,28 +578,41 @@ var Landing = function Landing(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_reservations_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reservations_actions */ "./frontend/actions/reservations_actions.js");
-/* harmony import */ var _util_res_api_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/res_api_util */ "./frontend/util/res_api_util.js");
+/* harmony import */ var _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/restaurants_actions */ "./frontend/actions/restaurants_actions.js");
 /* harmony import */ var _edit_reservation_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit_reservation_form */ "./frontend/components/reservations/edit_reservation_form.jsx");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/search_actions */ "./frontend/actions/search_actions.js");
+
 
 
 
 
 
 var mSTP = function mSTP(state, ownProps) {
+  var getReservationId = function getReservationId(restaurantId) {
+    for (var key in state.entities.reservations) {
+      if (state.entities.reservations[key].restaurant_id === restaurantId) {
+        return state.entities.reservations[key];
+      }
+    }
+  };
+
   return {
-    reservation: state.entities.reservations[ownProps.match.params.id],
-    restaurant: state.entities.restaurants[state.entities.reservations[ownProps.match.params.id]],
+    reservation: getReservationId(state.entities.restaurants[ownProps.match.params.id]),
+    restaurant: state.entities.restaurants[ownProps.match.params.id],
     search: state.ui.search
   };
 };
 
 var mDTP = function mDTP(dispatch) {
   return {
-    fetchRestaurant: function fetchRestaurant(restaurantId) {
-      return dispatch(Object(_util_res_api_util__WEBPACK_IMPORTED_MODULE_2__["fetchRestaurant"])(restaurantId));
+    requestRestaurant: function requestRestaurant(restaurantId) {
+      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_2__["requestRestaurant"])(restaurantId));
     },
-    action: function action(reservation) {
+    updateReservation: function updateReservation(reservation) {
       return dispatch(Object(_actions_reservations_actions__WEBPACK_IMPORTED_MODULE_1__["updateReservation"])(reservation));
+    },
+    updateSearch: function updateSearch(field, value) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_4__["updateSearch"])(field, value));
     }
   };
 };
@@ -652,16 +665,24 @@ var EditReservationForm = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(EditReservationForm);
 
-  function EditReservationForm() {
+  function EditReservationForm(props) {
     _classCallCheck(this, EditReservationForm);
 
-    return _super.apply(this, arguments);
+    return _super.call(this, props);
   }
 
   _createClass(EditReservationForm, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_form__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      debugger;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        updateSearch: this.props.updateSearch
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurants_restaurant_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        restaurant: this.props.restaurant,
+        search: this.props.search,
+        updateSearch: this.props.updateSearch,
+        requestRestaurant: this.props.requestRestaurant
+      }));
     }
   }]);
 
@@ -2223,9 +2244,7 @@ var updateReservation = function updateReservation(reservation) {
   return $.ajax({
     url: "api/reservations/".concat(reservation.id),
     method: "PATCH",
-    data: {
-      reservation: reservation
-    }
+    data: reservation
   });
 };
 var deleteReservation = function deleteReservation(reservationId) {
