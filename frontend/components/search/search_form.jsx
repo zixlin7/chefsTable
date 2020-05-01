@@ -1,4 +1,5 @@
 import React from "react";
+import getDate from "../../util/date_util";
 
 
 
@@ -7,15 +8,15 @@ const handleChange = (field, updateSearch) => e => {
 }
 
 
-const getDate = () =>{
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+// const getDate = () =>{
+//     var today = new Date();
+//     var dd = String(today.getDate()).padStart(2, '0');
+//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+//     var yyyy = today.getFullYear();
 
-    today = mm + '/' + dd + '/' + yyyy;
-    return today;
-}
+//     today = mm + '/' + dd + '/' + yyyy;
+//     return today;
+// }
 
 const getTimeSlots = ( ) => {
     let openTime = 15
@@ -61,7 +62,7 @@ const SearchForm = props => {
                 <input defaultValue={getDate()}type="date" id="date"
                     onChange={handleChange("date", props.updateSearch)}/>
 
-                <select id="time"
+                <select id="time" defaultValue="16:00"
                     onChange={handleChange("time", props.updateSearch)}>
                     {getTimeSlots().map(
                         (time,i) => (

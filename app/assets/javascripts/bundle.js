@@ -1250,6 +1250,7 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util_date_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/date_util */ "./frontend/util/date_util.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1264,21 +1265,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
 var handleChange = function handleChange(field, updateSearch) {
   return function (e) {
     return updateSearch(field, e.currentTarget.value);
   };
-};
+}; // const getDate = () =>{
+//     var today = new Date();
+//     var dd = String(today.getDate()).padStart(2, '0');
+//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+//     var yyyy = today.getFullYear();
+//     today = mm + '/' + dd + '/' + yyyy;
+//     return today;
+// }
 
-var getDate = function getDate() {
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-
-  var yyyy = today.getFullYear();
-  today = mm + '/' + dd + '/' + yyyy;
-  return today;
-};
 
 var getTimeSlots = function getTimeSlots() {
   var openTime = 15;
@@ -1320,12 +1320,13 @@ var SearchForm = function SearchForm(props) {
       value: num
     }, " ", num, " people ");
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    defaultValue: getDate(),
+    defaultValue: Object(_util_date_util__WEBPACK_IMPORTED_MODULE_1__["default"])(),
     type: "date",
     id: "date",
     onChange: handleChange("date", props.updateSearch)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "time",
+    defaultValue: "16:00",
     onChange: handleChange("time", props.updateSearch)
   }, getTimeSlots().map(function (time, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -1921,6 +1922,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _util_date_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/date_util */ "./frontend/util/date_util.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1929,8 +1931,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var defaultState = {
+  party: 2,
+  time: "16:00",
+  date: Object(_util_date_util__WEBPACK_IMPORTED_MODULE_1__["default"])()
+};
+
 var searchReducer = function searchReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
@@ -2104,6 +2112,29 @@ var configureStore = function configureStore() {
 
 /***/ }),
 
+/***/ "./frontend/util/date_util.js":
+/*!************************************!*\
+  !*** ./frontend/util/date_util.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var getDate = function getDate() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+  var yyyy = today.getFullYear();
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getDate);
+
+/***/ }),
+
 /***/ "./frontend/util/res_api_util.js":
 /*!***************************************!*\
   !*** ./frontend/util/res_api_util.js ***!
@@ -2160,6 +2191,7 @@ var fetchReservation = function fetchReservation(reservationId) {
   });
 };
 var createReservation = function createReservation(reservation) {
+  debugger;
   return $.ajax({
     url: "api/reservations",
     method: "POST",

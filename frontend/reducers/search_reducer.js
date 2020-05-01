@@ -1,7 +1,12 @@
 import {UPDATE_SEARCH} from "../actions/search_actions";
+import getDate from "../util/date_util"
 
-
-const searchReducer = (state={}, action) => {
+const defaultState = {
+    party: 2,
+    time: "16:00",
+    date: getDate()
+}
+const searchReducer = (state = defaultState, action) => {
     switch (action.type) {
         case UPDATE_SEARCH:
             const nextState = {...state}
