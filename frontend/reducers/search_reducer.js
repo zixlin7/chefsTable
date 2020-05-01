@@ -1,5 +1,6 @@
 import {UPDATE_SEARCH} from "../actions/search_actions";
 
+
 const searchReducer = (state={}, action) => {
     switch (action.type) {
         case UPDATE_SEARCH:

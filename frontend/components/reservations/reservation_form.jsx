@@ -5,6 +5,7 @@ class ReservationForm extends React.Component{
     constructor(props){
         super(props);
         this.state = this.props.reservation
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount(){
@@ -16,7 +17,29 @@ class ReservationForm extends React.Component{
         return date.toDateString();
     }
     
+    combineDateTime(){
+        const str = `${this.props.search.date}T${this.props.search.time}:00`;
+        const date = new Date(str)
+        const day = date.getUTCDate();
+        const month = date.getUTCMonth();
+        const year = date.getUTCFullYear();
+        const hours = date.getUTCHours();
+        const minutes = date.getUTCMinutes();
+        const UTCTime = `${year}-${month}-${day}T${hours}:${minutes}:00.000Z`;
+        return UTCTime;
 
+    }
+
+    handleClick(e){
+        e.preventDefault();
+        const time = this.combineDateTime()
+        this.props.action({reservation: {
+            user_id: this.state.user_id,
+            restaurant_id: this.state.restaurant_id,
+            number_of_party: this.state.number_of_party,
+            time
+        }});
+    }
 
     render(){
         const user = this.props.user
@@ -42,7 +65,7 @@ class ReservationForm extends React.Component{
                         <input type="text" placeholder="Enter a occasion"/>
                         <input type="text" placeholder="Add a special request"/>
                     </div>
-                    <button>Complete Reservation</button>
+                    <button onClick={this.handleClick}>Complete Reservation</button>
                 </div>
             </div>
         )

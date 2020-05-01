@@ -759,6 +759,7 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = _this.props.reservation;
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -772,6 +773,33 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
       return date.toDateString();
     }
   }, {
+    key: "combineDateTime",
+    value: function combineDateTime() {
+      var str = "".concat(this.props.search.date, "T").concat(this.props.search.time, ":00");
+      var date = new Date(str);
+      var day = date.getUTCDate();
+      var month = date.getUTCMonth();
+      var year = date.getUTCFullYear();
+      var hours = date.getUTCHours();
+      var minutes = date.getUTCMinutes();
+      var UTCTime = "".concat(year, "-").concat(month, "-").concat(day, "T").concat(hours, ":").concat(minutes, ":00.000Z");
+      return UTCTime;
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      var time = this.combineDateTime();
+      this.props.action({
+        reservation: {
+          user_id: this.state.user_id,
+          restaurant_id: this.state.restaurant_id,
+          number_of_party: this.state.number_of_party,
+          time: time
+        }
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var user = this.props.user;
@@ -783,7 +811,9 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Add a special request"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Complete Reservation")));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleClick
+      }, "Complete Reservation")));
     }
   }]);
 
@@ -806,7 +836,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _util_time_slots_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/time_slots_util */ "./frontend/util/time_slots_util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -844,7 +873,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(RestaurantsIndexItem, _React$Component);
 
@@ -864,14 +892,12 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "getTimeSlots",
-    value: function getTimeSlots(open, close) {
-      var openTime = new Date(open).getHours();
-      var closeTime = new Date(close).getHours();
+    value: function getTimeSlots() {
+      var searchTime = parseInt(this.props.search.time);
       var timeSlots = [];
 
-      while (openTime < closeTime) {
-        openTime++;
-        timeSlots.push(openTime);
+      for (var i = searchTime - 1; i <= searchTime + 1; i++) {
+        timeSlots.push(i);
       }
 
       var full = timeSlots.map(function (time) {
@@ -909,7 +935,7 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
         name: "city"
       }, restaurant.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "time-slots"
-      }, Object(_util_time_slots_util__WEBPACK_IMPORTED_MODULE_2__["default"])(restaurant.open_hour, restaurant.close_hour).map(function (time, i) {
+      }, this.getTimeSlots().map(function (time, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: i
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -2137,9 +2163,7 @@ var createReservation = function createReservation(reservation) {
   return $.ajax({
     url: "api/reservations",
     method: "POST",
-    data: {
-      reservation: reservation
-    }
+    data: reservation
   });
 };
 var updateReservation = function updateReservation(reservation) {
@@ -2258,50 +2282,6 @@ var logoutUser = function logoutUser() {
     method: "DELETE"
   });
 };
-
-/***/ }),
-
-/***/ "./frontend/util/time_slots_util.js":
-/*!******************************************!*\
-  !*** ./frontend/util/time_slots_util.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var produceTimeSlots = function produceTimeSlots(open, close) {
-  var openTime = new Date(open).getHours();
-  var closeTime = new Date(close).getHours();
-  var timeSlots = [];
-
-  while (openTime < closeTime) {
-    openTime++;
-    timeSlots.push(openTime);
-  }
-
-  var full = timeSlots.map(function (time) {
-    return time < 10 ? "0".concat(time, ":00") : "".concat(time, ":00");
-  });
-  var half = timeSlots.map(function (time) {
-    return time < 10 ? "0".concat(time, ":30") : "".concat(time, ":30");
-  });
-  return [].concat(_toConsumableArray(full), _toConsumableArray(half)).sort();
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (produceTimeSlots);
 
 /***/ }),
 

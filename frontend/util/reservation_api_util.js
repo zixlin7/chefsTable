@@ -13,10 +13,11 @@ export const fetchReservation = (reservationId) => {
 };
 
 export const createReservation = (reservation) => {
+ 
   return $.ajax({
     url: `api/reservations`,
     method: "POST",
-    data: { reservation }
+    data: reservation
   });
 };
 
@@ -24,7 +25,7 @@ export const updateReservation = (reservation) => {
   return $.ajax({
     url: `api/reservations/${reservation.id}`,
     method: "PATCH",
-    data: { reservation },
+    data: {reservation },
   });
 };
 
