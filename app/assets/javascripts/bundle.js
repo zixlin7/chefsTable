@@ -685,16 +685,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  debugger;
   return {
     reservation: {
       user_id: state.session.id,
       restaurant_id: ownProps.match.params.id,
-      number_of_party: null,
-      time: null
+      number_of_party: state.ui.search.party,
+      time: state.ui.search.time,
+      date: state.ui.search.date
     },
     search: state.ui.search,
-    user: state.entities.users,
+    user: state.entities.users[state.session.id],
     restaurantName: state.entities.restaurants[parseInt(ownProps.match.params.id)].name,
     formType: "Create Reservation"
   };
@@ -766,12 +766,24 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
+    key: "formatDate",
+    value: function formatDate() {
+      var date = new Date(this.state.date);
+      return date.toDateString();
+    }
+  }, {
     key: "render",
     value: function render() {
-      debugger;
+      var user = this.props.user;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "You're almost done!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurantName)));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurantName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.party)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.firstname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.lastname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Enter a occasion"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Add a special request"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Complete Reservation")));
     }
   }]);
 
@@ -871,8 +883,19 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
       return [].concat(_toConsumableArray(full), _toConsumableArray(half)).sort();
     }
   }, {
+    key: "handleClick",
+    value: function handleClick(field) {
+      var _this = this;
+
+      return function (e) {
+        return _this.props.updateSearch(field, e.currentTarget.innerHTML);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var restaurant = this.props.restaurant;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant"
@@ -890,6 +913,7 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: i
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          onClick: _this2.handleClick("time"),
           to: "/restaurants/".concat(restaurant.id, "/reservations/new")
         }, time));
       })));
@@ -1096,6 +1120,7 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
           key: i,
           restaurant: restaurant,
           search: _this.props.search,
+          updateSearch: _this.props.updateSearch,
           requestRestaurant: _this.props.requestRestaurant
         });
       }));
@@ -1136,6 +1161,7 @@ var Search = function Search(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     restaurants: restaurants,
     search: search,
+    updateSearch: updateSearch,
     requestRestaurant: requestRestaurant
   }));
 };

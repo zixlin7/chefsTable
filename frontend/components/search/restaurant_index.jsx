@@ -18,6 +18,7 @@ class RestaurantsIndex extends React.Component{
             {Object.values(this.props.restaurants).map((restaurant,i) => (
               <RestaurantsIndexItem key={i} restaurant={restaurant} 
               search = {this.props.search}
+              updateSearch = {this.props.updateSearch}
               requestRestaurant={this.props.requestRestaurant}/>
             ))}
           </div>

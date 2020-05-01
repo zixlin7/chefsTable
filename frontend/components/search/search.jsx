@@ -7,6 +7,7 @@ const Search = ({ restaurants, search, updateSearch, requestRestaurant }) =>{
         <div>
             <SearchForm updateSearch={updateSearch}/>
             <RestaurantsIndex restaurants={restaurants} search = {search}
+            updateSearch={updateSearch}
             requestRestaurant={requestRestaurant} />
         </div>
     )

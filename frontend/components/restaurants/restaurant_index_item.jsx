@@ -28,6 +28,10 @@ class RestaurantsIndexItem extends React.Component {
       
   }
 
+   handleClick (field){
+     return e => this.props.updateSearch(field, e.currentTarget.innerHTML)
+    }
+  
 
 
   render() {
@@ -43,7 +47,7 @@ class RestaurantsIndexItem extends React.Component {
           {produceTimeSlots(restaurant.open_hour, restaurant.close_hour).map(
             (time, i) => (
               <div key={i}> 
-                <Link to={`/restaurants/${restaurant.id}/reservations/new`}>{time}</Link>
+                <Link onClick={this.handleClick("time")} to={`/restaurants/${restaurant.id}/reservations/new`}>{time}</Link>
               </div>
             )
           )}
