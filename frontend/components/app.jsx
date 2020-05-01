@@ -6,7 +6,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import {AuthRoute,ProtectedRoute} from "../util/route_util";
 import RestaurantShowContainer from "./restaurants/restaurant_show_container";
 import CreateReservationContainer from "./reservations/new_reservation_form_container";
-import EditReservationForm from "./reservations/edit_reservation_container";
+import EditReservationContainer from "./reservations/edit_reservation_container";
 import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 
@@ -37,8 +37,8 @@ const App = () => (
     />
     <ProtectedRoute
       exact
-      path="/reservations/:id/edit"
-      component={EditReservationForm}
+      path="/restaurants/:id/reservations/edit"
+      component={EditReservationContainer}
     />
   </div>
 );

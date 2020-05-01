@@ -43,6 +43,7 @@ class ReservationForm extends React.Component{
     }
 
     render(){
+        debugger
         const user = this.props.user
         
         return(
@@ -61,7 +62,7 @@ class ReservationForm extends React.Component{
                         <p>party of {this.props.search.party}</p> 
                         {(this.state.success)
                             ? (<div>
-                                <Link to={`/reservations/:id/edit`}></Link>
+                                <Link to={`edit`}>Modify reservation</Link>
                                 <a>Cancel reservation</a>
                             </div>)
                             : <div>
