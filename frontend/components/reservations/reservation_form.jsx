@@ -5,7 +5,7 @@ class ReservationForm extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {success: false}
+        this.state = {reservationId: null}
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -34,12 +34,21 @@ class ReservationForm extends React.Component{
     handleClick(e){
         e.preventDefault();
         const time = this.combineDateTime()
-        this.props.action({reservation: {
-            user_id: this.props.user.id,
-            restaurant_id: this.props.match.params.id,
-            number_of_party: this.props.search.party,
-            time
-        }}). then(this.setState({success: true}))
+        const reservation = {
+            reservation: {
+                user_id: this.props.user.id,
+                restaurant_id: this.props.match.params.id,
+                number_of_party: this.props.search.party,
+                time
+            }
+        }
+        debugger
+        this.state.reservationId
+        ? this.props.updateReservation(reservation)
+        : this.props.createReservation(reservation)
+            .then(this.setState({ 
+                reservationId: Object.values(this.props.reservation)[(Object.values(this.props.reservation).length - 1)].id
+            }))
     }
 
     render(){
@@ -48,7 +57,7 @@ class ReservationForm extends React.Component{
         
         return(
             <div>
-                {(this.state.success) 
+                {(this.state.reservationId) 
                 ? (<div>
                     <p>Get excited! Your reservation is confirmed. </p>
                     </div> )
@@ -60,10 +69,11 @@ class ReservationForm extends React.Component{
                         <p>{this.formatDate()}</p>
                         <p>{this.props.search.time}</p>
                         <p>party of {this.props.search.party}</p> 
-                        {(this.state.success)
+                        {(this.state.reservationId)
                             ? (<div>
                                 <Link to={`edit`}>Modify reservation</Link>
-                                <a>Cancel reservation</a>
+                                {/* <button onClick={this.handleCancel}>cancel reservation</button> */}
+                                {/* <Link to={`cancel`}>Cancel reservation</Link> */}
                             </div>)
                             : <div>
                                 <p>{user.firstname}</p>
@@ -77,13 +87,15 @@ class ReservationForm extends React.Component{
                         <input type="text" placeholder="Enter a occasion"/>
                         <input type="text" placeholder="Add a special request"/>
                     </div>
-                    {(this.state.success)
+                    {(this.state.reservationId)
                         ? (null)
                         : <button onClick={this.handleClick}>Complete Reservation</button>} 
                 </div>
             </div>
         )
     }
+
 }
+
 
 export default ReservationForm

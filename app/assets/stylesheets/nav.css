@@ -12,6 +12,11 @@
 
 }
 
+.main-nav a{
+    text-decoration: none;
+    color: black;
+}
+
 .greeting-nav{
     display: flex;
     flex-direction: row;

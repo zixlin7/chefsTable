@@ -1,6 +1,6 @@
 import React from "react";
 import GreetingContainer from "./greeting/greeting_container";
-import {Route} from "react-router-dom";
+import {Route, Link} from "react-router-dom";
 import SigninFormContainer from "./session/signin_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import {AuthRoute,ProtectedRoute} from "../util/route_util";
@@ -13,11 +13,13 @@ import SearchContainer from "../components/search/search_container";
 const App = () => (
   <div className="main-div">
     <nav className="main-nav">
-      <div id="logo">
-        {/* <h1 id="c">C</h1> */}
-        <p>chef's</p>
-        <p id="table">Table</p>
-      </div>
+      <Link to="/">
+        <div id="logo">
+          {/* <h1 id="c">C</h1> */}
+          <p>chef's</p>
+          <p id="table">Table</p>
+        </div>
+      </Link>
       <GreetingContainer />
     </nav>
 
@@ -40,6 +42,12 @@ const App = () => (
       path="/restaurants/:id/reservations/edit"
       component={EditReservationContainer}
     />
+
+    {/* <ProtectedRoute
+      exact
+      path="/restaurants/:id/reservations/cancel"
+      component={CancelReservation}
+    /> */}
   </div>
 );
 
