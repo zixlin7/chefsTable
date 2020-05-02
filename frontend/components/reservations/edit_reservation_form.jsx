@@ -33,6 +33,7 @@ class EditReservationForm extends React.Component{
                         search={this.props.search}
                         reservation={this.props.reservation}
                         updateReservation={this.props.updateReservation}
+                        match={this.props.match}
                         />
             }
         </div>)

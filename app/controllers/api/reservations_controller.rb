@@ -17,7 +17,7 @@ class Api::ReservationsController < ApplicationController
 
     def update
         @reservation = Reservation.find_by(id: params[:id])
-        if @reservation.update
+        if @reservation.update(reservation_params)
             render :show
         else 
             render json: @reservation.errors.full_messages, status: 400

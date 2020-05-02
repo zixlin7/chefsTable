@@ -596,17 +596,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  // const getReservationId = (restaurantId) => {
-  //   for(let key in state.entities.reservations){
-  //     if (state.entities.reservations[key].restaurant_id === restaurantId){
-  //       return state.entities.reservations[key];
-  //     }
-  //   }
-  // }
   return {
     reservation: Object.values(state.entities.reservations)[Object.values(state.entities.reservations).length - 1],
     restaurant: state.entities.restaurants[ownProps.match.params.id],
-    search: state.ui.search
+    search: state.ui.search,
+    user: state.entities.users[state.session.id]
   };
 };
 
@@ -710,7 +704,8 @@ var EditReservationForm = /*#__PURE__*/function (_React$Component) {
         user: this.props.user,
         search: this.props.search,
         reservation: this.props.reservation,
-        updateReservation: this.props.updateReservation
+        updateReservation: this.props.updateReservation,
+        match: this.props.match
       }));
     }
   }]);
@@ -819,9 +814,11 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = _this.props.reservation ? {
-      reservationId: _this.props.reservation.id
+      reservationId: _this.props.reservation.id,
+      success: false
     } : {
-      reservationId: null
+      reservationId: null,
+      success: false
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -854,7 +851,13 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
     value: function handleClick(e) {
       e.preventDefault();
       var time = this.combineDateTime();
-      var reservation = {
+      var reservation = this.state.reservationId ? {
+        user_id: this.props.user.id,
+        restaurant_id: this.props.match.params.id,
+        number_of_party: this.props.search.party,
+        time: time,
+        id: this.state.reservationId
+      } : {
         reservation: {
           user_id: this.props.user.id,
           restaurant_id: this.props.match.params.id,
@@ -862,17 +865,20 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
           time: time
         }
       };
-      this.state.reservationId ? this.props.updateReservation(reservation) : this.props.createReservation(reservation).then(this.setState({
-        reservationId: Object.values(this.props.reservations)[Object.values(this.props.reservations).length - 1].id
+      debugger;
+      this.state.reservationId ? this.props.updateReservation(reservation).then(this.setState({
+        success: true
+      })) : this.props.createReservation(reservation).then(this.setState({
+        success: true
       }));
     }
   }, {
     key: "render",
     value: function render() {
       var user = this.props.user;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.reservationId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get excited! Your reservation is confirmed. ")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "You're almost done!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.success ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get excited! Your reservation is confirmed. ")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "You're almost done!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurantName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.search.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "party of ", this.props.search.party), this.state.reservationId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurantName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.search.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "party of ", this.props.search.party), this.state.success ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "edit"
       }, "Modify reservation")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.firstname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.lastname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.email))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -880,7 +886,7 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Add a special request"
-      })), this.state.reservationId ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), this.state.success ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleClick
       }, "Complete Reservation")));
     }
@@ -2289,10 +2295,13 @@ var createReservation = function createReservation(reservation) {
   });
 };
 var updateReservation = function updateReservation(reservation) {
+  debugger;
   return $.ajax({
     url: "api/reservations/".concat(reservation.id),
     method: "PATCH",
-    data: reservation
+    data: {
+      reservation: reservation
+    }
   });
 };
 var deleteReservation = function deleteReservation(reservationId) {

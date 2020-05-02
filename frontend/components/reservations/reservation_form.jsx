@@ -5,8 +5,15 @@ class ReservationForm extends React.Component{
 
     constructor(props){
         super(props);
-        
-        this.state = this.props.reservation ? { reservationId: this.props.reservation.id} : {reservationId: null}
+        this.state = this.props.reservation 
+            ? { 
+                reservationId: this.props.reservation.id,
+                success: false
+            } 
+            : {
+                reservationId: null,
+                success: false
+            }
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -35,21 +42,29 @@ class ReservationForm extends React.Component{
     handleClick(e){
         e.preventDefault();
         const time = this.combineDateTime()
-        const reservation = {
-            reservation: {
+        const reservation = this.state.reservationId 
+            ? {
+        
                 user_id: this.props.user.id,
                 restaurant_id: this.props.match.params.id,
                 number_of_party: this.props.search.party,
-                time
+                time,
+                id: this.state.reservationId 
+            } : {
+                reservation: {
+                    user_id: this.props.user.id,
+                    restaurant_id: this.props.match.params.id,
+                    number_of_party: this.props.search.party,
+                    time,
+                }
             }
-        }
+        debugger
     
         this.state.reservationId
         ? this.props.updateReservation(reservation)
+            .then(this.setState({success: true}))
         : this.props.createReservation(reservation)
-            .then(this.setState({ 
-                reservationId: Object.values(this.props.reservations)[(Object.values(this.props.reservations).length - 1)].id
-            }))
+            .then(this.setState({ success: true }))
     }
 
     render(){
@@ -58,7 +73,7 @@ class ReservationForm extends React.Component{
         
         return(
             <div>
-                {(this.state.reservationId) 
+                {(this.state.success) 
                 ? (<div>
                     <p>Get excited! Your reservation is confirmed. </p>
                     </div> )
@@ -70,7 +85,7 @@ class ReservationForm extends React.Component{
                         <p>{this.formatDate()}</p>
                         <p>{this.props.search.time}</p>
                         <p>party of {this.props.search.party}</p> 
-                        {(this.state.reservationId)
+                        {(this.state.success)
                             ? (<div>
                                 <Link to={`edit`}>Modify reservation</Link>
                                 {/* <button onClick={this.handleCancel}>cancel reservation</button> */}
@@ -88,7 +103,7 @@ class ReservationForm extends React.Component{
                         <input type="text" placeholder="Enter a occasion"/>
                         <input type="text" placeholder="Add a special request"/>
                     </div>
-                    {(this.state.reservationId)
+                    {(this.state.success)
                         ? (null)
                         : <button onClick={this.handleClick}>Complete Reservation</button>} 
                 </div>
