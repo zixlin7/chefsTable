@@ -10,6 +10,7 @@ import EditReservationContainer from "./reservations/edit_reservation_container"
 import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 
+
 const App = () => (
   <div className="main-div">
     <nav className="main-nav">
