@@ -1,0 +1,17 @@
+.select-container{
+    display: flex;
+}
+
+.select-container select{
+  
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'Open Sans', sans-serif;
+  outline: none
+}

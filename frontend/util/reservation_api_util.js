@@ -13,7 +13,7 @@ export const fetchReservation = (reservationId) => {
 };
 
 export const createReservation = (reservation) => {
-  debugger
+  
   return $.ajax({
     url: `api/reservations`,
     method: "POST",

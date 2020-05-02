@@ -5,7 +5,8 @@ class ReservationForm extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {reservationId: null}
+        
+        this.state = this.props.reservation ? { reservationId: this.props.reservation.id} : {reservationId: null}
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -42,17 +43,17 @@ class ReservationForm extends React.Component{
                 time
             }
         }
-        debugger
+    
         this.state.reservationId
         ? this.props.updateReservation(reservation)
         : this.props.createReservation(reservation)
             .then(this.setState({ 
-                reservationId: Object.values(this.props.reservation)[(Object.values(this.props.reservation).length - 1)].id
+                reservationId: Object.values(this.props.reservations)[(Object.values(this.props.reservations).length - 1)].id
             }))
     }
 
     render(){
-        debugger
+        
         const user = this.props.user
         
         return(

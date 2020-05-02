@@ -16,7 +16,7 @@ const mSTP = (state, ownProps) =>{
     search: state.ui.search,
     user: state.entities.users[state.session.id],
     restaurantName: state.entities.restaurants[parseInt(ownProps.match.params.id)].name,
-    reservation: state.entities.reservations
+    reservations: state.entities.reservations
     // formType: "Create Reservation",
    
     })

@@ -50,8 +50,11 @@ const SearchForm = props => {
     
         return(
 
-            <div>
-                <select id="party"
+            <div className="select-container" >
+                
+
+                <select 
+                    id="party"
                     onChange={handleChange("party", props.updateSearch)}
                     defaultValue="2">
                     {getParty().map((num, i)=>(

@@ -3,6 +3,12 @@ import {Link} from "react-router-dom"
 
 
 class RestaurantsIndexItem extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.goToEdit = this.goToEdit.bind(this)
+    
+  }
   mapPriceRange(price) {
     const range = ["", "$", "$$", "$$$", "$$$$"];
     return range[price];
@@ -29,15 +35,25 @@ class RestaurantsIndexItem extends React.Component {
 
   }
 
+   goToEdit(e) {
+
+    e.preventDefault();
   
+    this.props.updateSearch("time", e.currentTarget.innerHTML);
+    this.props.toggleState();
+
+  }
 
    handleClick (field){
+
      return e => this.props.updateSearch(field, e.currentTarget.innerHTML)
+
     }
   
 
 
   render() {
+
     const { restaurant } = this.props;
     return (
       <div className="restaurant">
@@ -50,7 +66,11 @@ class RestaurantsIndexItem extends React.Component {
           {this.getTimeSlots().map(
             (time, i) => (
               <div key={i}> 
-                <Link onClick={this.handleClick("time")} to={`/restaurants/${restaurant.id}/reservations/new`}>{time}</Link>
+                {this.props.toggleState
+                ? (<button onClick={this.goToEdit}>{time}</button>)
+                  : <Link onClick={this.handleClick("time")} to={`/restaurants/${restaurant.id}/reservations/new`}>{time}</Link>
+              }
+                
               </div>
             )
           )}
