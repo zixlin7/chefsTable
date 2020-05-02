@@ -57,3 +57,19 @@
     margin-bottom: 50px;
 }
 
+.search-bar{
+    display: flex;
+}
+
+.search-bar a{
+    color: black;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    background-color: rgb(15, 200, 208);
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 20px;
+    padding: 10px 15px 3px 15px;
+}
+
