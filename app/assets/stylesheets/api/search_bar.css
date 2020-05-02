@@ -4,23 +4,33 @@
     background-color: white;
     border-radius: 5px;
     width: fit-content;
+    
 }
 .select-container input{
-  border-left: 1px solid #ebebeb;
-  font-family: inherit;
-  font-size: 16px;
-  height: 100%;
-  padding: 0;
+  border: none;
+    border-left: 1px solid #ebebeb;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    height: 100%;
+    padding: 0;
+    width: 100%;
+    outline: none;
+    margin-bottom: 2px;
+    text-indent: 12%;
   
 }
+
+
+
+
 
 .select-container select{
   
   width: 150px;
-  padding: 5px 35px 5px 5px;
+  padding: 8px 35px 3px 5px;
   font-size: 16px;
   border: none;
-  height: 34px;
+  height: 40px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -44,7 +54,7 @@
 
 .select-container #icon{
   position:absolute;
-  top:30%;
+  top:33%;
   left:8%;
 }
 
@@ -52,3 +62,12 @@
   text-align: center;
   padding-left: 20%;
 }
+
+::-webkit-datetime-edit { padding: 10px; }
+::-webkit-datetime-edit-fields-wrapper { font-family: inherit; }
+::-webkit-datetime-edit-text { color: black; font-family: 'Open Sans', sans-serif; text-align: center; vertical-align: center; padding-bottom: 2px;}
+::-webkit-datetime-edit-month-field { color: black; }
+::-webkit-datetime-edit-day-field { color: black; }
+::-webkit-datetime-edit-year-field { color: black; }
+::-webkit-inner-spin-button { display: none; }
+/* ::-webkit-calendar-picker-indicator {  } */

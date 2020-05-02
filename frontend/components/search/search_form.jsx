@@ -5,6 +5,7 @@ import {
   FaAngleDown,
   FaRegClock,
   FaMapMarkerAlt,
+  FaRegCalendarAlt,
 } from "react-icons/fa";
 
 
@@ -76,13 +77,17 @@ const SearchForm = props => {
                 <FaAngleDown />
               </span>
             </div>
-
-            <input
-              defaultValue={getDate()}
-              type="date"
-              id="date"
-              onChange={handleChange("date", props.updateSearch)}
-            />
+            <div className="select">
+              <span id="icon">
+                <FaRegCalendarAlt />
+              </span>
+              <input
+                defaultValue={getDate()}
+                type="date"
+                id="date"
+                onChange={handleChange("date", props.updateSearch)}
+              />
+            </div>
             <div className="select">
               <span id="icon">
                 <FaRegClock />

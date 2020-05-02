@@ -6,13 +6,19 @@ const Landing = props => {
        backgroundImage: `url(${window.landingURL})`,
        height: '500px',
        width: '100%',
-       backgroundSize: 'cover'
+       backgroundSize: 'cover',
+       position: 'relative',
+       zIndex: '1'
      }; 
 
     return (
       <div className="landing-box" style={landingStyle}>
-        {/* <img id="landing-img" src={window.landingURL} /> */}
-        <SearchForm updateSearch={updateSearch} />
+        <div className="overlay">
+          <div className="landing-content">
+            <h1> Find your next table</h1>
+            <SearchForm updateSearch={updateSearch} />
+          </div>
+        </div>
       </div>
     );
 }
