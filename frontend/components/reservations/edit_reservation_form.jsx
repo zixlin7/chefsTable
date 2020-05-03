@@ -30,6 +30,7 @@ class EditReservationForm extends React.Component{
              </div>)
             :
                 <ReservationForm user={this.props.user}
+                            restaurant={this.props.restaurant}
                         search={this.props.search}
                         reservation={this.props.reservation}
                         updateReservation={this.props.updateReservation}

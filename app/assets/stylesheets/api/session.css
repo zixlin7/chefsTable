@@ -1,16 +1,14 @@
-.background-content{
-    background-color:rgba(0, 0, 0, 0.7);
-    z-index: 990;
-    color: #333;
+.modal-background{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
 }
 
-.background-content #nav-button {
-    color: #999;
-}
 
-.background-content .main-nav{
-    border-bottom: none;
-}
 
 .sign-in{
     margin-top: 10px;
@@ -34,6 +32,10 @@
     box-shadow: 1px 1px 3px #666;
 }
 
+.sign-in-box{
+    display: block;
+}
+
 .sign-in hr{
     width: 100%;
     border: lightgray 1px solid;
@@ -41,6 +43,7 @@
     margin-bottom: 21px;
     margin-top: 10px;
 }
+
 
 .sign-in h2{
     font-weight: 600;
@@ -61,7 +64,7 @@
 }
 
 .sign-in input:focus{
-    box-shadow: 1px 1px 2px rgb(15, 200, 208);
+    box-shadow: 1px 1px 2px #FF7C52;
     outline: none;
 }
 
@@ -76,6 +79,8 @@
  justify-self: center;
 }
 
+
+
 .form-button{
     font-size: 18px;
     margin-top: 20px;
@@ -84,6 +89,12 @@
     background-color: #333;
     margin-left: 14px;
     color: white;
+    outline: #FF7C52;
+}
+
+.form-button:hover{
+    color: #FF7C52;
+    outline: #FF7C52;
 }
 
 .sign-in div{
@@ -96,7 +107,7 @@
     font-size: 14px;
 }
 .sign-in a{
-    color: rgb(15, 200, 208);
+    color: #FF7C52;
     margin-left: 16px;
 
 }
@@ -108,5 +119,20 @@
 ::placeholder{
     color: #666;
     opacity: 0.7;
+}
+
+.close {
+  color: #aaa;
+  align-self: flex-end;
+  justify-self: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 

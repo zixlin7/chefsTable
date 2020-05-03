@@ -14,7 +14,7 @@ const Landing = props => {
 
     return (
       <div className="landing-box" style={landingStyle}>
-        <div className="overlay">
+        <div className="overlay" >
           <div className="landing-content">
             <h1> Find your next table</h1>
             <div className="search-bar">

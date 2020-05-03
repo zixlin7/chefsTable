@@ -12,7 +12,7 @@ import SearchContainer from "../components/search/search_container";
 
 
 const App = () => (
-  <div className="main-div">
+  <div id="main-div">
     <nav className="main-nav">
       <Link to="/">
         <div id="logo">
