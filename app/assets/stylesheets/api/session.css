@@ -123,6 +123,8 @@
 
 .close {
   color: #aaa;
+  background-color: transparent;
+  border: none;
   align-self: flex-end;
   justify-self: right;
   font-size: 28px;

@@ -7,11 +7,12 @@ class SigninForm extends React.Component {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            redirect: null
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demo = this.demo.bind(this);
-        
+        this.close = this.close.bind(this);
     }
 
     componentDidMount(){
@@ -27,13 +28,14 @@ class SigninForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.login(this.state)
+        const { email, password } = this.state;
+        this.props.login({ email, password })
         
     }
 
     close(){
-        <Redirect to="/" />
-
+        console.log('in close');
+        this.setState({ redirect: '/' });
     }
 
     demo(e){
@@ -42,7 +44,8 @@ class SigninForm extends React.Component {
     }
 
     render(){
-        
+        if(this.state.redirect) 
+            return <Redirect to={this.state.redirect} />;
         const errors = this.props.errors.session;
         return (
         <div>
@@ -50,7 +53,7 @@ class SigninForm extends React.Component {
             <div id="darken"></div>
             <div className="sign-in-box">
                 <div className="sign-in">
-                    <span className="close" onClick={this.close}>&times;</span>
+                    <button className="close" onClick={this.close}>&times;</button>
                     <h2>Please sign in</h2>
                     <hr/>
                     {errors.length

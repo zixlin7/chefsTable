@@ -28,6 +28,17 @@
      color: #333;
  }
 
+ #main-div {
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+     /* flex: '0 0 50px', */
+ }
+
+ .main-content {
+     flex: 1;
+ }
+
 
 .overlay{
   background: rgba(0, 0, 0, 0.3);

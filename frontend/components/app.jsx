@@ -9,6 +9,7 @@ import CreateReservationContainer from "./reservations/new_reservation_form_cont
 import EditReservationContainer from "./reservations/edit_reservation_container";
 import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
+import Footer from "./footer";
 
 
 const App = () => (
@@ -23,26 +24,28 @@ const App = () => (
       </Link>
       <GreetingContainer />
     </nav>
-
-    <Route exact path="/" component={Landing} />
-    <AuthRoute exact path="/signIn" component={SigninFormContainer} />
-    <AuthRoute exact path="/signUp" component={SignupFormContainer} />
-    <Route exact path="/restaurants/:id" component={RestaurantShowContainer} />
-    <ProtectedRoute
-      exact
-      path="/restaurants"
-      component={SearchContainer}
-    />
-    <ProtectedRoute
-      exact
-      path="/restaurants/:id/reservations/new"
-      component={CreateReservationContainer}
-    />
-    <ProtectedRoute
-      exact
-      path="/restaurants/:id/reservations/edit"
-      component={EditReservationContainer}
-    />
+    <div className="main-content">
+      <Route exact path="/" component={Landing} />
+      <AuthRoute exact path="/signIn" component={SigninFormContainer} />
+      <AuthRoute exact path="/signUp" component={SignupFormContainer} />
+      <Route exact path="/restaurants/:id" component={RestaurantShowContainer} />
+      <ProtectedRoute
+        exact
+        path="/restaurants"
+        component={SearchContainer}
+      />
+      <ProtectedRoute
+        exact
+        path="/restaurants/:id/reservations/new"
+        component={CreateReservationContainer}
+      />
+      <ProtectedRoute
+        exact
+        path="/restaurants/:id/reservations/edit"
+        component={EditReservationContainer}
+      />
+    </div>
+    <Footer />
 
     {/* <ProtectedRoute
       exact

@@ -51,6 +51,7 @@
 }
 
 .dropdown-menu{
+    top: -20px;
     position: absolute;
     min-width: 40px;
     display: none;
@@ -59,10 +60,14 @@
 
 .dropdown:hover .dropdown-menu{
     display: block;
+    z-index: 5;
+    background-color: orange;
 }
 
 .dropdown-menu li:hover{
     color: #FF7C52;
+    display: block;
+    background-color: white;
 }
 
 #nav-button{

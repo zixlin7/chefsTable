@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Landing from "../landing";
 
 class SignupForm extends React.Component {
@@ -10,9 +10,11 @@ class SignupForm extends React.Component {
       lastname: "", 
       email: "", 
       password: "" ,
+      redirect: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demo = this.demo.bind(this);
+    this.close = this.close.bind(this);
     // this.body = document.querySelector("body");
   }
 
@@ -25,9 +27,15 @@ class SignupForm extends React.Component {
     return (e) => this.setState({ [type]: e.target.value });
   }
 
+  close() {
+    
+    this.setState({ redirect: '/' });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(this.state);
+    const { firstname, lastname, email, password } = this.state;
+    this.props.login({ firstname, lastname, email, password})
     
   }
 
@@ -45,13 +53,15 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    if (this.state.redirect)
+      return <Redirect to={this.state.redirect} />;
       const errors = this.props.errors.session;
     return (
       <div>
           <Landing/>
           <div id="darken"></div>
           <div className="sign-in">
-            <span className="close" onClick={this.close}>&times;</span>
+            <button className="close" onClick={this.close}>&times;</button>
             <h2>Welcome to Chef's Table</h2>
             <hr />
             {errors.length ? (

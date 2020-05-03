@@ -1,5 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {
+  FaAngleDown
+} from "react-icons/fa";
 
 
 const Greeting = props =>{
@@ -9,7 +12,7 @@ const Greeting = props =>{
         return (
           <div className="greeting-nav">
             <div className="dropdown">
-              <p>Hi, {props.currentUser.firstname}!</p>
+              <p>Hi, {props.currentUser.firstname}!  <FaAngleDown/></p>
               <ul className="dropdown-menu">
                 <li  onClick={props.logout}>Log Out</li>
               </ul>

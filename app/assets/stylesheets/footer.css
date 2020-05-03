@@ -1,0 +1,10 @@
+footer{
+    display: flex;
+    justify-content: space-between;
+    height: 54px;
+    justify-self: flex-end;
+}
+
+.personal a{
+    margin-right: 20px;
+}

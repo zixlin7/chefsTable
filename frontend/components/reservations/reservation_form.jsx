@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-    FaUser,
-    FaAngleDown,
     FaRegClock,
-    FaMapMarkerAlt,
     FaRegCalendarAlt,
     FaUsers,
     FaEnvelope
