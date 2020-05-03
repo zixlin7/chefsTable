@@ -1,10 +1,28 @@
 footer{
     display: flex;
+    /* border-top: rgba(30, 30, 30, 0.7); */
     justify-content: space-between;
+    align-items: center;
     height: 54px;
     justify-self: flex-end;
+    font-size: 22px;
+    /* background-color: #fafafa; */
+}
+
+footer p{
+    margin-left: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
 }
 
 .personal a{
-    margin-right: 20px;
+    margin-right: 30px;
+    color: #333;
+    font-size: 28px;
+    transition: transform, 0.2s;
+}
+
+.personal a:hover{
+    transform: scale(1.05);
+    color: #FF7C52;
 }
