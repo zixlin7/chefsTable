@@ -4,8 +4,10 @@ import SearchForm from "./search_form";
 
 const Search = ({ restaurants, search, updateSearch, requestRestaurant, requestRestaurants }) =>{
     return(
-        <div>
-            <SearchForm updateSearch={updateSearch}/>
+        <div className="search-container">
+            <div className="res-search">
+                <SearchForm updateSearch={updateSearch}/>
+            </div>
             <RestaurantsIndex restaurants={restaurants} search = {search}
             updateSearch={updateSearch}
             requestRestaurants={requestRestaurants}

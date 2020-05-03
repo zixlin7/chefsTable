@@ -1,0 +1,80 @@
+.info{
+    display: flex;
+}
+
+.reservation-form{
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    margin: 20px 50px 20px 50px;
+     border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 
+                0 5px 10px rgba(0, 0, 0, 0.24);
+}
+
+.reservation-form h2{
+    font-size: 20px;
+}
+
+.res-detail div{
+    display: flex;
+    
+}
+
+.res-img{
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 
+                0 5px 10px rgba(0, 0, 0, 0.24);
+}
+
+.res-detail div p {
+    display: block;
+    border-right: 1px solid #cecece;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+.user{
+   display: flex;
+    flex-direction: column;
+    padding: 20px 0 0px 20px;
+    font-size: 21px;
+    height: 94px;
+    line-height: 13px;
+    margin-top: 10px;
+
+}
+
+
+
+.input input{
+    height: 40px;
+    width: 200px;
+    padding-left: 20px;
+    margin-right: 50px;
+    outline: none ;
+    border-radius: 5px;
+}
+
+::placeholder{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+.input input:focus{
+    box-shadow: 1px 1px 2px rgb(15, 200, 208);
+    outline: none;
+}
+
+#reservation-button{
+     font-size: 18px;
+    margin-top: 27px;
+    height: 50px;
+    width: 32%;
+    background-color: #333;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 50px;
+}

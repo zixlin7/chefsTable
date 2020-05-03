@@ -28,9 +28,10 @@
 }
 
 .time-slots div{
-   background-color: rgb(148, 216, 232); 
+   background-color:transparent; 
    /* background-color: #7DBBB9;  */
     width: 100px;
+    border: 1px solid #FF7C52;
     height: 31px;
     text-align: center;
     vertical-align: center;
@@ -46,19 +47,25 @@
 
 .time-slots div:hover{
     transform: scale(1.05);
-    background-color: rgb(168, 236, 252);
+    background-color: #FF7C52;
     /* background-color: #C5D7D9; */
     color: #666;
 }
 
 .restaurant-index a{
     text-decoration: none;
-    color: black;
-    font-size: 20px;
+    color: #333;
+    font-size: 18px;
     font-weight: 600;
 }
 
 .restaurant-info span {
     margin-right: 10px;
     font-size: 14px;
+}
+
+.res-search{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }

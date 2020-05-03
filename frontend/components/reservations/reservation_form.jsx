@@ -69,43 +69,60 @@ class ReservationForm extends React.Component{
     render(){
         
         const user = this.props.user
+        const imgStyle = {
+            backgroundImage: `url(${this.props.restaurant.photoURL})`,
+            height: '150px',
+            width: '180px',
+            backgroundSize: 'cover',
+            flex: '0 0 180px',
+            marginRight: '25px'
+        }; 
         
         return(
-            <div>
+            <div className="reservation-form">
                 {(this.state.success) 
-                ? (<div>
+                ? (<div className="comfirm">
                     <p>Get excited! Your reservation is confirmed. </p>
                     </div> )
                     : <h2>You're almost done!</h2>}
                 
                 <div className="info">
-                    <h1>{this.props.restaurantName}</h1>
-                    <div>
-                        <p>{this.formatDate()}</p>
-                        <p>{this.props.search.time}</p>
-                        <p>party of {this.props.search.party}</p> 
-                        {(this.state.success)
-                            ? (<div>
-                                <Link to={`edit`}>Modify reservation</Link>
-                                {/* <button onClick={this.handleCancel}>cancel reservation</button> */}
-                                {/* <Link to={`cancel`}>Cancel reservation</Link> */}
-                            </div>)
-                            : <div>
-                                <p>{user.firstname}</p>
-                                <p>{user.lastname}</p>
-                                <p>{user.email}</p>
-
-                            </div>} 
+                    <div className="res-img" style={imgStyle}></div>
+                    <div className="res-detail">
+                        <h1>{this.props.restaurant.name}</h1>
+                        <div>
+                            <p>{this.formatDate()}</p>
+                            <p>{this.props.search.time}</p>
+                            <p>party of {this.props.search.party}</p> 
+                        </div>
                     </div>
+                </div>
 
-                    <div>
-                        <input type="text" placeholder="Enter a occasion"/>
-                        <input type="text" placeholder="Add a special request"/>
-                    </div>
+                <div> 
+                    {(this.state.success)
+                        ? (<div className="modify">
+                            <Link to={`edit`}>Modify reservation</Link>
+                            {/* <button onClick={this.handleCancel}>cancel reservation</button> */}
+                            {/* <Link to={`cancel`}>Cancel reservation</Link> */}
+                        </div>)
+                        : <div className="user">
+                            <div>
+                                <span>{user.firstname}</span>
+                                <span>{user.lastname}</span>
+                            </div>
+                            <br/>
+                            <p>{user.email}</p>
+
+                        </div>} 
+                </div>
+
+                <div className="input">
+                    <input type="text" placeholder="Enter an occasion:"/>
+                    <input type="text" placeholder="Add a special request:"/>
+                 </div>
                     {(this.state.success)
                         ? (null)
-                        : <button onClick={this.handleClick}>Complete Reservation</button>} 
-                </div>
+                        : <button id="reservation-button" onClick={this.handleClick}>Complete Reservation</button>} 
             </div>
         )
     }
