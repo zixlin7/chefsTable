@@ -58,7 +58,6 @@ class ReservationForm extends React.Component{
                     time,
                 }
             }
-        debugger
     
         this.state.reservationId
         ? this.props.updateReservation(reservation)

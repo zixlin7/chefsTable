@@ -1,7 +1,6 @@
 class Api::RestaurantsController < ApplicationController
 
     def index 
-        # debugger
         if !params[:filters] || !params[:filters][:country]
             @restaurants = Restaurant.all
         else

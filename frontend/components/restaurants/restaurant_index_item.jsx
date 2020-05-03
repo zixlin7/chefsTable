@@ -55,25 +55,36 @@ class RestaurantsIndexItem extends React.Component {
   render() {
 
     const { restaurant } = this.props;
+    const imgStyle = {
+      backgroundImage: `url(${restaurant.photoURL})`,
+      height: '225px',
+      width: '350px',
+      backgroundSize: 'cover',
+      flex: '0 0 350px',
+      marginRight: '25px'
+    }; 
     return (
       <div className="restaurant">
-        <Link to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
-        <br />
-        <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
-        <span name="cuisine">{restaurant.cuisine}</span>
-        <span name="city">{restaurant.city}</span>
-        <div className="time-slots">
-          {this.getTimeSlots().map(
-            (time, i) => (
-              <div key={i}> 
-                {this.props.toggleState
-                ? (<button onClick={this.goToEdit}>{time}</button>)
-                  : <Link onClick={this.handleClick("time")} to={`/restaurants/${restaurant.id}/reservations/new`}>{time}</Link>
-              }
-                
-              </div>
-            )
-          )}
+        <div className="img" style={imgStyle}></div>
+        <div className="restaurant-info">
+          <Link to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
+          <br />
+          <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
+          <span name="cuisine">{restaurant.cuisine}</span>
+          <span name="city">{restaurant.city}</span>
+          <div className="time-slots">
+            {this.getTimeSlots().map(
+              (time, i) => (
+                <div key={i}> 
+                  {this.props.toggleState
+                  ? (<button onClick={this.goToEdit}>{time}</button>)
+                    : <Link onClick={this.handleClick("time")} to={`/restaurants/${restaurant.id}/reservations/new`}>{time}</Link>
+                }
+                  
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
     );

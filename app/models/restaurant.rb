@@ -5,6 +5,7 @@ class Restaurant < ApplicationRecord
     has_many :reserved_users,
         through: :reservations,
         source: :user
+    has_one_attached :profilepic
 
     def self.search(value)
         self.where("country = ?", value["country"])

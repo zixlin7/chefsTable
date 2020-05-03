@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'date'
+require 'open-uri'
 
 User.destroy_all
 Restaurant.destroy_all
 Reservation.destroy_all
+
 
 demouser = User.create!(firstname: "demo", lastname: "user", email: "demo1@user.com", password: "123456")
 demouser1 = User.create!(firstname: "demo2", lastname: "user", email: "demo2@user.com", password: "123456")
@@ -32,6 +34,9 @@ res1 = Restaurant.create!(
     close_hour: DateTime.parse("05:00:00"),
 )
 
+pic1 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/alinea.jpg')
+res1.profilepic.attach(io:pic1, filename:'alinea.jpg')
+
 res2 = Restaurant.create!(
     chef_id: 2,
     name: "Blue Hill at Stone Barns",
@@ -48,7 +53,8 @@ res2 = Restaurant.create!(
     open_hour: DateTime.parse("23:00:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
-
+pic2 = open("https://chefs-table-seeds.s3-us-west-1.amazonaws.com/bluehill.jpeg")
+res2.profilepic.attach(io:pic2, filename:'bluehill.jpg')
 res3 = Restaurant.create!(
     chef_id: 3,
     name: "Atelier Crenn",
@@ -65,7 +71,8 @@ res3 = Restaurant.create!(
     open_hour: DateTime.parse("00:00:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
-
+pic3 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/atelier.jpg')
+res3.profilepic.attach(io:pic3, filename:'ac.jpg')
 res4 = Restaurant.create!(
     chef_id: 3,
     name: "Bar Crenn",
@@ -82,7 +89,8 @@ res4 = Restaurant.create!(
     open_hour: DateTime.parse("23:30:00"),
     close_hour: DateTime.parse("06:00:00"),
 )
-
+pic4 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/barcrenn.jpg')
+res4.profilepic.attach(io:pic4, filename:'ba.jpg')
 res5 = Restaurant.create!(
     chef_id: 4,
     name: "The French Laundry",
@@ -99,7 +107,8 @@ res5 = Restaurant.create!(
     open_hour: DateTime.parse("00:00:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
-
+pic5 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/thefl.jpg')
+res5.profilepic.attach(io:pic5, filename:'tfl.jpg')
 res6 = Restaurant.create!(
     chef_id: 5,
     name: "n/naka",
@@ -116,6 +125,8 @@ res6 = Restaurant.create!(
     open_hour: DateTime.parse("00:30:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
+pic6 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/nnaka.jpg')
+res6.profilepic.attach(io:pic6, filename:'nn.jpg')
 
 res7 = Restaurant.create!(
     chef_id: 6,
@@ -133,6 +144,8 @@ res7 = Restaurant.create!(
     open_hour: DateTime.parse("01:00:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
+pic7 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/mccrady.jpg')
+res7.profilepic.attach(io:pic7, filename:'mc.jpg')
 
 res8 = Restaurant.create!(
     chef_id: 7,
@@ -150,6 +163,8 @@ res8 = Restaurant.create!(
     open_hour: DateTime.parse("20:30:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
+pic8 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/Pujol.jpg')
+res8.profilepic.attach(io:pic8, filename:'pj.jpg')
 
 rsvt1 = Reservation.create!(
     user_id: 1,

@@ -881,7 +881,6 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
           time: time
         }
       };
-      debugger;
       this.state.reservationId ? this.props.updateReservation(reservation).then(this.setState({
         success: true
       })) : this.props.createReservation(reservation).then(this.setState({
@@ -1025,8 +1024,21 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var restaurant = this.props.restaurant;
+      var imgStyle = {
+        backgroundImage: "url(".concat(restaurant.photoURL, ")"),
+        height: '225px',
+        width: '350px',
+        backgroundSize: 'cover',
+        flex: '0 0 350px',
+        marginRight: '25px'
+      };
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img",
+        style: imgStyle
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "restaurant-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/restaurants/".concat(restaurant.id)
       }, restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -1046,7 +1058,7 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
           onClick: _this3.handleClick("time"),
           to: "/restaurants/".concat(restaurant.id, "/reservations/new")
         }, time));
-      })));
+      }))));
     }
   }]);
 
@@ -1113,7 +1125,10 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       if (!this.props.restaurant) return null;
       var restaurant = this.props.restaurant;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Photos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Menu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.name));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Photos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Menu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: restaurant.photoURL,
+        alt: ""
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.name));
     }
   }]);
 
@@ -2335,7 +2350,6 @@ var createReservation = function createReservation(reservation) {
   });
 };
 var updateReservation = function updateReservation(reservation) {
-  debugger;
   return $.ajax({
     url: "api/reservations/".concat(reservation.id),
     method: "PATCH",

@@ -1,20 +1,29 @@
 .main-nav{
+    background-color: white;
+ 
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
-    
+    /* color: #fff; */
     height: 40px;
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 12px;
-    border-bottom: 2px solid rgb(228, 226, 226);
+    /* border-bottom: 2px solid rgb(228, 226, 226); */
+}
 
+.main-nav:hover {
+    background-color:#cecece;
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+    color: #333;
 }
 
 .main-nav a{
     text-decoration: none;
-    color: black;
+    color: #333;
 }
 
 .greeting-nav{
@@ -84,4 +93,6 @@ p#table{
     font-weight: 600;
     margin-left: 0;
 }
+
+
 

@@ -63,6 +63,10 @@
   padding-left: 20%;
 }
 
+#arrow:hover{
+  display: none;
+}
+
 ::-webkit-datetime-edit { padding: 10px; }
 ::-webkit-datetime-edit-fields-wrapper { font-family: inherit; }
 ::-webkit-datetime-edit-text { color: black; font-family: 'Open Sans', sans-serif; text-align: center; vertical-align: center; padding-bottom: 2px;}

@@ -5,10 +5,21 @@
 }
 
 .restaurant{
-    padding: 20px 10px;
+    padding: 20px 20px;
     min-height: 200px;
     line-height: 28px;
-    border-bottom: 2px solid rgb(228, 226, 226);
+    display: flex;
+    background-color: #fff;
+    margin: 0 20px 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 
+                0 5px 10px rgba(0, 0, 0, 0.24);
+}
+
+.restaurant .img{
+            border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 
+                0 5px 10px rgba(0, 0, 0, 0.24);
 }
 
 .time-slots{
@@ -17,7 +28,8 @@
 }
 
 .time-slots div{
-   background-color: rgb(148, 216, 232);
+   background-color: rgb(148, 216, 232); 
+   /* background-color: #7DBBB9;  */
     width: 100px;
     height: 31px;
     text-align: center;
@@ -26,6 +38,17 @@
     font-weight: 600;
     margin: 8px 8px 0 0;
     padding-top: 3px;
+    color: #fff;
+    transition: transform .2s;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12), 
+                0 2px 5px rgba(0, 0, 0, 0.24);
+}
+
+.time-slots div:hover{
+    transform: scale(1.05);
+    background-color: rgb(168, 236, 252);
+    /* background-color: #C5D7D9; */
+    color: #666;
 }
 
 .restaurant-index a{
@@ -35,7 +58,7 @@
     font-weight: 600;
 }
 
-.restaurant span {
+.restaurant-info span {
     margin-right: 10px;
     font-size: 14px;
 }

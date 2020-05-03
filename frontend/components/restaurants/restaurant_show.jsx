@@ -16,6 +16,7 @@ class RestaurantShow extends React.Component{
                 <a>Menu</a>
                 <a>Reviews</a>
             </nav>
+            <img src={restaurant.photoURL} alt="" />
 
             <h1>{restaurant.name}</h1>
         </div>
