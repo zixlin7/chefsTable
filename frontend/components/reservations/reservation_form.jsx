@@ -81,7 +81,7 @@ class ReservationForm extends React.Component{
         return(
             <div className="reservation-form">
                 {(this.state.success) 
-                ? (<div className="comfirm">
+                ? (<div className="confirm">
                     <p>Get excited! Your reservation is confirmed. </p>
                     </div> )
                     : <h2>You're almost done!</h2>}
@@ -106,7 +106,7 @@ class ReservationForm extends React.Component{
                             {/* <Link to={`cancel`}>Cancel reservation</Link> */}
                         </div>)
                         : <div className="user">
-                            <div>
+                            <div className="name">
                                 <span>{user.firstname}</span>
                                 <span>{user.lastname}</span>
                             </div>

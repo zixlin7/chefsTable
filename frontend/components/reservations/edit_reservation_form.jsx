@@ -20,7 +20,9 @@ class EditReservationForm extends React.Component{
         <div>
             {!this.state.load
             ?(<div>
-                <SearchForm updateSearch={this.props.updateSearch}/>
+                <div className="edit-search">
+                    <SearchForm updateSearch={this.props.updateSearch}/>
+                </div>
                 <RestaurantsIndexItem restaurant={this.props.restaurant}
                         search={this.props.search}
                         updateSearch={this.props.updateSearch}

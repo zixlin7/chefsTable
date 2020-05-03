@@ -5,6 +5,7 @@
 }
 
 .restaurant{
+    font-family: 'Open Sans', sans-serif;
     padding: 20px 20px;
     min-height: 200px;
     line-height: 28px;
@@ -31,7 +32,7 @@
    background-color:transparent; 
    /* background-color: #7DBBB9;  */
     width: 100px;
-    border: 1px solid #FF7C52;
+    /* border: 1px solid #FF7C52; */
     height: 31px;
     text-align: center;
     vertical-align: center;
@@ -45,18 +46,31 @@
                 0 2px 5px rgba(0, 0, 0, 0.24);
 }
 
-.time-slots div:hover{
+.time-slots div:hover, time-slots div button:hover{
     transform: scale(1.05);
     background-color: #FF7C52;
     /* background-color: #C5D7D9; */
     color: #666;
 }
 
-.restaurant-index a{
+.time-slots div button {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+.restaurant-index a, .restaurant a{
     text-decoration: none;
     color: #333;
     font-size: 18px;
     font-weight: 600;
+}
+.restaurant #res-name{
+    font-size: 21px;
 }
 
 .restaurant-info span {

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import Landing from "../landing";
 
 class SigninForm extends React.Component {
@@ -32,7 +32,7 @@ class SigninForm extends React.Component {
     }
 
     close(){
-        document.querySelector(".sign-in-box").classList.add(".hide-sign-in")
+        <Redirect to="/" />
 
     }
 

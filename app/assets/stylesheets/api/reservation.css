@@ -47,6 +47,13 @@
 
 }
 
+.user p {
+    font-size: 18px;
+}
+.name span{
+    margin-left: 5px;
+}
+
 
 
 .input input{
@@ -64,7 +71,7 @@
 }
 
 .input input:focus{
-    box-shadow: 1px 1px 2px rgb(15, 200, 208);
+    box-shadow: 1px 1px 2px #FF7C52;
     outline: none;
 }
 
@@ -78,3 +85,42 @@
     color: white;
     margin-bottom: 50px;
 }
+
+#reservation-button:hover{
+    color: #FF7C52;
+}
+
+.confirm{
+    background-color: #FF7C52;
+    height: 34px;
+    /* padding: 10px 0 20px 0px; */
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    /* border-radius: 5px; */
+    vertical-align: center;
+    display: flex;
+    align-items: center;
+    /* justify-content: left; */
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.modify{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.modify a{
+    text-decoration: none;
+    color: #333;
+    margin-top: 24px;
+}
+
+.modify a:hover{
+    color: #FF7C52;
+    transform: scale(1.05);
+    transition: transform .2s;
+    border-bottom: 2px solid #FF7C52;
+}
+

@@ -67,7 +67,7 @@ class RestaurantsIndexItem extends React.Component {
       <div className="restaurant">
         <div className="img" style={imgStyle}></div>
         <div className="restaurant-info">
-          <Link to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
+          <Link  id="res-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
           <br />
           <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
           <span name="cuisine">{restaurant.cuisine}</span>
