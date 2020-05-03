@@ -32,6 +32,8 @@
     margin-right: 15px;
 }
 
+
+
 .greeting-nav a{
     display: inline-block;
     color: #333;
@@ -39,6 +41,28 @@
     padding: 9px 15px;
     text-decoration: none;
 
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+}
+
+.dropdown-menu{
+    position: absolute;
+    min-width: 40px;
+    display: none;
+    /* top: 40px; */
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+.dropdown-menu li:hover{
+    color: #FF7C52;
 }
 
 #nav-button{

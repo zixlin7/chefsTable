@@ -1,5 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+    FaUser,
+    FaAngleDown,
+    FaRegClock,
+    FaMapMarkerAlt,
+    FaRegCalendarAlt,
+    FaUsers,
+    FaEnvelope
+} from "react-icons/fa";
 
 class ReservationForm extends React.Component{
 
@@ -91,9 +100,9 @@ class ReservationForm extends React.Component{
                     <div className="res-detail">
                         <h1>{this.props.restaurant.name}</h1>
                         <div>
-                            <p>{this.formatDate()}</p>
-                            <p>{this.props.search.time}</p>
-                            <p>party of {this.props.search.party}</p> 
+                            <p><FaRegCalendarAlt className="res-icon"/>  {this.formatDate()}</p>
+                            <p><FaRegClock className="res-icon"/>  {this.props.search.time}</p>
+                            <p><FaUsers className="res-icon"/>  party of {this.props.search.party}</p> 
                         </div>
                     </div>
                 </div>
@@ -111,7 +120,7 @@ class ReservationForm extends React.Component{
                                 <span>{user.lastname}</span>
                             </div>
                             <br/>
-                            <p>{user.email}</p>
+                            <p><FaEnvelope className="res-icon"/>   {user.email}</p>
 
                         </div>} 
                 </div>

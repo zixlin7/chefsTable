@@ -8,10 +8,12 @@ const Greeting = props =>{
     const loggedIn = () => {
         return (
           <div className="greeting-nav">
-            <p>Hi, {props.currentUser.firstname}!</p>
-            <button id="logout-button" onClick={props.logout}>
-              Log Out
-            </button>
+            <div className="dropdown">
+              <p>Hi, {props.currentUser.firstname}!</p>
+              <ul className="dropdown-menu">
+                <li  onClick={props.logout}>Log Out</li>
+              </ul>
+            </div>
           </div>
         );
     }
