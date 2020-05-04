@@ -1188,10 +1188,14 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "getTimeSlots",
     value: function getTimeSlots() {
       var searchTime = parseInt(this.props.search.time);
+      var openTime = new Date(this.props.restaurant.open_hour).getHours();
+      var closeTime = new Date(this.props.restaurant.close_hour).getHours();
       var timeSlots = [];
 
       for (var i = searchTime - 1; i <= searchTime + 1; i++) {
-        timeSlots.push(i);
+        if (i >= openTime && i <= closeTime) {
+          timeSlots.push(i);
+        }
       }
 
       var full = timeSlots.map(function (time) {

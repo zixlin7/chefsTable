@@ -18,10 +18,14 @@ class RestaurantsIndexItem extends React.Component {
 
   getTimeSlots() {
     let searchTime = parseInt(this.props.search.time)
+    let openTime = new Date(this.props.restaurant.open_hour).getHours()
+    let closeTime = new Date(this.props.restaurant.close_hour).getHours()
     
     const timeSlots = [];
     for(let i = searchTime - 1; i <= searchTime + 1; i++){
-      timeSlots.push(i);
+      if (i >= openTime && i<= closeTime){
+        timeSlots.push(i);
+      }
     }
     const full = timeSlots.map(time => {
       return time < 10 ? `0${time}:00` : `${time}:00`
