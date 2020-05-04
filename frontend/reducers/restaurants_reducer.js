@@ -4,6 +4,9 @@ import {
     } 
     from "../actions/restaurants_actions";
 
+import {UPDATE_FILTER} from "../actions/search_actions"
+import resSelector from "../util/restaurants_selector"
+
 const restaurantsReducer = (state={}, action) => {
   
     switch (action.type) {
@@ -13,6 +16,8 @@ const restaurantsReducer = (state={}, action) => {
         const nextState = {...state}
         nextState[action.restaurant.id] = action.restaurant
         return nextState;
+      case UPDATE_FILTER:
+        return resSelector({...state}, action.cuisineFilter, action.priceFilter)
       default:
         return state;
     }

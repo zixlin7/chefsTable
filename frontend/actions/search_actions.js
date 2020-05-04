@@ -1,6 +1,7 @@
 import { requestRestaurants} from "./restaurants_actions";
 
 export const UPDATE_SEARCH = "UPDATE_SEARCH"
+export const UPDATE_FILTER = "UPDATE_FILTER"
 
 const changeSearch = (field, value) => ({
     type: UPDATE_SEARCH,
@@ -13,3 +14,14 @@ export const updateSearch = (field, value) => (dispatch, getState) => {
         return requestRestaurants(getState().ui.search)(dispatch);
         // delicious curry!
 };
+
+const changeFilter = (cuisineFilter, priceFilter) => ({
+    type: UPDATE_FILTER,
+    cuisineFilter,
+    priceFilter
+})
+
+
+
+
+

@@ -7,22 +7,23 @@ class RestaurantsIndex extends React.Component{
     }
 
     componentDidMount(){
+     
       this.props.requestRestaurants();
     }
  
     render(){
-      
-        const { restaurants } = this.props
+     
+        const { restaurants, search, updateSearch, requestRestaurant } = this.props
         
-      if (!Object.values(this.props.restaurants).length) return null;
+      if (!Object.values(restaurants).length) return null;
         
         return (
           <div className="restaurant-index">
-            {Object.values(this.props.restaurants).map((restaurant,i) => (
+            {Object.values(restaurants).map((restaurant,i) => (
               <RestaurantsIndexItem key={i} restaurant={restaurant} 
-              search = {this.props.search}
-              updateSearch = {this.props.updateSearch}
-              requestRestaurant={this.props.requestRestaurant}/>
+              search = {search}
+              updateSearch = {updateSearch}
+              requestRestaurant={requestRestaurant}/>
             ))}
           </div>
         );

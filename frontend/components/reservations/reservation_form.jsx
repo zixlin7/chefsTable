@@ -50,7 +50,6 @@ class ReservationForm extends React.Component{
         const time = this.combineDateTime()
         const reservation = this.state.reservationId 
             ? {
-        
                 user_id: this.props.user.id,
                 restaurant_id: this.props.match.params.id,
                 number_of_party: this.props.search.party,

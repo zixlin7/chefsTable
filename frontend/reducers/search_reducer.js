@@ -12,7 +12,7 @@ const searchReducer = (state = defaultState, action) => {
             const nextState = {...state}
             nextState[action.field] = action.value
             return nextState;
-        
+
         default:
             return state;
     }
