@@ -139,3 +139,13 @@
     padding: 5px 1px 0 0;
 
 }
+
+.cancel{
+    align-self: center;
+    justify-self: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 300px;
+    margin-left: 20px;
+}

@@ -6,15 +6,20 @@ import ReservationForm from "./reservation_form";
 class EditReservationForm extends React.Component{
     constructor(props){
         super(props)
-        this.state = {load: false}
+        this.state = {
+            load: false,
+        }
         this.toggleState = this.toggleState.bind(this);
+        
     }
 
     toggleState(){
         this.setState({load: true});
     }
 
+
     render(){
+        
         
         return(
         <div>
@@ -37,6 +42,7 @@ class EditReservationForm extends React.Component{
                         reservation={this.props.reservation}
                         updateReservation={this.props.updateReservation}
                         match={this.props.match}
+
                         />
             }
         </div>)

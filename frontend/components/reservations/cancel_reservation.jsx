@@ -1,9 +1,19 @@
-import React from "react";
+import React from "react"
 
-const CancelReservation = props => {
-    return(
-        <div>
-            <p></p>
-        </div>
-    )
+class CancelReservation extends React.Component {
+    constructor(props){
+        super(props)
+    }
+    componentDidMount(){
+        this.props.deleteReservation(this.props.reservation.id)
+    }
+    render(){
+        return(
+            < div className = "cancel" >
+                <h1>{this.props.user.firstname}, your reservation has been canceled.</h1>
+            </div >
+        )
+    }
 }
+
+export default CancelReservation;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
     FaRegClock,
     FaRegCalendarAlt,
@@ -14,18 +14,18 @@ class ReservationForm extends React.Component{
         this.state = this.props.reservation 
             ? { 
                 reservationId: this.props.reservation.id,
-                success: false
+                success: false,
+                
             } 
             : {
                 reservationId: null,
-                success: false
+                success: false,
+                
             }
         this.handleClick = this.handleClick.bind(this)
+        
     }
 
-    componentDidMount(){
-
-    }
 
     formatDate(){
         const date = new Date(this.props.search.date);
@@ -72,8 +72,10 @@ class ReservationForm extends React.Component{
             .then(this.setState({ success: true }))
     }
 
+   
+
     render(){
-        
+       
         const user = this.props.user
         const imgStyle = {
             backgroundImage: `url(${this.props.restaurant.photoURL})`,
@@ -83,6 +85,8 @@ class ReservationForm extends React.Component{
             flex: '0 0 180px',
             marginRight: '25px'
         }; 
+
+       
         
         return(
             <div className="reservation-form">
@@ -109,7 +113,7 @@ class ReservationForm extends React.Component{
                         ? (<div className="modify">
                             <Link to={`edit`}>Modify reservation</Link>
                             {/* <button onClick={this.handleCancel}>cancel reservation</button> */}
-                            {/* <Link to={`cancel`}>Cancel reservation</Link> */}
+                            <Link to={`cancel`}>Cancel reservation</Link>
                         </div>)
                         : <div className="user">
                             <div className="name">

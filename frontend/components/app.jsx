@@ -7,6 +7,7 @@ import {AuthRoute,ProtectedRoute} from "../util/route_util";
 import RestaurantShowContainer from "./restaurants/restaurant_show_container";
 import CreateReservationContainer from "./reservations/new_reservation_form_container";
 import EditReservationContainer from "./reservations/edit_reservation_container";
+import CancelReservationContainer from "./reservations/cancel_reservation_container"
 import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 import Footer from "./footer";
@@ -45,13 +46,15 @@ const App = () => (
         component={EditReservationContainer}
       />
     </div>
-    <Footer />
 
-    {/* <ProtectedRoute
+    <ProtectedRoute
       exact
       path="/restaurants/:id/reservations/cancel"
-      component={CancelReservation}
-    /> */}
+      component={CancelReservationContainer}
+    />
+
+    
+    <Footer />
   </div>
 );
 
