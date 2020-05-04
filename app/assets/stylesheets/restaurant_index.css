@@ -1,7 +1,8 @@
 .restaurant-index{
     margin-top: 20px;
     font-family: 'Open Sans', sans-serif;
-    margin-left: 300px;
+    flex: 1;
+    
 }
 
 .restaurant{

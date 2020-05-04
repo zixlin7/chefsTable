@@ -9,13 +9,15 @@ const Search = ({ restaurants, search, updateSearch, requestRestaurant, requestR
             <div className="res-search">
                 <SearchForm updateSearch={updateSearch}/>
             </div>
-            <RestaurantsIndex restaurants={restaurants} search={search}
-                updateSearch={updateSearch}
-                requestRestaurants={requestRestaurants}
-                requestRestaurant={requestRestaurant} />
-            <Filters restaurants={restaurants} search={search}
-                updateFilter={updateFilter}
-                updateSearch={updateSearch}/>
+            <div className="res-main">
+                <Filters restaurants={restaurants} search={search}
+                    updateFilter={updateFilter}
+                    updateSearch={updateSearch}/>
+                <RestaurantsIndex restaurants={restaurants} search={search}
+                    updateSearch={updateSearch}
+                    requestRestaurants={requestRestaurants}
+                    requestRestaurant={requestRestaurant} />
+            </div>
         </div>
     )
 }

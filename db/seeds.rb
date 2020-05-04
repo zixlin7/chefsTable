@@ -94,7 +94,7 @@ res4.profilepic.attach(io:pic4, filename:'ba.jpg')
 res5 = Restaurant.create!(
     chef_id: 4,
     name: "The French Laundry",
-    cuisine: "Comtemporary",
+    cuisine: "Contemporary",
     country: "US",
     address: "6640 Washington St",
     state: "CA",
@@ -131,7 +131,7 @@ res6.profilepic.attach(io:pic6, filename:'nn.jpg')
 res7 = Restaurant.create!(
     chef_id: 6,
     name: "McCrady's",
-    cuisine: "American",
+    cuisine: "New American",
     country: "US",
     address: "155 E Bay St",
     state: "SC",

@@ -1,0 +1,35 @@
+.res-main{
+    display: flex;
+}
+
+.filters-box{
+   width: 250px;
+    font-family: 'Open Sans', sans-serif;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin-right: ;
+    margin-right: 18px;
+    margin-left: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+#filter-button{
+  background: rgba(50, 50, 50, 0.5);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 5px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.price p, .cuisine p{
+    font-weight: 600;
+}
+
+.price{
+    margin-top: 20px;
+}

@@ -5,15 +5,16 @@ class Filters extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            American: false,
-            French: false,
+            "Wine bar": false,
             Japanese: false,
             Mexican: false,
+            "Modern French": false,
+            "New American": false,
+            "Contemporary" : false,
             1: false,
             2: false,
             3: false,
             4: false
-    
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,17 +27,6 @@ class Filters extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        // const cuisineFilter = [];
-        // const priceFilter = [];
-        // for(let key in this.state){
-        //     if(this.state[key]){
-        //        if (key.length > 1) {
-        //         cuisineFilter.push(key)
-        //        } else {
-        //            priceFilter.push(key)
-        //        }
-        //     }
-        // }
         const filter = []
         for (let key in this.state) {
             if(this.state[key]){
@@ -54,28 +44,45 @@ class Filters extends React.Component{
         return(
             <div className="filters-box">
                 <form className="filter-form" onSubmit={this.handleSubmit}> 
-                    <div>
+                    <div className="cuisine">
                         <p>Cuisine</p>
-                        <label>American
-                            <input type="checkbox" value="American"
+                        <label>New American
+                            <input type="checkbox" value="New American"
                             onChange={this.handleChange}/>
                         </label>
+                        <br/>
                         <label>French
-                            <input type="checkbox" value="French" 
+                            <input type="checkbox" value="Modern French" 
                             onChange={this.handleChange}/>
                         </label>
+                        <br />
+
                         <label>Japanese
                             <input type="checkbox" value="Japanese" 
                             onChange={this.handleChange}/>
                         </label>
+                        <br />
+
                         <label>Mexican
                             <input type="checkbox" value="Mexican" 
                             onChange={this.handleChange}/>
                         </label>
+                        <br />
+
+                        <label>Wine bar
+                            <input type="checkbox" value="Wine bar"
+                                onChange={this.handleChange} />
+                        </label>
+                        <br />
+
+                        <label>Contemporary
+                            <input type="checkbox" value="Contemporary"
+                                onChange={this.handleChange} />
+                        </label>
                         
                     </div>
 
-                    <div>
+                    <div className="price">
                         <p>Price Range</p>
                         <label>$
                             <input type="checkbox" value="1" 
@@ -94,7 +101,7 @@ class Filters extends React.Component{
                                 onChange={this.handleChange}/>
                         </label>
                     </div>
-                    <button type="submit">Apply</button>
+                    <button id="filter-button" type="submit">Apply</button>
                 </form>
 
                
