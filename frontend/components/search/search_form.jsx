@@ -16,15 +16,6 @@ const handleChange = (field, updateSearch) => e => {
 }
 
 
-// const getDate = () =>{
-//     var today = new Date();
-//     var dd = String(today.getDate()).padStart(2, '0');
-//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-//     var yyyy = today.getFullYear();
-
-//     today = mm + '/' + dd + '/' + yyyy;
-//     return today;
-// }
 
 const getTimeSlots = ( ) => {
     let openTime = 15
@@ -114,12 +105,15 @@ const SearchForm = props => {
                 <FaMapMarkerAlt />
               </span>
               <select
-                id="country"
-                onChange={handleChange("country", props.updateSearch)}
+                id="city"
+                onChange={handleChange("city", props.updateSearch)}
                 defaultValue="US"
               >
-                <option value="US">US</option>
-                <option value="Mexico">Mexico</option>
+                <option value="Chicago">Chicago</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="New York">New York</option>
+                <option value="">Other</option>
               </select>
               <span id="arrow">
                 <FaAngleDown />

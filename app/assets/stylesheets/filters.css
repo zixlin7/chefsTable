@@ -12,6 +12,8 @@
     margin-left: 5px;
     padding: 20px;
     margin-top: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 
+                0 5px 10px rgba(0, 0, 0, 0.24);
 }
 
 
@@ -24,6 +26,7 @@
     padding: 5px 20px;
     margin-top: 20px;
     border-radius: 8px;
+    transition: transform .2s;
 }
 
 .price p, .cuisine p{
@@ -32,4 +35,8 @@
 
 .price{
     margin-top: 20px;
+}
+#filter-button:hover{
+    transform: scale(1.05);
+    font-weight: 600;
 }

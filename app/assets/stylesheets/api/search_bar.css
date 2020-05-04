@@ -63,6 +63,10 @@
   padding-left: 20%;
 }
 
+#city{
+  width: 195px
+}
+
 #arrow:hover{
   display: none;
 }

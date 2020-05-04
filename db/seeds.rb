@@ -44,7 +44,7 @@ res2 = Restaurant.create!(
     country: "US",
     address: "630 Bedford Rd",
     state: "NY",
-    city: "Tarrytown",
+    city: "New York",
     zip: 10591,
     capacity: 200,
     price_range: 4,

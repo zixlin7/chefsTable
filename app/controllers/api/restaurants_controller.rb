@@ -2,10 +2,10 @@ class Api::RestaurantsController < ApplicationController
 
     def index 
         
-        if !params[:filters] || !params[:filters][:country]
+        if !params[:filters] || !params[:filters][:city] 
             @restaurants = Restaurant.all
         else
-            @restaurants = Restaurant.all.where(country: params[:filters][:country])
+            @restaurants = Restaurant.all.where(city: params[:filters][:city])
         end
 
        
