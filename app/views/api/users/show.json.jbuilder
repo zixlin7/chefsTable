@@ -5,7 +5,7 @@ end
 @user.reservations.includes(:restaurant).each do |reservation|
     json.reservations do
         json.set! reservation.id do
-            json.extract! reservation, :id, :user_id, :restaurant_id, :time
+            json.extract! reservation, :id, :user_id, :restaurant_id, :time, :number_of_party
         end
     end
 

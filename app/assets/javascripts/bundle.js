@@ -578,7 +578,9 @@ var Greeting = function Greeting(props) {
       className: "dropdown"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hi, ", props.currentUser.firstname, "!  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "dropdown-menu"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "users/:id"
+    }, "Reservations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       onClick: props.logout
     }, "Log Out"))));
   };
@@ -2385,7 +2387,11 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2409,6 +2415,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var UserProfile = /*#__PURE__*/function (_React$Component) {
   _inherits(UserProfile, _React$Component);
 
@@ -2423,7 +2431,6 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
   _createClass(UserProfile, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('%c user profile', 'color: red');
       this.props.fetchUser(this.props.user.id);
     }
   }, {
@@ -2432,11 +2439,11 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           reservations = _this$props.reservations,
           restaurants = _this$props.restaurants;
-      if (!this.props.reservations.length) return null; // const style = {
+      if (!this.props.reservations) return null; // const style = {
       //     backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
       // }; 
 
-      var userProfile = Object.values(reservations).map(function (reservation) {
+      var resProfile = Object.values(reservations).map(function (reservation) {
         var imgStyle = {
           backgroundImage: "url(".concat(restaurants[reservation.restaurant_id].photoURL, ")"),
           height: '150px',
@@ -2445,18 +2452,40 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
           flex: '0 0 180px',
           marginRight: '25px'
         };
+        var dateString = new Date(reservation.time).toDateString();
+        var timeString = "".concat(new Date(reservation.time).getHours(), ":").concat(new Date(reservation.time).getMinutes(), "0");
         return (
           /*#__PURE__*/
           // <p>reservation.user_id</p>
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            key: reservation.id
-          }, restaurants[reservation.restaurant_id].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "reservation-img",
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "reservation-form"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", _defineProperty({
+            key: reservation.id,
+            className: "reserved-res"
+          }, "className", "info"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "res-img",
             style: imgStyle
-          }))
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "res-detail"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurants[reservation.restaurant_id].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegCalendarAlt"], {
+            className: "res-icon"
+          }), "  ", dateString), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], {
+            className: "res-icon"
+          }), "  ", timeString), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUsers"], {
+            className: "res-icon"
+          }), "  party of ", reservation.number_of_party)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "modify",
+            id: "profile"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/restaurants/".concat(reservation.restaurant_id, "/reservations/edit")
+          }, "modify reservation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            to: "/restaurants/".concat(reservation.restaurant_id, "/reservations/cancel")
+          }, "cancel reservation")))))
         );
       });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, userProfile);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-box"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "".concat(this.props.user.firstname, " ").concat(this.props.user.lastname, ", your upcoming reservations: ")), resProfile);
     }
   }]);
 

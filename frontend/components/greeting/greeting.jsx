@@ -14,6 +14,7 @@ const Greeting = props =>{
             <div className="dropdown">
               <p>Hi, {props.currentUser.firstname}!  <FaAngleDown/></p>
               <ul className="dropdown-menu">
+                <Link to="users/:id">Reservations</Link>
                 <li  onClick={props.logout}>Log Out</li>
               </ul>
             </div>
