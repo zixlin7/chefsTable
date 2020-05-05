@@ -2,6 +2,8 @@ class Api::UsersController < ApplicationController
 
     def index
         @users = User.all
+
+        @users = @users.includes(:reservations)
     end
 
     def create

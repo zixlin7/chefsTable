@@ -11,6 +11,7 @@ import CancelReservationContainer from "./reservations/cancel_reservation_contai
 import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 import Footer from "./footer";
+import UserContainer from "./user/user_container";
 
 
 const App = () => (
@@ -51,6 +52,12 @@ const App = () => (
       exact
       path="/restaurants/:id/reservations/cancel"
       component={CancelReservationContainer}
+    />
+
+    <ProtectedRoute
+      exact
+      path="/users/:id"
+      component={UserContainer}
     />
 
     
