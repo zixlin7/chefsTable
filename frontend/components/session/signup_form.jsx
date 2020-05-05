@@ -56,9 +56,18 @@ class SignupForm extends React.Component {
     if (this.state.redirect)
       return <Redirect to={this.state.redirect} />;
       const errors = this.props.errors.session;
+      const landingStyle = {
+      backgroundImage: `url(${window.landingURL})`,
+      height: '500px',
+      width: '100%',
+      backgroundSize: 'cover',
+      position: 'relative',
+      zIndex: '1'
+      }; 
     return (
       <div>
-          <Landing/>
+          {/* <LandingConta/> */}
+          <div className="landing-box" style={landingStyle}></div>
           <div id="darken"></div>
           <div className="sign-in">
             <button className="close" onClick={this.close}>&times;</button>

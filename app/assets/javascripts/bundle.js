@@ -1808,7 +1808,6 @@ var Search = function Search(_ref) {
       requestRestaurant = _ref.requestRestaurant,
       requestRestaurants = _ref.requestRestaurants,
       updateFilter = _ref.updateFilter;
-  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1855,7 +1854,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  debugger;
   return {
     restaurants: state.entities.restaurants,
     search: state.ui.search
@@ -1945,7 +1943,6 @@ var getParty = function getParty() {
 };
 
 var SearchForm = function SearchForm(props) {
-  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "select-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2005,7 +2002,7 @@ var SearchForm = function SearchForm(props) {
     value: "New York"
   }, "New York"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
-  }, "Other")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "All")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "arrow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null))));
 };
@@ -2128,7 +2125,18 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
         to: this.state.redirect
       });
       var errors = this.props.errors.session;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_landing__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var landingStyle = {
+        backgroundImage: "url(".concat(window.landingURL, ")"),
+        height: '500px',
+        width: '100%',
+        backgroundSize: 'cover',
+        position: 'relative',
+        zIndex: '1'
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "landing-box",
+        style: landingStyle
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "darken"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-in-box"
@@ -2344,7 +2352,18 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
         to: this.state.redirect
       });
       var errors = this.props.errors.session;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_landing__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var landingStyle = {
+        backgroundImage: "url(".concat(window.landingURL, ")"),
+        height: '500px',
+        width: '100%',
+        backgroundSize: 'cover',
+        position: 'relative',
+        zIndex: '1'
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "landing-box",
+        style: landingStyle
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "darken"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-in"
@@ -3151,7 +3170,6 @@ var deleteReservation = function deleteReservation(reservationId) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var resSelector = function resSelector(restaurants, cuisineFilter, priceFilter) {
-  debugger;
   var newRes = {};
 
   var _loop = function _loop(key) {

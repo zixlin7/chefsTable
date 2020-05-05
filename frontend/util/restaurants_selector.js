@@ -1,6 +1,6 @@
 
 const resSelector = (restaurants, cuisineFilter, priceFilter) => {
-    debugger
+   
     let newRes ={};
     for (let key in restaurants) {
         if (cuisineFilter.length && priceFilter.length) {

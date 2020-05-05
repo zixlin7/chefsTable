@@ -28,7 +28,7 @@ res1 = Restaurant.create!(
     zip: 60614,
     capacity: 100,
     price_range: 4,
-    overview: "Alinea has four times been named the Best Restaurant in America and is one of only 13 restaurants in the U.S. to earn the coveted Michelin 3-Star rating.",
+    overview: "Alinea has four times been named the Best Restaurant in America and is one of only 13 restaurants in the U.S. to earn the coveted Michelin 3-Star rating.Featuring a single, seasonally driven tasting menu of between 18 and 22 courses, the experience of dining at Alinea is not only delicious, but also fun, emotional, and provocative.",
     website_url: "https://www.alinearestaurant.com/",
     open_hour: DateTime.parse("00:00:00"),
     close_hour: DateTime.parse("05:00:00"),
@@ -48,7 +48,7 @@ res2 = Restaurant.create!(
     zip: 10591,
     capacity: 200,
     price_range: 4,
-    overview: "High-end farm-to-table restaurant serving tasting menus in a refurbished barn on gorgeous grounds.",
+    overview: "High-end farm-to-table restaurant serving tasting menus in a refurbished barn on gorgeous grounds. Dan Barber’s restaurant in Pocantico Hills, New York serves tasting menus that highlight ingredients that have been plucked from the soil directly outside the dining room, as well as other local farms",
     website_url: "https://www.bluehillfarm.com/",
     open_hour: DateTime.parse("23:00:00"),
     close_hour: DateTime.parse("04:00:00"),
@@ -163,8 +163,124 @@ res8 = Restaurant.create!(
     open_hour: DateTime.parse("20:30:00"),
     close_hour: DateTime.parse("04:00:00"),
 )
+
 pic8 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/Pujol.jpg')
 res8.profilepic.attach(io:pic8, filename:'pj.jpg')
+
+res9 = Restaurant.create!(
+    chef_id: 9,
+    name: "Milk Bar East Village",
+    cuisine: "Bakery",
+    country: "US",
+    address: "251 E 13th St",
+    state: "NY",
+    city: "New York",
+    zip: 10003,
+    capacity: 30,
+    price_range: 1,
+    overview: "The tiny East Village outpost of this burgeoning chain sits directly across the street from the bakery’s original home in a corner of the Momofuku Ssäm Bar space. If you’re new to the Milk Bar phenomenon, try the crack pie, corn cookie, or cereal milk soft serve.",
+    website_url: "milkbarstore.com",
+    open_hour: DateTime.parse("21:00:00"),
+    close_hour: DateTime.parse("07:00:00"),
+)
+pic9 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/milkbar2.jpg')
+res9.profilepic.attach(io:pic9, filename:'mb.jpg')
+
+res10 = Restaurant.create!(
+    chef_id: 8,
+    name: "Osteria Mozza",
+    cuisine: "Wine bar",
+    country: "US",
+    address: "6602 Melrose Ave",
+    state: "CA",
+    city: "Los Angeles",
+    zip: 90038,
+    capacity: 80,
+    price_range: 3,
+    overview: "Lauded upscale Italian cuisine from chef Nancy Silverton in a bustling atmosphere.",
+    website_url: "la.osteriamozza.com",
+    open_hour: DateTime.parse("23:30:00"),
+    close_hour: DateTime.parse("06:00:00"),
+)
+
+pic10 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/Osteria-Mozza.jpg')
+res10.profilepic.attach(io:pic10, filename:'om.jpg')
+
+res11 = Restaurant.create!(
+    chef_id: 10,
+    name: "Ivan Ramen",
+    cuisine: "Japanese",
+    country: "US",
+    address: "25 Clinton St",
+    state: "NY",
+    city: "New York",
+    zip: 10002,
+    capacity: 30,
+    price_range: 1,
+    overview: "In addition to several varieties of ramen, Ivan Orkin’s Lower East Side restaurant also serves dishes that fuse Japanese and American flavors together, like a beef tongue katsu sandwich with au jus, and a mushroom chili-topped 'tofu Coney Island.' Orkin also operates a ramen bar and pizzeria in Manhattan’s Gotham West Market, as well as two noodle shops in Japan.",
+    website_url: "milkbarstore.com",
+    open_hour: DateTime.parse("18:00:00"),
+    close_hour: DateTime.parse("07:00:00"),
+)
+pic11 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/ivanramen.jpg')
+res11.profilepic.attach(io:pic11, filename:'ir.jpg')
+
+res12 = Restaurant.create!(
+    chef_id: 3,
+    name: "Petit Crenn",
+    cuisine: "Modern French",
+    country: "US",
+    address: "609 Hayes St",
+    state: "CA",
+    city: "San Francisco",
+    zip: 94102,
+    capacity: 80,
+    price_range: 4,
+    overview: "Tucked into the edge of Hayes Valley, Petit Crenn is just one link in the living connection between Chef Dominique and her childhood memories in Brittany. Inspired by Northern California's dramatic coast, the seafood-forward tasting menu is prepared in an open kitchen anchored by a wood-fired grill.",
+    website_url: "www.www.petitcrenn.com",
+    open_hour: DateTime.parse("00:00:00"),
+    close_hour: DateTime.parse("04:00:00"),
+)
+pic12 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/petitcrenn.jpg')
+res12.profilepic.attach(io:pic12, filename:'pc.jpg')
+
+res13 = Restaurant.create!(
+    chef_id: 1,
+    name: "The Aviary",
+    cuisine: "Wine bar",
+    country: "US",
+    address: "955 W Fulton Market,",
+    state: "IL",
+    city: "Chicago",
+    zip: 60614,
+    capacity: 100,
+    price_range: 4,
+    overview: "Where cocktails and service are given the same attention to detail as a four-star restaurant; where bartenders are trained as chefs; where the produce and herbs are carefully sourced and procured fresh daily; where the name and branding of the spirit mixed is less important than its actual flavor; where drinks are made quickly and consistently in a state-of-the-art drink kitchen; where innovation and tradition are both honored",
+    website_url: "https://www.theaviary.com",
+    open_hour: DateTime.parse("17:00:00"),
+    close_hour: DateTime.parse("07:00:00"),
+)
+pic13 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/theaviary.jpeg')
+res13.profilepic.attach(io:pic13, filename:'ta.jpg')
+
+res14 = Restaurant.create!(
+    chef_id: 4,
+    name: "Ad Hoc",
+    cuisine: "American",
+    country: "US",
+    address: "6476 Washington St",
+    state: "CA",
+    city: "San Francisco",
+    zip: 94599,
+    capacity: 70,
+    price_range: 4,
+    overview: "In September 2006, Chef Thomas Keller opened the doors to Ad Hoc, his casual dining venue for showcasing the American comfort food of his childhood. ",
+    website_url: "www.thomaskeller.com",
+    open_hour: DateTime.parse("18:00:00"),
+    close_hour: DateTime.parse("22:00:00"),
+)
+pic14 = open('https://chefs-table-seeds.s3-us-west-1.amazonaws.com/adhoc.jpg')
+res14.profilepic.attach(io:pic14, filename:'ah.jpg')
 
 rsvt1 = Reservation.create!(
     user_id: 1,

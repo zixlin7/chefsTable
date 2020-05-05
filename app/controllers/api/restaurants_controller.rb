@@ -2,7 +2,7 @@ class Api::RestaurantsController < ApplicationController
 
     def index 
         
-        if !params[:filters] || !params[:filters][:city] 
+        if !params[:filters] || !params[:filters][:city] || params[:filters][:city] == ""
             @restaurants = Restaurant.all
         else
             @restaurants = Restaurant.all.where(city: params[:filters][:city])

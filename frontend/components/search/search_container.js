@@ -5,7 +5,6 @@ import {updateSearch} from "../../actions/search_actions"
 
 
 const mSTP = (state, ownProps) => {
-    debugger
     return({restaurants: state.entities.restaurants,
     search: state.ui.search})
 };

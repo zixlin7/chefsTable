@@ -46,7 +46,6 @@ const getParty = () => {
 
 
 const SearchForm = props => {
-  debugger
     
         return (
           <div className="select-container">
@@ -114,7 +113,7 @@ const SearchForm = props => {
                 <option value="San Francisco">San Francisco</option>
                 <option value="Los Angeles">Los Angeles</option>
                 <option value="New York">New York</option>
-                <option value="">Other</option>
+                <option value="">All</option>
               </select>
               <span id="arrow">
                 <FaAngleDown />

@@ -7,7 +7,7 @@ class Restaurant < ApplicationRecord
         source: :user
     has_one_attached :profilepic
 
-    def self.search(value)
-        self.where("country = ?", value["country"])
+    def average_rating
+    reviews.average(:rating)
     end
 end
