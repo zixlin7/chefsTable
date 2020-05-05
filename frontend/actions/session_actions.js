@@ -6,9 +6,9 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS"
 
 
-export const receiveCurrentUser = (currentUser) => ({
+export const receiveCurrentUser = (payload) => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser,
+  payload,
 });
 
 export const logoutCurrentUser = () => ({
@@ -26,13 +26,13 @@ export const clearErrors = () => ({
 
 export const signup = (user) => (dispatch) =>
   signupUser(user).then(
-    (user) => dispatch(receiveCurrentUser(user)),
+    (payload) => dispatch(receiveCurrentUser(payload)),
     (err) => dispatch(receiveErrors(err.responseJSON))
   );
 
 export const login = (user) => (dispatch) =>
   loginUser(user).then(
-    (user) => dispatch(receiveCurrentUser(user)),
+    (payload) => dispatch(receiveCurrentUser(payload)),
     (err) => dispatch(receiveErrors(err.responseJSON))
   );
 

@@ -12,19 +12,31 @@ class UserProfile extends React.Component{
 
     render(){
         const { reservations, restaurants } = this.props;
-        
         if (!this.props.reservations.length) return null;
-       
+        // const style = {
+        //     backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
+        
+        // }; 
+        
+        const userProfile = Object.values(reservations).map((reservation) => {
+            const imgStyle = {
+                backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
+                height: '150px',
+                width: '180px',
+                backgroundSize: 'cover',
+                flex: '0 0 180px',
+                marginRight: '25px'
+            }
+            return (
+                // <p>reservation.user_id</p>
+                <div>
+                    <li key={reservation.id}>{restaurants[reservation.restaurant_id].name}</li>
+                    <div className="reservation-img" style={imgStyle}></div>
+                </div>
+        )});
         return(
             <div>
-                hello
-                {Object.values(reservations).map(reservation => (
-                    // <p>reservation.user_id</p>
-                    <div>
-                        <li>{restaurants[reservation.restaurant_id].name}</li>
-                        {/* <img src=/> */}
-                    </div>
-                ))}
+                {userProfile}
             </div>
         )
     }

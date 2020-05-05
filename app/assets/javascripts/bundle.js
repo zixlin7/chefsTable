@@ -298,10 +298,10 @@ var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 var RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 var CLEAR_ERRORS = "CLEAR_ERRORS";
-var receiveCurrentUser = function receiveCurrentUser(currentUser) {
+var receiveCurrentUser = function receiveCurrentUser(payload) {
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser: currentUser
+    payload: payload
   };
 };
 var logoutCurrentUser = function logoutCurrentUser() {
@@ -322,8 +322,8 @@ var clearErrors = function clearErrors() {
 };
 var signup = function signup(user) {
   return function (dispatch) {
-    return Object(_util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signupUser"])(user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
+    return Object(_util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signupUser"])(user).then(function (payload) {
+      return dispatch(receiveCurrentUser(payload));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -331,8 +331,8 @@ var signup = function signup(user) {
 };
 var login = function login(user) {
   return function (dispatch) {
-    return Object(_util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["loginUser"])(user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
+    return Object(_util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["loginUser"])(user).then(function (payload) {
+      return dispatch(receiveCurrentUser(payload));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -2432,14 +2432,31 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           reservations = _this$props.reservations,
           restaurants = _this$props.restaurants;
-      if (!this.props.reservations.length) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hello", Object.values(reservations).map(function (reservation) {
+      if (!this.props.reservations.length) return null; // const style = {
+      //     backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
+      // }; 
+
+      var userProfile = Object.values(reservations).map(function (reservation) {
+        var imgStyle = {
+          backgroundImage: "url(".concat(restaurants[reservation.restaurant_id].photoURL, ")"),
+          height: '150px',
+          width: '180px',
+          backgroundSize: 'cover',
+          flex: '0 0 180px',
+          marginRight: '25px'
+        };
         return (
           /*#__PURE__*/
           // <p>reservation.user_id</p>
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, restaurants[reservation.restaurant_id].name))
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: reservation.id
+          }, restaurants[reservation.restaurant_id].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "reservation-img",
+            style: imgStyle
+          }))
         );
-      }));
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, userProfile);
     }
   }]);
 
@@ -2762,7 +2779,7 @@ var sessionReducer = function sessionReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return {
-        id: action.currentUser.id
+        id: action.payload.user.id
       };
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
@@ -2823,7 +2840,7 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return _objectSpread({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+      return _objectSpread({}, state, _defineProperty({}, action.payload.user.id, action.payload.user));
 
     case _actions_users_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]:
       var nextState = _objectSpread({}, state);
