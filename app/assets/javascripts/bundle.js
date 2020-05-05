@@ -453,6 +453,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_search_search_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/search/search_container */ "./frontend/components/search/search_container.js");
 /* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer */ "./frontend/components/footer.jsx");
 /* harmony import */ var _user_user_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user/user_container */ "./frontend/components/user/user_container.js");
+/* harmony import */ var _landing_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./landing_container */ "./frontend/components/landing_container.js");
+
 
 
 
@@ -484,7 +486,7 @@ var App = function App() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
-    component: _landing__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _landing_container__WEBPACK_IMPORTED_MODULE_14__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/signIn",
@@ -651,37 +653,135 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
 /* harmony import */ var _components_search_search_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/search/search_form */ "./frontend/components/search/search_form.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
 
-var Landing = function Landing(props) {
-  var landingStyle = {
-    backgroundImage: "url(".concat(window.landingURL, ")"),
-    height: '500px',
-    width: '100%',
-    backgroundSize: 'cover',
-    position: 'relative',
-    zIndex: '1'
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "landing-box",
-    style: landingStyle
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "overlay"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "landing-content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Find your next table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-bar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_search_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    updateSearch: _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__["updateSearch"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/restaurants"
-  }, "Discover")))));
-};
+
+var Landing = /*#__PURE__*/function (_React$Component) {
+  _inherits(Landing, _React$Component);
+
+  var _super = _createSuper(Landing);
+
+  function Landing(props) {
+    var _this;
+
+    _classCallCheck(this, Landing);
+
+    _this = _super.call(this, props);
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.state = {
+      redirect: null
+    };
+    return _this;
+  }
+
+  _createClass(Landing, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      this.props.requestRestaurants(this.props.search);
+      this.setState({
+        redirect: "/restaurants"
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.redirect) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
+        to: this.state.redirect
+      });
+      var landingStyle = {
+        backgroundImage: "url(".concat(window.landingURL, ")"),
+        height: '500px',
+        width: '100%',
+        backgroundSize: 'cover',
+        position: 'relative',
+        zIndex: '1'
+      };
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "landing-box",
+        style: landingStyle
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "overlay"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "landing-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Find your next table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-bar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_search_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        updateSearch: this.props.updateSearch
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        onClick: this.handleClick
+      }, "Discover")))));
+    }
+  }]);
+
+  return Landing;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Landing);
+
+/***/ }),
+
+/***/ "./frontend/components/landing_container.js":
+/*!**************************************************!*\
+  !*** ./frontend/components/landing_container.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/restaurants_actions */ "./frontend/actions/restaurants_actions.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _landing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./landing */ "./frontend/components/landing.jsx");
+
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    restaurants: state.entities.restaurants,
+    search: state.ui.search
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    requestRestaurants: function requestRestaurants(filters) {
+      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_1__["requestRestaurants"])(filters));
+    },
+    updateSearch: function updateSearch(field, value) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["updateSearch"])(field, value));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_landing__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1651,11 +1751,6 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(RestaurantsIndex, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestRestaurants();
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,

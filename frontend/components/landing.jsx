@@ -1,8 +1,24 @@
 import React from "react";
 import {updateSearch} from "../actions/search_actions";
 import SearchForm from "../components/search/search_form";
-import {Link} from "react-router-dom"
-const Landing = props => {
+import {Redirect} from "react-router-dom"
+class Landing extends React.Component{
+
+  constructor(props){
+    super(props)
+    this.handleClick = this.handleClick.bind(this);
+    this.state={redirect: null}
+  }
+
+
+  handleClick(e){
+    e.preventDefault()
+    this.props.requestRestaurants(this.props.search)
+    this.setState({redirect: "/restaurants"})
+  }
+  render(){
+    if (this.state.redirect)
+      return <Redirect to={this.state.redirect} />;
      const landingStyle = {
        backgroundImage: `url(${window.landingURL})`,
        height: '500px',
@@ -18,13 +34,14 @@ const Landing = props => {
           <div className="landing-content">
             <h1> Find your next table</h1>
             <div className="search-bar">
-              <SearchForm updateSearch={updateSearch} />
-              <Link to="/restaurants">Discover</Link>
+              <SearchForm updateSearch={this.props.updateSearch} />
+              <a onClick={this.handleClick}>Discover</a>
             </div>
           </div>
         </div>
       </div>
-    );
+    )
+  };
 }
 
 export default Landing;

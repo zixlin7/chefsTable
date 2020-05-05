@@ -12,6 +12,7 @@ import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 import Footer from "./footer";
 import UserContainer from "./user/user_container";
+import LandingContainer from "./landing_container"
 
 
 const App = () => (
@@ -27,7 +28,7 @@ const App = () => (
       <GreetingContainer />
     </nav>
     <div className="main-content">
-      <Route exact path="/" component={Landing} />
+      <Route exact path="/" component={LandingContainer} />
       <AuthRoute exact path="/signIn" component={SigninFormContainer} />
       <AuthRoute exact path="/signUp" component={SignupFormContainer} />
       <Route exact path="/restaurants/:id" component={RestaurantShowContainer} />
