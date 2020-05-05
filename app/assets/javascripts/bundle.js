@@ -731,7 +731,8 @@ var Landing = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Find your next table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_search_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        updateSearch: this.props.updateSearch
+        updateSearch: this.props.updateSearch,
+        search: this.props.search
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         onClick: this.handleClick
       }, "Discover")))));
@@ -1806,11 +1807,13 @@ var Search = function Search(_ref) {
       requestRestaurant = _ref.requestRestaurant,
       requestRestaurants = _ref.requestRestaurants,
       updateFilter = _ref.updateFilter;
+  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "res-search"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    search: search,
     updateSearch: updateSearch
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "res-main"
@@ -1851,6 +1854,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
+  debugger;
   return {
     restaurants: state.entities.restaurants,
     search: state.ui.search
@@ -1867,9 +1871,6 @@ var mDTP = function mDTP(dispatch) {
     },
     updateSearch: function updateSearch(field, value) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["updateSearch"])(field, value));
-    },
-    updateFilter: function updateFilter(cuisineFilter, priceFilter) {
-      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["updateFilter"])(cuisineFilter, priceFilter));
     }
   };
 };
@@ -1943,6 +1944,7 @@ var getParty = function getParty() {
 };
 
 var SearchForm = function SearchForm(props) {
+  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "select-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1952,7 +1954,7 @@ var SearchForm = function SearchForm(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUser"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "party",
     onChange: handleChange("party", props.updateSearch),
-    defaultValue: "2"
+    defaultValue: props.search.party
   }, getParty().map(function (num, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: i,
@@ -1965,7 +1967,7 @@ var SearchForm = function SearchForm(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "icon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegCalendarAlt"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    defaultValue: Object(_util_date_util__WEBPACK_IMPORTED_MODULE_1__["default"])(),
+    defaultValue: props.search.date,
     type: "date",
     id: "date",
     onChange: handleChange("date", props.updateSearch)
@@ -1975,7 +1977,7 @@ var SearchForm = function SearchForm(props) {
     id: "icon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "time",
-    defaultValue: "16:00",
+    defaultValue: props.search.time,
     onChange: handleChange("time", props.updateSearch)
   }, getTimeSlots().map(function (time, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {

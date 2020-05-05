@@ -4,10 +4,11 @@ import SearchForm from "./search_form";
 import Filters from "./filters"
 
 const Search = ({ restaurants, search, updateSearch, requestRestaurant, requestRestaurants, updateFilter }) =>{
+    debugger
     return(
         <div className="search-container">
             <div className="res-search">
-                <SearchForm updateSearch={updateSearch}/>
+                <SearchForm search={search} updateSearch={updateSearch}/>
             </div>
             <div className="res-main">
                 <Filters restaurants={restaurants} search={search}

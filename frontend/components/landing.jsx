@@ -34,7 +34,7 @@ class Landing extends React.Component{
           <div className="landing-content">
             <h1> Find your next table</h1>
             <div className="search-bar">
-              <SearchForm updateSearch={this.props.updateSearch} />
+              <SearchForm updateSearch={this.props.updateSearch} search={this.props.search}/>
               <a onClick={this.handleClick}>Discover</a>
             </div>
           </div>

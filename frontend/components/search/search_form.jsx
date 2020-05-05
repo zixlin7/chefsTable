@@ -46,6 +46,7 @@ const getParty = () => {
 
 
 const SearchForm = props => {
+  debugger
     
         return (
           <div className="select-container">
@@ -56,7 +57,7 @@ const SearchForm = props => {
               <select
                 id="party"
                 onChange={handleChange("party", props.updateSearch)}
-                defaultValue="2"
+                defaultValue={props.search.party}
               >
                 {getParty().map((num, i) => (
                   <option key={i} value={num}>
@@ -73,7 +74,7 @@ const SearchForm = props => {
                 <FaRegCalendarAlt />
               </span>
               <input
-                defaultValue={getDate()}
+                defaultValue={props.search.date}
                 type="date"
                 id="date"
                 onChange={handleChange("date", props.updateSearch)}
@@ -85,7 +86,7 @@ const SearchForm = props => {
               </span>
               <select
                 id="time"
-                defaultValue="16:00"
+                defaultValue={props.search.time}
                 onChange={handleChange("time", props.updateSearch)}
               >
                 {getTimeSlots().map((time, i) => (
