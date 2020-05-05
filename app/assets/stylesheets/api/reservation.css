@@ -156,8 +156,10 @@
     margin-right: 10px;
 }
 
+
+
 .profile-box h1{
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Open Sans', sans-serif;
     padding-left: 20px;
     background-color: rgba(255, 255, 255, 0.4);
@@ -165,6 +167,7 @@
 }
 
 .profile-box{
-    align-self: flex-start;
-    margin-bottom: 145px;
+   align-self: center;
+   width: 50%;
+    
 }

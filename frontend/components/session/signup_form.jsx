@@ -35,7 +35,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { firstname, lastname, email, password } = this.state;
-    this.props.login({ firstname, lastname, email, password})
+    this.props.signup({ firstname, lastname, email, password})
     
   }
 

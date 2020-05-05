@@ -34,7 +34,9 @@ class UserProfile extends React.Component{
                 marginRight: '25px'
             }
             const dateString = new Date(reservation.time).toDateString();
-            const timeString = `${new Date(reservation.time).getHours()}:${new Date(reservation.time).getMinutes()}0`
+            let minutes = new Date(reservation.time).getMinutes()
+            minutes = minutes < 10 ? `${minutes}0` : minutes
+            const timeString = `${new Date(reservation.time).getHours()}:${minutes}`
         
             return (
                 // <p>reservation.user_id</p>

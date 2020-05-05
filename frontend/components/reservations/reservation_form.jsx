@@ -33,7 +33,9 @@ class ReservationForm extends React.Component{
     }
     
     combineDateTime(){
-        const str = `${this.props.search.date}T${this.props.search.time}:00`;
+        const data = this.props.search.date.split("/")
+        const newData = `${data[2]}-${data[0]}-${data[1]}`
+        const str = `${newData}T${this.props.search.time}:00`;
         const date = new Date(str)
         const day = date.getUTCDate();
         const month = date.getUTCMonth();

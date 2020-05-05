@@ -509,7 +509,7 @@ var App = function App() {
     exact: true,
     path: "/restaurants/:id/reservations/edit",
     component: _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants/:id/reservations/cancel",
     component: _reservations_cancel_reservation_container__WEBPACK_IMPORTED_MODULE_9__["default"]
@@ -517,7 +517,7 @@ var App = function App() {
     exact: true,
     path: "/users/:id",
     component: _user_user_container__WEBPACK_IMPORTED_MODULE_13__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_12__["default"], null));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_12__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -1056,7 +1056,9 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "combineDateTime",
     value: function combineDateTime() {
-      var str = "".concat(this.props.search.date, "T").concat(this.props.search.time, ":00");
+      var data = this.props.search.date.split("/");
+      var newData = "".concat(data[2], "-").concat(data[0], "-").concat(data[1]);
+      var str = "".concat(newData, "T").concat(this.props.search.time, ":00");
       var date = new Date(str);
       var day = date.getUTCDate();
       var month = date.getUTCMonth();
@@ -2207,7 +2209,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
           lastname = _this$state.lastname,
           email = _this$state.email,
           password = _this$state.password;
-      this.props.login({
+      this.props.signup({
         firstname: firstname,
         lastname: lastname,
         email: email,
@@ -2453,7 +2455,9 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
           marginRight: '25px'
         };
         var dateString = new Date(reservation.time).toDateString();
-        var timeString = "".concat(new Date(reservation.time).getHours(), ":").concat(new Date(reservation.time).getMinutes(), "0");
+        var minutes = new Date(reservation.time).getMinutes();
+        minutes = minutes < 10 ? "".concat(minutes, "0") : minutes;
+        var timeString = "".concat(new Date(reservation.time).getHours(), ":").concat(minutes);
         return (
           /*#__PURE__*/
           // <p>reservation.user_id</p>

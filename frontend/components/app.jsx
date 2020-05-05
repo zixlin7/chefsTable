@@ -46,8 +46,6 @@ const App = () => (
         path="/restaurants/:id/reservations/edit"
         component={EditReservationContainer}
       />
-    </div>
-
     <ProtectedRoute
       exact
       path="/restaurants/:id/reservations/cancel"
@@ -59,6 +57,8 @@ const App = () => (
       path="/users/:id"
       component={UserContainer}
     />
+    </div>
+
 
     
     <Footer />
