@@ -2488,8 +2488,10 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
         );
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-box"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "".concat(this.props.user.firstname, " ").concat(this.props.user.lastname, ", your upcoming reservations: ")), resProfile);
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "".concat(this.props.user.firstname, " ").concat(this.props.user.lastname, ", your upcoming reservations: ")), resProfile));
     }
   }]);
 

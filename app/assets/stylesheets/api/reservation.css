@@ -164,10 +164,17 @@
     padding-left: 20px;
     background-color: rgba(255, 255, 255, 0.4);
     padding: 10px
+
+}
+
+.profile-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    
 }
 
 .profile-box{
-   align-self: center;
-   width: 50%;
-    
+    width: 70%;
 }

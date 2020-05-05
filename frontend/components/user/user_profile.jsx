@@ -60,13 +60,15 @@ class UserProfile extends React.Component{
     
         )});
         return(
-            <div className="profile-box">
-                <h1>{`${this.props.user.firstname} ${this.props.user.lastname}, your upcoming reservations: ` }</h1>
-                {resProfile}
+            <div className="profile-container">
+                <div className="profile-box">
+                    <h1>{`${this.props.user.firstname} ${this.props.user.lastname}, your upcoming reservations: ` }</h1>
+                    {resProfile}
 
 
+                </div>
             </div>
-        )
+        )   
     }
 }
 
