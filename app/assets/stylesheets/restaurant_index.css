@@ -74,7 +74,11 @@
     font-weight: 600;
 }
 .restaurant #res-name{
+    margin-left: -5px;
     font-size: 21px;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .restaurant-info{

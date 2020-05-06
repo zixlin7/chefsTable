@@ -17,8 +17,9 @@ class UserProfile extends React.Component{
     }
 
     render(){
+        if (!Object.values(this.props.reservations).length) return null;
+        if (!Object.values(this.props.restaurants).length) return null;
         const { reservations, restaurants } = this.props;
-        if (!this.props.reservations) return null;
         // const style = {
         //     backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
         

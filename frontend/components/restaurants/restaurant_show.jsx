@@ -55,10 +55,10 @@ class RestaurantShow extends React.Component{
                     <h1>{restaurant.name}</h1>
                     <div className="rating">
                         {rating >= 4 && rating <= 4.3
-                            ? <p><FaStar /><FaStar /><FaStar /><FaStar /></p>
+                            ? <p id="star"><FaStar /><FaStar /><FaStar /><FaStar /></p>
                             : rating >= 4.4 && rating <= 4.6
-                            ? <p><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt /></p>
-                            : <p><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
+                            ? <p id="star"><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt /></p>
+                            : <p id="star"><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
                         }
 
                         <span>{rating}</span>
