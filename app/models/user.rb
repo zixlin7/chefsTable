@@ -10,6 +10,10 @@ class User < ApplicationRecord
     has_many :reserved_restaurants,
         through: :reservations,
         source: :restaurant
+    has_many :reviews
+    has_many :reviewed_restaurants,
+        through: :reviews,
+        source: :restaurant
     
     attr_reader :password
     def password=(password)

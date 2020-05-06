@@ -9,9 +9,9 @@ const receiveAllRestaurants = restaurants => {
     restaurants}
 };
 
-const receiveRestaurant = (restaurant) => ({
+const receiveRestaurant = (payload) => ({
   type: RECEIVE_RESTAURANT, 
-  restaurant
+  payload
 });
 
 export const requestRestaurants = (filters) => dispatch => fetchAllRestaurants(filters)
@@ -19,6 +19,6 @@ export const requestRestaurants = (filters) => dispatch => fetchAllRestaurants(f
     );
 
 export const requestRestaurant = (restaurantId) => dispatch =>
-         fetchRestaurant(restaurantId).then((restaurant) =>
-           dispatch(receiveRestaurant(restaurant))
+         fetchRestaurant(restaurantId).then((payload) =>
+           dispatch(receiveRestaurant(payload))
          );

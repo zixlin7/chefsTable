@@ -16,7 +16,7 @@ const restaurantsReducer = (state={}, action) => {
         return action.restaurants;
       case RECEIVE_RESTAURANT:
         const nextState = {...state}
-        nextState[action.restaurant.id] = action.restaurant
+        nextState[action.payload.restaurant.id] = action.payload.restaurant
         return nextState;
       case UPDATE_FILTER:
         return resSelector({...state}, action.cuisineFilter, action.priceFilter)

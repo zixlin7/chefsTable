@@ -296,4 +296,24 @@ rsvt1 = Reservation.create!(
     time: DateTime.parse("4th May 2020 00:00:00")
 )
 
+20.times do (
+    User.create(
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    email: Faker::Internet.free_email,
+    password: Faker::Internet.password(min_length: 6)
+    )
+)
+end
+
+100.times do
+    Review.create(
+        user_id: Faker::Number.between(from: 1, to: 22),
+        restaurant_id: Faker::Number.between(from: 1, to: 14),
+        rating: Faker::Number.between(from: 4, to: 5),
+        body: Faker::Restaurant.unique.review,
+        title: "just great!"
+    )
+end
+
 
