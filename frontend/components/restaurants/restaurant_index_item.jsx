@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import {
   FaStar
 } from "react-icons/fa";
@@ -7,8 +7,10 @@ import {
 class RestaurantsIndexItem extends React.Component {
 
   constructor(props){
-    super(props)
-    this.goToEdit = this.goToEdit.bind(this)
+    super(props);
+    this.state = {redirect: null};
+    this.goToEdit = this.goToEdit.bind(this);
+    this.handleShow = this.handleShow.bind(this);
     
   }
 
@@ -21,9 +23,9 @@ class RestaurantsIndexItem extends React.Component {
  
 
   getTimeSlots() {
-    let searchTime = parseInt(this.props.search.time)
-    let openTime = new Date(this.props.restaurant.open_hour).getHours()
-    let closeTime = new Date(this.props.restaurant.close_hour).getHours()
+    let searchTime = parseInt(this.props.search.time);
+    let openTime = new Date(this.props.restaurant.open_hour).getHours();
+    let closeTime = new Date(this.props.restaurant.close_hour).getHours();
     
     const timeSlots = [];
     for(let i = searchTime - 1; i <= searchTime + 1; i++){
@@ -52,9 +54,14 @@ class RestaurantsIndexItem extends React.Component {
 
   }
 
+   handleShow(e){
+    e.preventDefault();
+     this.setState({ redirect: `/restaurants/${this.props.restaurant.id}`});
+   }
+
    handleClick (field){
 
-     return e => this.props.updateSearch(field, e.currentTarget.innerHTML)
+     return e => this.props.updateSearch(field, e.currentTarget.innerHTML);
 
     }
 
@@ -64,6 +71,8 @@ class RestaurantsIndexItem extends React.Component {
 
 
   render() {
+    if (this.state.redirect)
+      return <Redirect to={this.state.redirect} />;
 
     const { restaurant } = this.props;
     const imgStyle = {
@@ -79,7 +88,7 @@ class RestaurantsIndexItem extends React.Component {
       <div className="restaurant">
         <div className="img" style={imgStyle}></div>
         <div className="restaurant-info">
-          <Link  id="res-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
+          <a id="res-name" onClick={this.handleShow}>{restaurant.name}</a>
           <br />
           {/* <p><FaStar /></p> */}
          <div className="rating">
