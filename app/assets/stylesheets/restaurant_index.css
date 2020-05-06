@@ -9,7 +9,7 @@
     font-family: 'Open Sans', sans-serif;
     padding: 20px 20px;
     min-height: 200px;
-    line-height: 28px;
+    line-height: 16px;
     display: flex;
     background-color: #fff;
     margin: 0 20px 30px 0;
@@ -34,12 +34,15 @@
    /* background-color: #7DBBB9;  */
     width: 100px;
     /* border: 1px solid #FF7C52; */
-    height: 31px;
+    height: 32px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     vertical-align: center;
     border-radius: 5px;
     font-weight: 600;
-    margin: 8px 8px 0 0;
+    margin: 20px 8px 0 0;
     padding-top: 3px;
     color: #fff;
     transition: transform .2s;
@@ -74,6 +77,9 @@
     font-size: 21px;
 }
 
+.restaurant-info{
+    padding-top: 20px;
+}
 .restaurant-info span {
     margin-right: 10px;
     font-size: 14px;
@@ -83,4 +89,12 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
+}
+.rating{
+    display: flex;
+    align-items: center;
+}
+
+.rating p {
+    margin-right: 10px;
 }

@@ -11,8 +11,9 @@ end
 
     json.restaurants do 
         json.set! reservation.restaurant.id do
-            json.extract! reservation.restaurant, :name
+            json.extract! reservation.restaurant, *reservation.restaurant.attributes.keys, :review_ids
             json.photoURL url_for(reservation.restaurant.profilepic)
+            json.average_rating reservation.restaurant.average_rating
         end
     end
 end

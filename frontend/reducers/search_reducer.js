@@ -4,7 +4,8 @@ import getDate from "../util/date_util"
 const defaultState = {
     party: 2,
     time: "16:00",
-    date: getDate()
+    date: getDate(),
+    city: ""
 }
 const searchReducer = (state = defaultState, action) => {
     switch (action.type) {

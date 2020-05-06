@@ -6,7 +6,6 @@ class RestaurantShow extends React.Component{
     }
 
     render(){
-        debugger
         if (!this.props.restaurant) return null;
         const {restaurant, reviews, users} = this.props;
         const imgStyle = {
@@ -27,6 +26,9 @@ class RestaurantShow extends React.Component{
             
 
             <h1>{restaurant.name}</h1>
+            <div>
+                
+            </div>
 
             <div>
                 <p>reviews</p>

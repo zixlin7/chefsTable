@@ -13,13 +13,14 @@ class EditReservationForm extends React.Component{
         
     }
 
+    
+
     toggleState(){
         this.setState({load: true});
     }
 
 
     render(){
-        
         
         return(
         <div>

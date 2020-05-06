@@ -1,6 +1,7 @@
 json.restaurant do  
     json.extract! @restaurant, *@restaurant.attributes.keys, :review_ids
     json.photoURL url_for(@restaurant.profilepic)
+    json.average_rating restaurant.average_rating
 end
 
 @restaurant.reviews.includes(:user).each do |review|

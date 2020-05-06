@@ -6,6 +6,7 @@ import {
   FaRegClock,
   FaMapMarkerAlt,
   FaRegCalendarAlt,
+  BsStarFill
 } from "react-icons/fa";
 
 
@@ -107,7 +108,7 @@ const SearchForm = props => {
               <select
                 id="city"
                 onChange={handleChange("city", props.updateSearch)}
-                defaultValue="US"
+                defaultValue={props.search.city}
               >
                 <option value="Chicago">Chicago</option>
                 <option value="San Francisco">San Francisco</option>

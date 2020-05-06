@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom"
-
+import {
+  FaStar
+} from "react-icons/fa";
 
 class RestaurantsIndexItem extends React.Component {
 
@@ -9,6 +11,8 @@ class RestaurantsIndexItem extends React.Component {
     this.goToEdit = this.goToEdit.bind(this)
     
   }
+
+
   mapPriceRange(price) {
     const range = ["", "$", "$$", "$$$", "$$$$"];
     return range[price];
@@ -53,7 +57,10 @@ class RestaurantsIndexItem extends React.Component {
      return e => this.props.updateSearch(field, e.currentTarget.innerHTML)
 
     }
-  
+
+    // mapRatings(rating){
+    //   if 
+    // }
 
 
   render() {
@@ -67,12 +74,23 @@ class RestaurantsIndexItem extends React.Component {
       flex: '0 0 350px',
       marginRight: '25px'
     }; 
+  
     return (
       <div className="restaurant">
         <div className="img" style={imgStyle}></div>
         <div className="restaurant-info">
           <Link  id="res-name" to={`/restaurants/${restaurant.id}`}>{restaurant.name}</Link>
           <br />
+          {/* <p><FaStar /></p> */}
+         <div className="rating">
+            {parseInt(restaurant.average_rating) === 4 
+              ? <p><FaStar /><FaStar /><FaStar /><FaStar /></p>
+              : <p><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
+            }
+            
+            <span>{parseFloat(restaurant.average_rating).toFixed(2)}</span>
+            <span>({restaurant.review_ids.length})</span>
+          </div>
           <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
           <span name="cuisine">{restaurant.cuisine}</span>
           <span name="city">{restaurant.city}</span>

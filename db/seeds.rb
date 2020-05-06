@@ -306,14 +306,53 @@ rsvt1 = Reservation.create!(
 )
 end
 
+
+
+reviews = [
+    "Yumm-o! The waiter did an excellent job. Everything I tried was bursting with flavor. Everything from the starters to the entrees to the desserts meshed perfectly with my flavor-profile. I would eat here every day if I could afford it!",
+    "Oh! My! God! So awesome! The appetizers must be sprinkled with crack because I just craved for more and more. The food was cooked to perfection. I found the ambiance to be very charming. I'm definitely coming back for more!",
+    "It was much better than I expected. The decor was unique and incredible. Try out the huge selection of incredible appetizers. The food was cooked to perfection. I'd give more than 5 stars if I could!",
+    "Best experience ever! The food was cooked to perfection. I found the ambiance to be very charming. The appetizers must be sprinkled with crack because I just craved for more and more. I was happy to see how clean everything was. I would eat here every day if I could afford it!",
+    "Yummers! Everything I tried was bursting with flavor. After my meal, I was knocked into a food coma. The food was cooked to perfection. Easily earned their stars!",
+    "I stumbled on this undiscovered gem right in our neighboorhood. Make sure to save room for dessert, because that was the best part of the meal! The waiter was prompt and polite. The food was flavorful, savory, and succulent. Try out the huge selection of incredible appetizers. ",
+    "I've got a fetish for good food and this place gets me hot! I found the ambiance to be very charming. I was happy to see how clean everything was. Everything was just so yummy. They got a new customer for life!",
+    "This is one of my favorite places. Everything from the starters to the entrees to the desserts meshed perfectly with my flavor-profile. I was happy to see how clean everything was. ",
+    "Best experience ever! Everything was simply decadent. The waitress did an excellent job. Overall experience: 5 stars.",
+    "Yumm-o! I found the ambiance to be very charming. The experience was heavenly as I was served a meal fit for God himself. Overall experience: great!.",
+    "My taste buds are still tingling from our last visit! The food was cooked to perfection. I found the ambiance to be very charming. The waitress did an excellent job. They got a new customer for life!",
+    "It was much better than I expected. I found the ambiance to be very charming. I was happy to see how clean everything was. Everything from the starters to the entrees to the desserts meshed perfectly with my flavor-profile. The waitress did an excellent job. This is definitely a spot I'll be frequenting.",
+    "This place was nearby and I decided to check it out. This was one of the best mouth-watering steaks I've had grace my taste buds in a long time. After my meal, I was knocked into a food coma. The waiter did an excellent job. I was happy to see how clean everything was. ",
+    "Decent place. The entree I had was sublime. I found the ambiance to be very charming. The desserts must be sprinkled with crack because I just craved for more and more.",
+    "I was pleasantly surprised. The service was good for the most part but the waitress was a bit clueless. The ambiance gives off an earthy feel-good vibe. Satisfactory experience, will come again.",
+    "I stumbled on this undiscovered gem right in our neighboorhood. There were a lot of interesting decorations on the walls. The entrees are simply to die for. The service was good for the most part but the waitress was a bit tired. I had a satisfactory experience and will have to try it again.",
+    "Decent place. Make sure to save room for dessert, because that was the best part of the meal! The food was cooked to perfection. The ambiance gives off an earthy feel-good vibe. ",
+    "I have been here several times before. Everything was mostly decadent. Try out the huge selection of incredible appetizers. The waiter was prompt and polite. Everything I tried was bursting with flavor. "
+]
+
+titles = [
+    "great restaurant!",
+    "overall really nice",
+    "I had a great time",
+    "awesome food",
+    "I enjoyed everything",
+    "would come again",
+    "exceeded expectation",
+    "a must visit",
+    "worth the try",
+    "wonderful",
+    "can't complain",
+    "great memory",
+    "best meal ever",
+    "worth every penny"
+]
+
+
 100.times do
     Review.create(
         user_id: Faker::Number.between(from: 1, to: 22),
         restaurant_id: Faker::Number.between(from: 1, to: 14),
         rating: Faker::Number.between(from: 4, to: 5),
-        body: Faker::Restaurant.unique.review,
-        title: "just great!"
+        body: reviews.sample,
+        title: titles.sample
     )
 end
-
-

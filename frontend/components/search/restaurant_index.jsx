@@ -6,6 +6,9 @@ class RestaurantsIndex extends React.Component{
         super(props)
     }
 
+    componentDidMount(){
+      this.props.requestRestaurants(this.props.search)
+    }
     
  
     render(){

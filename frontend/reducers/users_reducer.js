@@ -6,7 +6,7 @@ import {
     from "../actions/restaurants_actions";
 
 const usersReducer = (state={}, action) => {
-    debugger
+    
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return {...state, [action.payload.user.id]: action.payload.user};
