@@ -6,7 +6,7 @@
     z-index: 0;
 }
 .placeholder{
-    height: 1200px;
+    height: 1800px;
 }
 
 .content-box{
@@ -64,4 +64,49 @@
     line-height: 26px;
     font-size: 14px;
     font-weight: 400;
+    margin-top: 2%;
+}
+
+.menu{
+    margin-left: 5%;
+    vertical-align: middle;
+}
+
+.menu h2, .review h2{
+    border-bottom: 1px solid rgba(104, 103, 103, 0.3);
+    padding-bottom: 5px;
+
+}
+
+.review{
+    margin: 5%;
+    vertical-align: middle;
+
+}
+
+.user-profile .pic{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: thistle;
+}
+
+.review-item{
+    display: flex;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-content{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 5px;
 }

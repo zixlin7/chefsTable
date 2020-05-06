@@ -65,17 +65,29 @@ class RestaurantShow extends React.Component{
                 </div>
 
                 <p className="overview">{restaurant.overview}</p>
-                <div>
+                <div className="menu">
                     <h2>Menu</h2>
                     <a>link to menu on restaurant's website</a>
                 </div>
-                <div>
-                    <p>reviews</p>
+
+                <div className="review">
+                    <h2>What people are saying</h2>
                     {restaurant.review_ids.map(id => (
-                        <div>
-                            <p>{reviews[id].title}</p>
-                            <p>{users[reviews[id].user_id].firstname}</p>
-                            <p>{reviews[id].body}</p>
+                        <div className="review-item">
+                            <div className="user-profile">
+                                <div className="pic"></div>
+                                <p>{users[reviews[id].user_id].firstname}</p>
+                            </div>
+                            <div className="review-content">
+                                <p>{reviews[id].title}</p>
+                                {reviews[id].rating >= 4 && reviews[id].rating <= 4.3
+                                    ? <span><FaStar /><FaStar /><FaStar /><FaStar /></span>
+                                    : reviews[id].rating >= 4.4 && reviews[id].rating <= 4.6
+                                        ? <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt /></span>
+                                        : <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></span>
+                                }
+                                <p>{reviews[id].body}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
