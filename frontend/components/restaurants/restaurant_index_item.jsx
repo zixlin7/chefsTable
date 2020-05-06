@@ -1,7 +1,8 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom"
 import {
-  FaStar
+  FaStar,
+  FaStarHalfAlt
 } from "react-icons/fa";
 
 class RestaurantsIndexItem extends React.Component {
@@ -75,6 +76,7 @@ class RestaurantsIndexItem extends React.Component {
       return <Redirect to={this.state.redirect} />;
 
     const { restaurant } = this.props;
+    const rating = parseFloat(restaurant.average_rating).toFixed(1)
     const imgStyle = {
       backgroundImage: `url(${restaurant.photoURL})`,
       height: '225px',
@@ -92,12 +94,14 @@ class RestaurantsIndexItem extends React.Component {
           <br />
           {/* <p><FaStar /></p> */}
          <div className="rating">
-            {parseInt(restaurant.average_rating) === 4 
+            {rating >= 4 && rating <= 4.3
               ? <p><FaStar /><FaStar /><FaStar /><FaStar /></p>
-              : <p><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
+              : rating >= 4.4 && rating <= 4.6
+                ? <p><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt/></p>
+                : <p><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
             }
             
-            <span>{parseFloat(restaurant.average_rating).toFixed(2)}</span>
+            <span>{rating}</span>
             <span>({restaurant.review_ids.length})</span>
           </div>
           <span name="price">{this.mapPriceRange(restaurant.price_range)}</span>
