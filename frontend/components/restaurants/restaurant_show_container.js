@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { requestRestaurant } from "../../actions/restaurants_actions";
+import clearReviews from "../../actions/review_actions";
 import RestaurantShow from "./restaurant_show";
 
 const mSTP = (state, ownProps) => {
@@ -10,8 +11,10 @@ const mSTP = (state, ownProps) => {
 };
 
 const mDTP = (dispatch) => ({
-  requestRestaurant: (restaurantId) =>
-    dispatch(requestRestaurant(restaurantId)),
+  requestRestaurant: (restaurantId) => dispatch(requestRestaurant(restaurantId)),
+  clearReviews: () => dispatch(clearReviews())
 });
+
+
 
 export default connect(mSTP, mDTP)(RestaurantShow);

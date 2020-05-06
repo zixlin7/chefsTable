@@ -20,9 +20,11 @@ export const receiveErrors = (errors) => ({
   errors,
 });
 
-export const clearErrors = () => ({
+const clearErrors = () => ({
     type: CLEAR_ERRORS
 })
+
+export default clearErrors;
 
 export const signup = (user) => (dispatch) =>
   signupUser(user).then(

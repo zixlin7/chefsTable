@@ -13,6 +13,7 @@ class RestaurantShow extends React.Component{
         super(props);
     }
     componentDidMount(){
+        
         this.props.requestRestaurant(this.props.match.params.id)
     }
 
@@ -29,6 +30,7 @@ class RestaurantShow extends React.Component{
     }
 
     render(){
+        debugger
         
         if (!this.props.restaurant) return null;
         if (!this.props.restaurant.review_ids.length) return null;
@@ -101,6 +103,10 @@ class RestaurantShow extends React.Component{
             </div>
         </div>
         )
+    }
+
+    componentWillUnmount(){
+        this.props.clearReviews();
     }
 }
 

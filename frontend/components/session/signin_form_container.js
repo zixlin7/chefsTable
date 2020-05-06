@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
-import {login, clearErrors} from "../../actions/session_actions"
+import { login } from "../../actions/session_actions";
+import clearErrors from "../../actions/session_actions";
 import SigninForm from "./signin_form"
 
 
