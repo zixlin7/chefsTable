@@ -57,6 +57,7 @@ class RestaurantsIndexItem extends React.Component {
 
    handleShow(e){
     e.preventDefault();
+    this.props.requestRestaurant(this.props.restaurant.id)
      this.setState({ redirect: `/restaurants/${this.props.restaurant.id}`});
    }
 
@@ -90,7 +91,7 @@ class RestaurantsIndexItem extends React.Component {
       <div className="restaurant">
         <div className="img" style={imgStyle}></div>
         <div className="restaurant-info">
-          <a id="res-name" onClick={this.handleShow}>{restaurant.name}</a>
+          <button onClick={this.handleShow} id="res-name" >{restaurant.name}</button>
           <br />
           {/* <p><FaStar /></p> */}
          <div className="rating">

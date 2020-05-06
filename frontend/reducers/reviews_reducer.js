@@ -4,9 +4,10 @@ import {
     from "../actions/restaurants_actions";
 
 const reviewsReducer = (state = {}, action) => {
+    
     switch (action.type) {
         case RECEIVE_RESTAURANT:
-            return {...state, ...action.payload.reviews};
+            return {...action.payload.reviews};
         default:
             return state;
     }

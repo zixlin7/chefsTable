@@ -6,7 +6,7 @@
     z-index: 0;
 }
 .placeholder{
-    height: 1800px;
+    height: 2000px;
 }
 
 .content-box{
@@ -41,7 +41,7 @@
 
 .content-box h1{
     height: 96px;
-    font-size: 48px;
+    font-size: 46px;
     vertical-align: middle;
     margin-left: 5%;
     width: 90%;
@@ -70,6 +70,7 @@
 .menu{
     margin-left: 5%;
     vertical-align: middle;
+    
 }
 
 .menu h2, .review h2{
@@ -78,21 +79,42 @@
 
 }
 
+.menu a{
+    color: #333;
+}
+
+.menu a:hover{
+    font-weight: 600;
+    color:#FF7C52;
+}
+
 .review{
     margin: 5%;
     vertical-align: middle;
 
 }
+.user-profile{
+    font-weight: 600;
+}
 
 .user-profile .pic{
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
-    background-color: thistle;
+    
+    font-size: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#FF7C52;
+    
+    background-color: rgba(230, 230, 230, 0.8);
 }
 
 .review-item{
     display: flex;
+    border-bottom: 1px solid rgba(104, 103, 103, 0.3);
+    padding-bottom: 20px;
 }
 
 .user-profile {
@@ -103,10 +125,17 @@
 }
 
 .review-content{
-    margin-left: 20px;
+    margin-left: 27px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+#title{
+    font-weight: 600;
+    font-size: 16px;
 }
