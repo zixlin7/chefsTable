@@ -11,6 +11,7 @@ require 'open-uri'
 User.destroy_all
 Restaurant.destroy_all
 Reservation.destroy_all
+Review.destroy_all
 
 
 demouser = User.create!(firstname: "demo", lastname: "user", email: "demo1@user.com", password: "123456")
