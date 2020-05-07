@@ -11,7 +11,7 @@ const reviewsReducer = (state = {}, action) => {
         case RECEIVE_RESTAURANT:
             return {...action.payload.reviews};
         case RECEIVE_REVIEW:
-            return {...state, [action.payload.review]: action.payload.review};
+            return {...state, [action.payload.review.id]: action.payload.review};
         case REMOVE_REVIEW:
             const nextState = {...state};
             delete nextState[action.reviewId];

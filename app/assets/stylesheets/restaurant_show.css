@@ -163,3 +163,18 @@
 .review-head a:hover{
     font-weight: 600;
 }
+
+#delete-review{
+   background-color: #FF7C52;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 10px;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 12px;
+    /* margin-left: 20px; */
+    margin-right: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}

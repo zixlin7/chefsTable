@@ -13,7 +13,8 @@ import SearchContainer from "../components/search/search_container";
 import Footer from "./footer";
 import UserContainer from "./user/user_container";
 import LandingContainer from "./landing_container";
-import ReviewContainer from "../components/reviews/reviews_container"
+import NewReviewContainer from "../components/reviews/reviews_container"
+import EditReviewContainer from "../components/reviews/edit_review_container";
 
 
 const App = () => (
@@ -32,12 +33,12 @@ const App = () => (
       <Route exact path="/" component={LandingContainer} />
       <AuthRoute exact path="/signIn" component={SigninFormContainer} />
       <AuthRoute exact path="/signUp" component={SignupFormContainer} />
-      <Route exact path="/restaurants/:id" component={RestaurantShowContainer} />
-      <ProtectedRoute
+      <Route
         exact
-        path="/restaurants"
-        component={SearchContainer}
+        path="/restaurants/:id"
+        component={RestaurantShowContainer}
       />
+      <ProtectedRoute exact path="/restaurants" component={SearchContainer} />
       <ProtectedRoute
         exact
         path="/restaurants/:id/reservations/new"
@@ -48,27 +49,27 @@ const App = () => (
         path="/restaurants/:id/reservations/edit"
         component={EditReservationContainer}
       />
-    <ProtectedRoute
-      exact
-      path="/restaurants/:id/reservations/cancel"
-      component={CancelReservationContainer}
-    />
+      <ProtectedRoute
+        exact
+        path="/restaurants/:id/reservations/cancel"
+        component={CancelReservationContainer}
+      />
 
-    <ProtectedRoute
-      exact
-      path="/users/:id"
-      component={UserContainer}
-    />
+      <ProtectedRoute exact path="/users/:id" component={UserContainer} />
 
       <ProtectedRoute
         exact
         path="/restaurants/:id/reviews/new"
-        component={ReviewContainer}
+        component={NewReviewContainer}
+      />
+
+      <ProtectedRoute
+        exact
+        path="/restaurants/:id/reviews/:reviewId/edit"
+        component={EditReviewContainer}
       />
     </div>
 
-
-    
     <Footer />
   </div>
 );

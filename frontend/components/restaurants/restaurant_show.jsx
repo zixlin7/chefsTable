@@ -52,76 +52,132 @@ class RestaurantShow extends React.Component{
         }; 
         const rating = parseFloat(restaurant.average_rating).toFixed(1)
        
-        return(
-        <div>
-            <div  className="show-img" style={imgStyle}></div>
+        return (
+          <div>
+            <div className="show-img" style={imgStyle}></div>
             <div className="placeholder">
-                <div className="content-box">
-                    <nav className="show-nav">
-                        <a>Overview</a>
-                        <a>Photos</a>
-                        <a>Menu</a>
-                        <a>Reviews</a>
-                    </nav>
-                    
-                    <h1>{restaurant.name}</h1>
-                    <div className="rating">
-                        {rating >= 4 && rating <= 4.3
-                            ? <p id="star"><FaStar /><FaStar /><FaStar /><FaStar /></p>
-                            : rating >= 4.4 && rating <= 4.6
-                            ? <p id="star"><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt /></p>
-                            : <p id="star"><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></p>
-                        }
+              <div className="content-box">
+                <nav className="show-nav">
+                  <a>Overview</a>
+                  <a>Photos</a>
+                  <a>Menu</a>
+                  <a>Reviews</a>
+                </nav>
 
-                        <span>{rating}</span>
-                        <span className="info-span">  <FaRegCommentAlt/>   {restaurant.review_ids.length} reviews</span>
-                        <span className="info-span">  <FaRegMoneyBillAlt/>   {this.priceMapping(restaurant.price_range)} </span>
-                        <span className="info-span">  <FaUtensils/>   {restaurant.cuisine} </span>
-                    
-                    </div>
+                <h1>{restaurant.name}</h1>
+                <div className="rating">
+                  {rating >= 4 && rating <= 4.3 ? (
+                    <p id="star">
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                    </p>
+                  ) : rating >= 4.4 && rating <= 4.6 ? (
+                    <p id="star">
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStarHalfAlt />
+                    </p>
+                  ) : (
+                    <p id="star">
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                      <FaStar />
+                    </p>
+                  )}
 
-                    <p className="overview" >{restaurant.overview}</p>
-                    <div className="menu">
-                        <h2 >Menu</h2>
-                        <a href={restaurant.website_url}>see the menu on restaurant's website</a>
-                    </div>
-
-                    <div className="review" >
-                        <div className="review-head">
-                            <h2>What people are saying</h2>
-                            <Link to={`/restaurants/${restaurant.id}/reviews/new`}>Leave a review</Link>
-                        </div>
-                        {Object.values(reviews).map((review, i) => (
-                            <div key={i} className="review-item">
-                                <div className="user-profile">
-                                    <div className="pic">
-                                        <p><FaRegUser /></p>
-                                    </div>
-                                    <p>{users[review.user_id].firstname}</p>
-                                </div>
-                                <div className="review-content">
-                                    <p id="title">{review.title}</p>
-                                    {review.rating >= 4 && review.rating <= 4.3
-                                        ? <span><FaStar /><FaStar /><FaStar /><FaStar /></span>
-                                        : review.rating >= 4.4 && review.rating <= 4.6
-                                            ? <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt /></span>
-                                            : <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></span>
-                                    }
-                                    <p>{review.body}</p>
-                                    {review.user_id === this.props.currentUser.id 
-                                    ? <div>
-                                        <a>edit review</a>
-                                        <button onClick={this.handleDelete(review.id)}>Delete review</button>
-                                      </div>
-                                    : null}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                  <span>{rating}</span>
+                  <span className="info-span">
+                    {" "}
+                    <FaRegCommentAlt /> {restaurant.review_ids.length} reviews
+                  </span>
+                  <span className="info-span">
+                    {" "}
+                    <FaRegMoneyBillAlt />{" "}
+                    {this.priceMapping(restaurant.price_range)}{" "}
+                  </span>
+                  <span className="info-span">
+                    {" "}
+                    <FaUtensils /> {restaurant.cuisine}{" "}
+                  </span>
                 </div>
+
+                <p className="overview">{restaurant.overview}</p>
+                <div className="menu">
+                  <h2>Menu</h2>
+                  <a href={restaurant.website_url}>
+                    see the menu on restaurant's website
+                  </a>
+                </div>
+
+                <div className="review">
+                  <div className="review-head">
+                    <h2>What people are saying</h2>
+                    <Link to={`/restaurants/${restaurant.id}/reviews/new`}>
+                      Leave a review
+                    </Link>
+                  </div>
+                  {Object.values(reviews).map((review, i) => (
+                    <div key={i} className="review-item">
+                      <div className="user-profile">
+                        <div className="pic">
+                          <p>
+                            <FaRegUser />
+                          </p>
+                        </div>
+                        <p>{users[review.user_id].firstname}</p>
+                      </div>
+                      <div className="review-content">
+                        <p id="title">{review.title}</p>
+                        {review.rating >= 4 && review.rating <= 4.3 ? (
+                          <span>
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                          </span>
+                        ) : review.rating >= 4.4 && review.rating <= 4.6 ? (
+                          <span>
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStarHalfAlt />
+                          </span>
+                        ) : (
+                          <span>
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                          </span>
+                        )}
+                        <p>{review.body}</p>
+                        {review.user_id === this.props.currentUser.id ? (
+                          <div>
+                            <Link id="delete-review" to={`/restaurants/${restaurant.id}/reviews/${review.id}/edit`}>Edit review</Link>
+                            <button
+                              id="delete-review"
+                              onClick={this.handleDelete(review.id)}
+                            >
+                              Delete review
+                            </button>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-        </div>
-        )
+          </div>
+        );
     }
 
     componentWillUnmount(){

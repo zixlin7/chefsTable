@@ -1,20 +1,10 @@
 import React from "react";
-import {
-    FaStar,
-   
-} from "react-icons/fa";
 
 class ReviewForm extends React.Component{
     constructor(props){
         super(props)
 
-        this.state = {
-            user_id: this.props.userId,
-            restaurant_id: this.props.match.params.id,
-            rating: 5,
-            title: "",
-            body: ""
-        }
+        this.state = this.props.review
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -30,12 +20,13 @@ class ReviewForm extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         this.props.requestRestaurant(this.props.restaurant.id)
-        this.props.createReview(this.state)
+        this.props.action(this.state)
             .then(this.props.history.push(`/restaurants/${this.props.restaurant.id}`))
     }
 
     render(){
         if(!this.props.restaurant) return null;
+        if(!this.props.review) return null;
         return(
 
             <div>
