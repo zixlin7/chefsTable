@@ -693,29 +693,26 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       redirect: false
-    };
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    }; // this.handleClick = this.handleClick.bind(this);
+
     return _this;
   }
 
   _createClass(Greeting, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      e.preventDefault();
+    key: "componentDidMount",
+    value: function componentDidMount() {
       this.props.fetchUser(this.props.currentUser.id);
-      this.setState({
-        redirect: "/users/".concat(this.props.currentUser.id)
-      });
-    }
+    } // handleClick(e){
+    //   e.preventDefault();
+    //   this.setState({ redirect: `/users/${this.props.currentUser.id}` });
+    // }
+
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      if (this.state.redirect) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: this.state.redirect
-      });
-
+      // if (this.state.redirect) return <Redirect to={this.state.redirect} />;
       var loggedIn = function loggedIn() {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "greeting-nav"
@@ -723,9 +720,9 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
           className: "dropdown"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hi, ", _this2.props.currentUser.firstname, "! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "dropdown-menu"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          onClick: _this2.handleClick
-        }, " Reservations "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/users/".concat(_this2.props.currentUser.id)
+        }, "Reservations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           onClick: _this2.props.logout
         }, "Log Out"))));
       };

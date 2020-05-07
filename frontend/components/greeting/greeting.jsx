@@ -9,18 +9,22 @@ class Greeting extends React.Component{
     constructor(props){
       super(props);
       this.state = {redirect: false};
-      this.handleClick = this.handleClick.bind(this);
+      // this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(e){
-      e.preventDefault();
+    componentDidMount(){
+
       this.props.fetchUser(this.props.currentUser.id)
-      this.setState({ redirect: `/users/${this.props.currentUser.id}` });
     }
+
+    // handleClick(e){
+    //   e.preventDefault();
+    //   this.setState({ redirect: `/users/${this.props.currentUser.id}` });
+    // }
 
     render(){
 
-      if (this.state.redirect) return <Redirect to={this.state.redirect} />;
+      // if (this.state.redirect) return <Redirect to={this.state.redirect} />;
       const loggedIn = () => {
         return (
           <div className="greeting-nav">
@@ -29,7 +33,9 @@ class Greeting extends React.Component{
                 Hi, {this.props.currentUser.firstname}! <FaAngleDown />
               </p>
               <ul className="dropdown-menu">
-                <li onClick={this.handleClick}> Reservations </li>
+                <Link to={`/users/${this.props.currentUser.id}`}>
+                 Reservations
+                </Link>
                 <li onClick={this.props.logout}>Log Out</li>
               </ul>
             </div>
