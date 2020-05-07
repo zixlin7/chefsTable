@@ -13,7 +13,9 @@ class EditReservationForm extends React.Component{
         
     }
 
-    
+    componentDidMount(){
+        this.props.requestRestaurant(this.props.match.params.id)
+    }
 
     toggleState(){
         this.setState({load: true});
@@ -21,32 +23,44 @@ class EditReservationForm extends React.Component{
 
 
     render(){
-        
-        return(
-        <div>
-            {!this.state.load
-            ?(<div>
-                <div className="edit-search">
-                    <SearchForm updateSearch={this.props.updateSearch} search={this.props.search}/>
-                </div>
-                <RestaurantsIndexItem restaurant={this.props.restaurant}
-                        search={this.props.search}
-                        updateSearch={this.props.updateSearch}
-                        requestRestaurant={this.props.requestRestaurant}
-                        reservation={this.props.reservation} 
-                        toggleState={this.toggleState}/>
-             </div>)
-            :
-                <ReservationForm user={this.props.user}
-                            restaurant={this.props.restaurant}
-                        search={this.props.search}
-                        reservation={this.props.reservation}
-                        updateReservation={this.props.updateReservation}
-                        match={this.props.match}
 
-                        />
-            }
-        </div>)
+        if (!this.props.restaurant) return null;
+        
+        return (
+          <div>
+            {!this.state.load ? (
+              <div>
+                <div className="edit-search">
+                  <SearchForm
+                    updateSearch={this.props.updateSearch}
+                    search={this.props.search}
+                  />
+                </div>
+                <div id="edit-res-form">
+                  <RestaurantsIndexItem
+                    restaurant={this.props.restaurant}
+                    search={this.props.search}
+                    updateSearch={this.props.updateSearch}
+                    requestRestaurant={this.props.requestRestaurant}
+                    reservation={this.props.reservation}
+                    toggleState={this.toggleState}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div>
+                <ReservationForm
+                  user={this.props.user}
+                  restaurant={this.props.restaurant}
+                  search={this.props.search}
+                  reservation={this.props.reservation}
+                  updateReservation={this.props.updateReservation}
+                  match={this.props.match}
+                />
+              </div>
+            )}
+          </div>
+        );
     }
 }
 

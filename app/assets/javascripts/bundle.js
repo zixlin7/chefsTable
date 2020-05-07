@@ -946,6 +946,7 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -970,6 +971,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var CancelReservation = /*#__PURE__*/function (_React$Component) {
   _inherits(CancelReservation, _React$Component);
 
@@ -978,20 +980,25 @@ var CancelReservation = /*#__PURE__*/function (_React$Component) {
   function CancelReservation(props) {
     _classCallCheck(this, CancelReservation);
 
-    return _super.call(this, props);
+    return _super.call(this, props); // this.handleClick= this.handleClick.bind(this)
   }
 
   _createClass(CancelReservation, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      // this.props.requestRestaurant(this.props.match.params.id)
       this.props.deleteReservation(this.props.reservation.id);
     }
   }, {
     key: "render",
     value: function render() {
+      // if (!this.props.reservation) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cancel"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.user.firstname, ", your reservation has been canceled."));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.user.firstname, ", your reservation has been canceled."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        id: "back-to-home",
+        to: "/"
+      }, "Back to Home"));
     }
   }]);
 
@@ -1014,11 +1021,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_reservations_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/reservations_actions */ "./frontend/actions/reservations_actions.js");
 /* harmony import */ var _cancel_reservation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cancel_reservation */ "./frontend/components/reservations/cancel_reservation.jsx");
+/* harmony import */ var _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/restaurants_actions */ "./frontend/actions/restaurants_actions.js");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     reservation: Object.values(state.entities.reservations)[Object.values(state.entities.reservations).length - 1],
     user: state.entities.users[state.session.id]
@@ -1029,6 +1038,12 @@ var mDTP = function mDTP(dispatch) {
   return {
     deleteReservation: function deleteReservation(reservationId) {
       return dispatch(Object(_actions_reservations_actions__WEBPACK_IMPORTED_MODULE_1__["deleteReservation"])(reservationId));
+    },
+    requestRestaurant: function requestRestaurant(restaurantId) {
+      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_3__["requestRestaurant"])(restaurantId));
+    },
+    requestRestaurants: function requestRestaurants() {
+      return dispatch(Object(_actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_3__["requestRestaurant"])());
     }
   };
 };
@@ -1147,6 +1162,11 @@ var EditReservationForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(EditReservationForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.requestRestaurant(this.props.match.params.id);
+    }
+  }, {
     key: "toggleState",
     value: function toggleState() {
       this.setState({
@@ -1156,26 +1176,29 @@ var EditReservationForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (!this.props.restaurant) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, !this.state.load ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-search"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
         updateSearch: this.props.updateSearch,
         search: this.props.search
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurants_restaurant_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "edit-res-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurants_restaurant_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
         restaurant: this.props.restaurant,
         search: this.props.search,
         updateSearch: this.props.updateSearch,
         requestRestaurant: this.props.requestRestaurant,
         reservation: this.props.reservation,
         toggleState: this.toggleState
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservation_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
         user: this.props.user,
         restaurant: this.props.restaurant,
         search: this.props.search,
         reservation: this.props.reservation,
         updateReservation: this.props.updateReservation,
         match: this.props.match
-      }));
+      })));
     }
   }]);
 
@@ -3137,7 +3160,9 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!Object.values(this.props.reservations).length) return null;
+      if (!Object.values(this.props.reservations).length) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-box"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "".concat(this.props.user.firstname, " ").concat(this.props.user.lastname, ", you don't have any reservation :(")));
       if (!Object.values(this.props.restaurants).length) return null;
       var _this$props = this.props,
           reservations = _this$props.reservations,

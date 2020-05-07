@@ -17,7 +17,10 @@ class UserProfile extends React.Component{
     }
 
     render(){
-        if (!Object.values(this.props.reservations).length) return null;
+        if (!Object.values(this.props.reservations).length) return (
+            <div className="profile-box">
+                <h1>{`${this.props.user.firstname} ${this.props.user.lastname}, you don't have any reservation :(`}</h1>
+            </div>);
         if (!Object.values(this.props.restaurants).length) return null;
         const { reservations, restaurants } = this.props;
         // const style = {
