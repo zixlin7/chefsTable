@@ -12,6 +12,7 @@ import {Link} from "react-router-dom";
 class RestaurantShow extends React.Component{
     constructor(props){
         super(props);
+        this.state = {delete: false}
     }
     componentDidMount(){
         
@@ -30,12 +31,19 @@ class RestaurantShow extends React.Component{
         }
     }
 
+    handleDelete(id){
+        return e => {
+        e.preventDefault();
+        this.props.deleteReview(id)
+        this.setState({delete: !this.state.delete})
+        }
+    }
+
     render(){
-        
         
         if (!this.props.restaurant) return null;
         if (!this.props.restaurant.review_ids.length) return null;
-        if (this.props.restaurant.review_ids.length !== Object.values(this.props.reviews).length) return null;
+        if (this.props.restaurant.review_ids.length !== Object.values(this.props.reviews).length && !this.state.delete) return null;
         if (!Object.values(this.props.reviews).length) return null;
         
         const {restaurant, reviews, users} = this.props;
@@ -83,23 +91,29 @@ class RestaurantShow extends React.Component{
                             <h2>What people are saying</h2>
                             <Link to={`/restaurants/${restaurant.id}/reviews/new`}>Leave a review</Link>
                         </div>
-                        {restaurant.review_ids.map(id => (
+                        {Object.values(reviews).map(review => (
                             <div className="review-item">
                                 <div className="user-profile">
                                     <div className="pic">
                                         <p><FaRegUser /></p>
                                     </div>
-                                    <p>{users[reviews[id].user_id].firstname}</p>
+                                    <p>{users[review.user_id].firstname}</p>
                                 </div>
                                 <div className="review-content">
-                                    <p id="title">{reviews[id].title}</p>
-                                    {reviews[id].rating >= 4 && reviews[id].rating <= 4.3
+                                    <p id="title">{review.title}</p>
+                                    {review.rating >= 4 && review.rating <= 4.3
                                         ? <span><FaStar /><FaStar /><FaStar /><FaStar /></span>
-                                        : reviews[id].rating >= 4.4 && reviews[id].rating <= 4.6
+                                        : review.rating >= 4.4 && review.rating <= 4.6
                                             ? <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt /></span>
                                             : <span><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></span>
                                     }
-                                    <p>{reviews[id].body}</p>
+                                    <p>{review.body}</p>
+                                    {review.user_id === this.props.currentUser.id 
+                                    ? <div>
+                                        <a>edit review</a>
+                                        <button onClick={this.handleDelete(review.id)}>Delete review</button>
+                                      </div>
+                                    : null}
                                 </div>
                             </div>
                         ))}

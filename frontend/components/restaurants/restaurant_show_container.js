@@ -2,17 +2,20 @@ import { connect } from "react-redux";
 import { requestRestaurant } from "../../actions/restaurants_actions";
 import clearReviews from "../../actions/review_actions";
 import RestaurantShow from "./restaurant_show";
+import {deleteReview} from "../../actions/review_actions"
 
 const mSTP = (state, ownProps) => {
   
   return {restaurant: state.entities.restaurants[ownProps.match.params.id],
   reviews: state.entities.reviews,
-  users: state.entities.users }
+  users: state.entities.users,
+  currentUser: state.entities.users[state.session.id] }
 };
 
 const mDTP = (dispatch) => ({
   requestRestaurant: (restaurantId) => dispatch(requestRestaurant(restaurantId)),
-  clearReviews: () => dispatch(clearReviews())
+  clearReviews: () => dispatch(clearReviews()),
+  deleteReview: reviewId => dispatch(deleteReview(reviewId))
 });
 
 

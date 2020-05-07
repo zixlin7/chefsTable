@@ -8,6 +8,7 @@ import {
 
 import {UPDATE_FILTER} from "../actions/search_actions"
 import resSelector from "../util/restaurants_selector"
+import { REMOVE_REVIEW } from "../actions/review_actions";
 
 const restaurantsReducer = (state={}, action) => {
   
@@ -22,6 +23,7 @@ const restaurantsReducer = (state={}, action) => {
         return resSelector({...state}, action.cuisineFilter, action.priceFilter)
       case RECEIVE_USER:
         return {...state, ...action.payload.restaurants}
+      
       default:
         return state;
     }
