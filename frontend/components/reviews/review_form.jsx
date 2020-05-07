@@ -19,6 +19,10 @@ class ReviewForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount(){
+        this.props.requestRestaurant(this.props.match.params.id)
+    }
+
     updateForm(field){
         return e => this.setState({[field] : e.target.value})
     }
@@ -31,11 +35,13 @@ class ReviewForm extends React.Component{
     }
 
     render(){
+        if(!this.props.restaurant) return null;
         return(
+
             <div>
                 <form className="review-form" onSubmit={this.handleSubmit}>
                     <h1>{this.props.user.firstname}, Share you experience at {this.props.restaurant.name}</h1>
-                     
+                     <p>Rating:</p>
                     <fieldset className="rating-input" onChange={this.updateForm("rating")} defaultValue={this.state.rating}>
                             <input type="radio" id="star5" name="rating" value="5" />
                             <label className="full" for="star5" title="Awesome - 5 stars"></label>
@@ -59,15 +65,13 @@ class ReviewForm extends React.Component{
                             <label className="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
 
-                    <label>Title
-                        <input id="title-input" type="text" onChange={this.updateForm("title")} value={this.state.title}/>
-                    </label>
+                    <p>Title:</p>
+                     <input id="title-input" type="text" onChange={this.updateForm("title")} value={this.state.title}/>
 
-                    <label>Details
-                        <textarea id="body-input" onChange={this.updateForm("body")} value={this.state.body}/>
-                    </label>
+                    <p>Details:</p>
+                    <textarea id="body-input" onChange={this.updateForm("body")} value={this.state.body}/>
 
-                    <button type="submit">Submit</button>
+                    <button id="reservation-button" type="submit">Submit</button>
 
                 </form>
 

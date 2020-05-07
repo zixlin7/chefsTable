@@ -61,22 +61,53 @@ h1 { font-size: 1.5em; margin: 10px; }
     }
 
     .review-form{
-        display: flex;
-        flex-direction: column;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 13px;
-        margin: 20px 30px;
-        align-items: flex-start;
-        height: 451px;
+       display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    margin: 20px 30px;
+    align-items: flex-start;
+    height: 600px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.24);
+    background-color: #fff;
+    width: 39%;
+    padding: 50px;
+    margin-left: 25%;
+    border-radius: 9px;
+    margin-top: 8%;
 
     }
 
+   
+
     #title-input, #body-input{
-        height: 40px;
-        -webkit-appearance: none;
-        border:none;
+    height: 40px;
+    -webkit-appearance: none;
+    border: none;
+    width: 91%;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: rgba(150, 150, 150, 0.4);
+    margin-bottom: 20px;
+
+    }
+
+    #body-input{
+        height: 150px;
     }
 
     #title{
 
     }
+
+   .form-label{
+       margin-right: 20px;
+   }
+
+.review-form p{
+    font-size: 16px;
+}
+
+

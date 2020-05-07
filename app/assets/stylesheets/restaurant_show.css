@@ -69,13 +69,14 @@
 
 .menu{
     margin-left: 5%;
+    margin-right: 5%;
     vertical-align: middle;
     
 }
 
-.menu h2, .review h2{
+.menu h2{
     border-bottom: 1px solid rgba(104, 103, 103, 0.3);
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 
 }
 
@@ -101,7 +102,7 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    
+    margin-top: 20px;
     font-size: 42px;
     display: flex;
     justify-content: center;
@@ -138,4 +139,20 @@
 #title{
     font-weight: 600;
     font-size: 16px;
+}
+
+.review-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(104, 103, 103, 0.3);
+}
+
+.review-head a{
+    color: #FF7C52
+}
+
+.review-head a:hover{
+    font-weight: 600;
 }

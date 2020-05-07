@@ -79,8 +79,10 @@ class RestaurantShow extends React.Component{
                     </div>
 
                     <div className="review">
-                        <h2>What people are saying</h2>
+                        <div className="review-head">
+                            <h2>What people are saying</h2>
                             <Link to={`/restaurants/${restaurant.id}/reviews/new`}>Leave a review</Link>
+                        </div>
                         {restaurant.review_ids.map(id => (
                             <div className="review-item">
                                 <div className="user-profile">
