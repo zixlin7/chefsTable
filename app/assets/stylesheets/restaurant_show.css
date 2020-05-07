@@ -36,7 +36,14 @@
     font-weight: 600;
     margin:15px 20px;
     margin-left: 0;
+    color: #333;
+    text-decoration: none;
     
+}
+
+.show-nav a:hover{
+    color: #FF7C52;
+    font-weight: 600;
 }
 
 .content-box h1{

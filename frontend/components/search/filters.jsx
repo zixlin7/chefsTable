@@ -1,5 +1,9 @@
 import React from "react";
 import RestaurantsIndex from "./restaurant_index";
+import {
+  FaRegMoneyBillAlt,
+  FaUtensils,
+} from "react-icons/fa";
 
 class Filters extends React.Component{
     constructor(props){
@@ -41,72 +45,90 @@ class Filters extends React.Component{
 
     render(){
         
-        return(
-            <div className="filters-box">
-                <form className="filter-form" onSubmit={this.handleSubmit}> 
-                    <div className="cuisine">
-                        <p>Cuisine</p>
-                        <label>New American
-                            <input type="checkbox" value="New American"
-                            onChange={this.handleChange}/>
-                        </label>
-                        <br/>
-                        <label>French
-                            <input type="checkbox" value="Modern French" 
-                            onChange={this.handleChange}/>
-                        </label>
-                        <br />
+        return (
+          <div className="filters-box">
+            <form className="filter-form" onSubmit={this.handleSubmit}>
+              <div className="cuisine">
+                <div className="subtitle">
+                  <span className="icon">
+                    <FaUtensils />
+                  </span>
+                  <p>Cuisine</p>
+                </div>
+                <input
+                  type="checkbox"
+                  value="Modern French"
+                  onChange={this.handleChange}
+                />
+                <label className="label">French</label>
+                <br />
 
-                        <label>Japanese
-                            <input type="checkbox" value="Japanese" 
-                            onChange={this.handleChange}/>
-                        </label>
-                        <br />
+                <input
+                  type="checkbox"
+                  value="Japanese"
+                  onChange={this.handleChange}
+                />
+                <label className="label">Japanese</label>
+                <br />
 
-                        <label>Mexican
-                            <input type="checkbox" value="Mexican" 
-                            onChange={this.handleChange}/>
-                        </label>
-                        <br />
+                <input
+                  type="checkbox"
+                  value="Mexican"
+                  onChange={this.handleChange}
+                />
+                <label className="label">Mexican</label>
+                <br />
 
-                        <label>Wine bar
-                            <input type="checkbox" value="Wine bar"
-                                onChange={this.handleChange} />
-                        </label>
-                        <br />
+                <input
+                  type="checkbox"
+                  value="Wine bar"
+                  onChange={this.handleChange}
+                />
+                <label className="label">Wine bar</label>
+                <br />
 
-                        <label>Contemporary
-                            <input type="checkbox" value="Contemporary"
-                                onChange={this.handleChange} />
-                        </label>
-                        
-                    </div>
+                <input
+                  type="checkbox"
+                  value="New American"
+                  onChange={this.handleChange}
+                />
+                <label className="label">New American</label>
+                <br />
 
-                    <div className="price">
-                        <p>Price Range</p>
-                        <label>$
-                            <input type="checkbox" value="1" 
-                            onChange={this.handleChange}/>
-                        </label>
-                        <label>$$
-                            <input type="checkbox" value="2" 
-                            onChange={this.handleChange}/>
-                        </label>
-                        <label>$$$
-                            <input type="checkbox" value="3" 
-                                onChange={this.handleChange}/>
-                        </label>
-                        <label>$$$$
-                            <input type="checkbox" value="4" 
-                                onChange={this.handleChange}/>
-                        </label>
-                    </div>
-                    <button id="filter-button" type="submit">Apply</button>
-                </form>
+                <input
+                  type="checkbox"
+                  value="Contemporary"
+                  onChange={this.handleChange}
+                />
+                <label className="label">Contemporary</label>
+              </div>
 
-               
-            </div>
-        )
+              <div className="price">
+                <div className="subtitle">
+                  <span className="icon">
+                    <FaRegMoneyBillAlt />
+                  </span>
+                  <p>Price Range</p>
+                </div>
+                <input type="checkbox" value="1" onChange={this.handleChange} />
+                <label className="label">$</label>
+                <br />
+                <input type="checkbox" value="2" onChange={this.handleChange} />
+                <label className="label">$$</label>
+                <br />
+                <input type="checkbox" value="3" onChange={this.handleChange} />
+                <label className="label">$$$</label>
+                <br />
+                <input type="checkbox" value="4" onChange={this.handleChange} />
+                <label className="label">$$$$</label>
+                <br />
+              </div>
+              <button id="filter-button" type="submit">
+                Apply
+              </button>
+            </form>
+          </div>
+        );
     }
 }
 

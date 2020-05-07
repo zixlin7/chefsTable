@@ -26,6 +26,10 @@ class ReservationForm extends React.Component{
         
     }
 
+    componentDidMount(){
+        this.props.requestRestaurant(this.props.match.params.id)
+    }
+
 
     formatDate(){
         const date = new Date(this.props.search.date);
@@ -76,8 +80,8 @@ class ReservationForm extends React.Component{
    
 
     render(){
-       
-        const user = this.props.user
+        if (!this.props.restaurant) return null;
+        const user = this.props.user;
         const imgStyle = {
             backgroundImage: `url(${this.props.restaurant.photoURL})`,
             height: '150px',

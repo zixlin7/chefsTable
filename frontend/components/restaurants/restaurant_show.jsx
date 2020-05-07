@@ -54,7 +54,7 @@ class RestaurantShow extends React.Component{
        
         return(
         <div>
-            <div className="show-img" style={imgStyle}></div>
+            <div  className="show-img" style={imgStyle}></div>
             <div className="placeholder">
                 <div className="content-box">
                     <nav className="show-nav">
@@ -80,19 +80,19 @@ class RestaurantShow extends React.Component{
                     
                     </div>
 
-                    <p className="overview">{restaurant.overview}</p>
+                    <p className="overview" >{restaurant.overview}</p>
                     <div className="menu">
-                        <h2>Menu</h2>
+                        <h2 >Menu</h2>
                         <a href={restaurant.website_url}>see the menu on restaurant's website</a>
                     </div>
 
-                    <div className="review">
+                    <div className="review" >
                         <div className="review-head">
                             <h2>What people are saying</h2>
                             <Link to={`/restaurants/${restaurant.id}/reviews/new`}>Leave a review</Link>
                         </div>
-                        {Object.values(reviews).map(review => (
-                            <div className="review-item">
+                        {Object.values(reviews).map((review, i) => (
+                            <div key={i} className="review-item">
                                 <div className="user-profile">
                                     <div className="pic">
                                         <p><FaRegUser /></p>

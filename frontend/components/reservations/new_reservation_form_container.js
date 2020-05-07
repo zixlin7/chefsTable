@@ -1,7 +1,8 @@
 import {connect} from "react-redux";
 
 import {createReservation, updateReservation, deleteReservation} from "../../actions/reservations_actions";
-import ReservationForm from "./reservation_form"
+import ReservationForm from "./reservation_form";
+import {requestRestaurant} from "../../actions/restaurants_actions";
 
 const mSTP = (state, ownProps) =>{
     
@@ -25,7 +26,9 @@ const mSTP = (state, ownProps) =>{
 const mDTP = dispatch => ({
     createReservation: reservation => dispatch(createReservation(reservation)),
     updateReservation: reservation => dispatch(updateReservation(reservation)),
-    deleteReservation: reservationId => dispatch(deleteReservation(reservationId))
+    deleteReservation: reservationId => dispatch(deleteReservation(reservationId)),
+    requestRestaurant: restaurantId => dispatch(requestRestaurant(restaurantId))
+    
 });
 
 export default connect(mSTP, mDTP)(ReservationForm);

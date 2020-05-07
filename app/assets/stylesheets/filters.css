@@ -39,3 +39,18 @@
     transform: scale(1.05);
     font-weight: 600;
 }
+
+.cuisine .label, .price .label{
+    margin-left: 10px;
+}
+
+.cuisine .icon, .price .icon{
+    margin-right: 7px;
+    margin-top: 3px;
+}
+
+.subtitle{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
