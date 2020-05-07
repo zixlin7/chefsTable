@@ -9,12 +9,13 @@ const Greeting = props =>{
     
 
     const loggedIn = () => {
+      
         return (
           <div className="greeting-nav">
             <div className="dropdown">
               <p>Hi, {props.currentUser.firstname}!  <FaAngleDown/></p>
               <ul className="dropdown-menu">
-                <Link to="/users/:id">Reservations</Link>
+                <Link to={`/users/${props.currentUser.id}`}>Reservations</Link>
                 <li  onClick={props.logout}>Log Out</li>
               </ul>
             </div>

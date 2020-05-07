@@ -12,7 +12,8 @@ import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 import Footer from "./footer";
 import UserContainer from "./user/user_container";
-import LandingContainer from "./landing_container"
+import LandingContainer from "./landing_container";
+import ReviewContainer from "../components/reviews/reviews_container"
 
 
 const App = () => (
@@ -58,6 +59,12 @@ const App = () => (
       path="/users/:id"
       component={UserContainer}
     />
+
+      <ProtectedRoute
+        exact
+        path="/restaurants/:id/reviews/new"
+        component={ReviewContainer}
+      />
     </div>
 
 

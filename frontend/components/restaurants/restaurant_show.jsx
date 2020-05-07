@@ -7,6 +7,7 @@ import {
     FaUtensils,
     FaRegUser
 } from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 class RestaurantShow extends React.Component{
     constructor(props){
@@ -30,7 +31,7 @@ class RestaurantShow extends React.Component{
     }
 
     render(){
-        debugger
+        
         
         if (!this.props.restaurant) return null;
         if (!this.props.restaurant.review_ids.length) return null;
@@ -42,6 +43,7 @@ class RestaurantShow extends React.Component{
             backgroundImage: `url(${restaurant.photoURL})`,
         }; 
         const rating = parseFloat(restaurant.average_rating).toFixed(1)
+       
         return(
         <div>
             <div className="show-img" style={imgStyle}></div>
@@ -78,6 +80,7 @@ class RestaurantShow extends React.Component{
 
                     <div className="review">
                         <h2>What people are saying</h2>
+                            <Link to={`/restaurants/${restaurant.id}/reviews/new`}>Leave a review</Link>
                         {restaurant.review_ids.map(id => (
                             <div className="review-item">
                                 <div className="user-profile">

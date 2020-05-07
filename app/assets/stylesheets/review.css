@@ -1,0 +1,82 @@
+    @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating-input { 
+  border: none;
+  float: left;
+}
+
+.rating-input > input { display: none; } 
+.rating-input > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating-input > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating-input > label { 
+  color: #333; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating-input > input:checked ~ label, /* show gold star when clicked */
+.rating-input:not(:checked) > label:hover, /* hover current star */
+.rating-input:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating-input > input:checked + label:hover, /* hover current star when changing rating-input */
+.rating-input > input:checked ~ label:hover,
+.rating-input > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating-input > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+    
+    
+    
+    
+    #rating-select{
+        width: 150px;
+        padding: 8px 35px 3px 5px;
+        font-size: 16px;
+        border: none;
+        height: 40px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-family: 'Open Sans', sans-serif;
+        outline: none;
+        text-indent: 28%;
+        background-color: white;
+        border-left: 1px solid #ebebeb;
+    }
+
+    .review-form{
+        display: flex;
+        flex-direction: column;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        margin: 20px 30px;
+        align-items: flex-start;
+        height: 451px;
+
+    }
+
+    #title-input, #body-input{
+        height: 40px;
+        -webkit-appearance: none;
+        border:none;
+    }
+
+    #title{
+
+    }

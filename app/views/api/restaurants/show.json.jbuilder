@@ -13,7 +13,7 @@ end
 
   json.users do
     json.set! review.user.id do
-      json.extract! review.user, :firstname, :email, :lastname
+      json.extract! review.user, :firstname, :email, :lastname, :id
     end
   end
 end
