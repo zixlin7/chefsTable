@@ -44,6 +44,10 @@
     margin-left: 10px;
 }
 
+.cuisine .label:hover, .price .label:hover{
+    font-weight: 600;
+}
+
 .cuisine .icon, .price .icon{
     margin-right: 7px;
     margin-top: 3px;

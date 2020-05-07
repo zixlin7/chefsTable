@@ -1203,6 +1203,7 @@ var EditReservationForm = /*#__PURE__*/function (_React$Component) {
         search: this.props.search,
         reservation: this.props.reservation,
         updateReservation: this.props.updateReservation,
+        requestRestaurant: this.props.requestRestaurant,
         match: this.props.match
       })));
     }
@@ -2070,7 +2071,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "review-form",
         onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.user.firstname, ", Share you experience at ", this.props.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Rating:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.user.firstname, ", Share you experience at ", this.props.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Rating:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
         className: "rating-input",
         onChange: this.updateForm("rating"),
         defaultValue: this.state.rating
@@ -2087,7 +2088,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         type: "radio",
         id: "star4half",
         name: "rating",
-        value: "4.5"
+        value: "5"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "half",
         "for": "star4half",
@@ -2105,7 +2106,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         type: "radio",
         id: "star3half",
         name: "rating",
-        value: "3.5"
+        value: "4"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "half",
         "for": "star3half",
@@ -2123,7 +2124,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         type: "radio",
         id: "star2half",
         name: "rating",
-        value: "2.5"
+        value: "3"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "half",
         "for": "star2half",
@@ -2141,7 +2142,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         type: "radio",
         id: "star1half",
         name: "rating",
-        value: "1.5"
+        value: "2"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "half",
         "for": "star1half",
@@ -2159,17 +2160,17 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         type: "radio",
         id: "starhalf",
         name: "rating",
-        value: "half"
+        value: "1"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "half",
         "for": "starhalf",
         title: "Sucks big time - 0.5 stars"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "title-input",
         type: "text",
         onChange: this.updateForm("title"),
         value: this.state.title
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Details:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Details:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         id: "body-input",
         onChange: this.updateForm("body"),
         value: this.state.body

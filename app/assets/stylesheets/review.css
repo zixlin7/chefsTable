@@ -26,7 +26,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 }
 
 .rating-input > label { 
-  color: #333; 
+  color: rgba(177, 175, 175, 0.479); 
  float: right; 
 }
 

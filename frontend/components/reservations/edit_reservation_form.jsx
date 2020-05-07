@@ -55,6 +55,7 @@ class EditReservationForm extends React.Component{
                   search={this.props.search}
                   reservation={this.props.reservation}
                   updateReservation={this.props.updateReservation}
+                  requestRestaurant={this.props.requestRestaurant}
                   match={this.props.match}
                 />
               </div>
