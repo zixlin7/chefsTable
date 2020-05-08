@@ -2155,7 +2155,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "full",
         "for": "star1",
-        title: "Sucks big time - 1"
+        title: "Disappointing- 1"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         id: "starhalf",
@@ -2164,7 +2164,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "half",
         "for": "starhalf",
-        title: "Sucks big time - 0.5 stars"
+        title: "Disappointing- 0.5 stars"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "title-input",
         type: "text",

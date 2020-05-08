@@ -51,9 +51,9 @@ class ReviewForm extends React.Component{
                             <input type="radio" id="star1half" name="rating" value="2" />
                             <label className="half" for="star1half" title="Meh - 1.5 stars"></label>
                             <input type="radio" id="star1" name="rating" value="1" />
-                            <label className="full" for="star1" title="Sucks big time - 1"></label>
+                            <label className="full" for="star1" title="Disappointing- 1"></label>
                             <input type="radio" id="starhalf" name="rating" value="1" />
-                            <label className="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                            <label className="half" for="starhalf" title="Disappointing- 0.5 stars"></label>
                         </fieldset>
 
                     <p>* Title:</p>
