@@ -1884,7 +1884,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  debugger;
   return {
     review: state.entities.reviews[ownProps.match.params.reviewId],
     formType: "update review",
@@ -1968,8 +1967,7 @@ var EditReviewForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger; // if(!this.props.review) return null;
-
+      // if(!this.props.review) return null;
       var _this$props = this.props,
           review = _this$props.review,
           formType = _this$props.formType,
