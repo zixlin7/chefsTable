@@ -3,7 +3,7 @@ import {logout} from "../../actions/session_actions";
 import Greeting from "./greeting"
 import {fetchUser} from "../../actions/users_actions"
 
-const mSTP = state => ({
+const mSTP = (state, ownProps) => ({
     currentUser: state.entities.users[state.session.id]
 
 });

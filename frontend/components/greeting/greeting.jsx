@@ -4,23 +4,23 @@ import {
   FaAngleDown
 } from "react-icons/fa";
 
+import {withRouter} from "react-router-dom"
+
 
 class Greeting extends React.Component{
     constructor(props){
       super(props);
       this.state = {redirect: false};
-      // this.handleClick = this.handleClick.bind(this);
+      this.handleClick = this.handleClick.bind(this);
     }
 
-    // componentDidMount(){
-
-    //   this.props.fetchUser(this.props.currentUser.id)
-    // }
-
-    // handleClick(e){
-    //   e.preventDefault();
-    //   this.setState({ redirect: `/users/${this.props.currentUser.id}` });
-    // }
+    
+    
+    handleClick(e){
+      e.preventDefault();
+      this.props.fetchUser(this.props.currentUser.id)
+      this.props.history.push(`/users/${this.props.currentUser.id}`);
+    }
 
     render(){
 
@@ -33,9 +33,9 @@ class Greeting extends React.Component{
                 Hi, {this.props.currentUser.firstname}! <FaAngleDown />
               </p>
               <ul className="dropdown-menu">
-                <Link to={`/users/${this.props.currentUser.id}`}>
+                <a onClick={this.handleClick}>{/* <a to={`/users/${this.props.currentUser.id}`}> */}
                  Reservations
-                </Link>
+                </a>
                 <li onClick={this.props.logout}>Log Out</li>
               </ul>
             </div>
@@ -59,6 +59,6 @@ class Greeting extends React.Component{
     }
 }
 
-export default Greeting;
+export default withRouter(Greeting);
 
 

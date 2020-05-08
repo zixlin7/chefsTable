@@ -686,6 +686,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Greeting = /*#__PURE__*/function (_React$Component) {
   _inherits(Greeting, _React$Component);
 
@@ -699,19 +700,19 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       redirect: false
-    }; // this.handleClick = this.handleClick.bind(this);
-
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentDidMount(){
-  //   this.props.fetchUser(this.props.currentUser.id)
-  // }
-  // handleClick(e){
-  //   e.preventDefault();
-  //   this.setState({ redirect: `/users/${this.props.currentUser.id}` });
-  // }
-
+  }
 
   _createClass(Greeting, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      this.props.fetchUser(this.props.currentUser.id);
+      this.props.history.push("/users/".concat(this.props.currentUser.id));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -724,8 +725,8 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
           className: "dropdown"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hi, ", _this2.props.currentUser.firstname, "! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "dropdown-menu"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/users/".concat(_this2.props.currentUser.id)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          onClick: _this2.handleClick
         }, "Reservations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           onClick: _this2.props.logout
         }, "Log Out"))));
@@ -749,7 +750,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
   return Greeting;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Greeting);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Greeting));
 
 /***/ }),
 
@@ -771,7 +772,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = function mSTP(state) {
+var mSTP = function mSTP(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id]
   };
