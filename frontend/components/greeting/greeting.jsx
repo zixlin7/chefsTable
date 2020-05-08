@@ -12,10 +12,10 @@ class Greeting extends React.Component{
       // this.handleClick = this.handleClick.bind(this);
     }
 
-    componentDidMount(){
+    // componentDidMount(){
 
-      this.props.fetchUser(this.props.currentUser.id)
-    }
+    //   this.props.fetchUser(this.props.currentUser.id)
+    // }
 
     // handleClick(e){
     //   e.preventDefault();

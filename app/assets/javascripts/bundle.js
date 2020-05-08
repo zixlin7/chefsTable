@@ -702,18 +702,16 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
     }; // this.handleClick = this.handleClick.bind(this);
 
     return _this;
-  }
+  } // componentDidMount(){
+  //   this.props.fetchUser(this.props.currentUser.id)
+  // }
+  // handleClick(e){
+  //   e.preventDefault();
+  //   this.setState({ redirect: `/users/${this.props.currentUser.id}` });
+  // }
+
 
   _createClass(Greeting, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchUser(this.props.currentUser.id);
-    } // handleClick(e){
-    //   e.preventDefault();
-    //   this.setState({ redirect: `/users/${this.props.currentUser.id}` });
-    // }
-
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
