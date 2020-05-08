@@ -9,10 +9,12 @@ import {
 } from "react-icons/fa";
 import {Link} from "react-router-dom";
 
+
 class RestaurantShow extends React.Component{
     constructor(props){
         super(props);
         this.state = {delete: false}
+        this.handleBack = this.handleBack.bind(this);
     }
     componentDidMount(){
         
@@ -39,6 +41,11 @@ class RestaurantShow extends React.Component{
         }
     }
 
+    handleBack(e){
+        e.preventDefault();
+        this.props.history.push("/restaurants");
+    }
+
     render(){
         
         if (!this.props.restaurant) return null;
@@ -58,10 +65,15 @@ class RestaurantShow extends React.Component{
             <div className="placeholder">
               <div className="content-box">
                 <nav className="show-nav">
-                  <a>Overview</a>
-                  <a>Photos</a>
-                  <a>Menu</a>
-                  <a>Reviews</a>
+                  <div className="show-link">
+                    <a>Overview</a>
+                    <a>Photos</a>
+                    <a>Menu</a>
+                    <a>Reviews</a>
+                  </div>
+                  <button id="back-button" onClick={this.handleBack}>
+                    Back
+                  </button>
                 </nav>
 
                 <h1>{restaurant.name}</h1>
@@ -161,7 +173,12 @@ class RestaurantShow extends React.Component{
                         <p>{review.body}</p>
                         {review.user_id === this.props.currentUser.id ? (
                           <div>
-                            <Link id="delete-review" to={`/restaurants/${restaurant.id}/reviews/${review.id}/edit`}>Edit review</Link>
+                            <Link
+                              id="delete-review"
+                              to={`/restaurants/${restaurant.id}/reviews/${review.id}/edit`}
+                            >
+                              Edit review
+                            </Link>
                             <button
                               id="delete-review"
                               onClick={this.handleDelete(review.id)}

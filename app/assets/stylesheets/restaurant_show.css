@@ -29,10 +29,12 @@
     width: 90%;
     font-family: 'Open Sans', sans-serif;
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid rgba(104, 103, 103, 0.3);
+    padding: 14px;
 }
 
-.show-nav a{
+.show-link a{
     font-weight: 600;
     margin:15px 20px;
     margin-left: 0;
@@ -177,4 +179,18 @@
     margin-right: 20px;
     text-decoration: none;
     cursor: pointer;
+}
+
+#back-button{
+    background: rgba(230, 230, 230, 0.4);
+    -webkit-appearance: none;
+    border: none;
+    height: 24px;
+    width: 73px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: #FF7C52;
+    cursor: pointer;
+    outline: none;
 }
