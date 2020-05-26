@@ -2,6 +2,12 @@
 
 chef's Table is a full-stack project inspired by Opentable. It's a platform that people can view a list of restaurants featured in Netflix's show Chef's Table and make reservations based on availability.
   
+  ## Technology
+* Ruby on rails
+* React & Redux
+* CSS
+* AWS S3
+  
 ## Functionality
 This is the currently how the home page looks like:
 users can user the filters to search for restaurants
@@ -15,11 +21,6 @@ they can then make a reservation at the chosen time slot:
   
 users can also review restaurants and update/delete their own reviews.
   
-## Technology
-* Ruby on rails
-* React & Redux
-* CSS
-* AWS S3
   
 ## Challenges
 * implement search/filters feature
