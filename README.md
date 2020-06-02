@@ -33,11 +33,9 @@ users can also review restaurants and update/delete their own reviews:
     field,
     value
 });
-
     export const updateSearch = (field, value) => (dispatch, getState) => {
         dispatch(changeSearch(field, value));
-        return requestRestaurants(getState().ui.search)(dispatch);
-        
+        return requestRestaurants(getState().ui.search)(dispatch);  
 };
  ```
     
@@ -61,19 +59,16 @@ users can also review restaurants and update/delete their own reviews:
     }
     return newRes;
 }
-
-export default resSelector;
-        
+export default resSelector;      
 };
  ```
 ### Timeslots for reservation
 #### Solution
   ```javascript
   getTimeSlots() {
-    let searchTime = parseInt(this.props.search.time);
-    let openTime = new Date(this.props.restaurant.open_hour).getHours();
-    let closeTime = new Date(this.props.restaurant.close_hour).getHours();
-    
+    const searchTime = parseInt(this.props.search.time);
+    const openTime = new Date(this.props.restaurant.open_hour).getHours();
+    const closeTime = new Date(this.props.restaurant.close_hour).getHours();
     const timeSlots = [];
     for(let i = searchTime - 1; i <= searchTime + 1; i++){
       if (i >= openTime && i<= closeTime){
@@ -83,13 +78,10 @@ export default resSelector;
     const full = timeSlots.map(time => {
       return time < 10 ? `0${time}:00` : `${time}:00`
     })
-
     const half = timeSlots.map((time) => {
       return time < 10 ? `0${time}:30` : `${time}:30`;
     });
-
     return [...full, ...half].sort();
-
   }
   ```
   
