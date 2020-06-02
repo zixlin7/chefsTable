@@ -28,12 +28,12 @@ users can also review restaurants and update/delete their own reviews:
 #### Solution
   * Stored user's input for search in UI slice of state and passed it in AJAX call to handle search for location/availability in the backend
  ```javascript
-    const changeSearch = (field, value) => ({
+  const changeSearch = (field, value) => ({
     type: UPDATE_SEARCH,
     field,
     value
 });
-    export const updateSearch = (field, value) => (dispatch, getState) => {
+  export const updateSearch = (field, value) => (dispatch, getState) => {
         dispatch(changeSearch(field, value));
         return requestRestaurants(getState().ui.search)(dispatch);  
 };
