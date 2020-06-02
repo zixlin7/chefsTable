@@ -593,7 +593,7 @@ var App = function App() {
     exact: true,
     path: "/signUp",
     component: _session_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants/:id",
     component: _restaurants_restaurant_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
