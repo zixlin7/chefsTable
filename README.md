@@ -24,8 +24,74 @@ users can also review restaurants and update/delete their own reviews:
   
   
 ## Challenges
-* implement search/filters feature
-* manage associations between tables
+### Search/filters feature
+#### Solution
+  * Stored user's input for search in UI slice of state and passed it in AJAX call to handle search for location/availability in the backend
+ ```javascript
+    const changeSearch = (field, value) => ({
+    type: UPDATE_SEARCH,
+    field,
+    value
+});
+
+    export const updateSearch = (field, value) => (dispatch, getState) => {
+        dispatch(changeSearch(field, value));
+        return requestRestaurants(getState().ui.search)(dispatch);
+        
+};
+ ```
+    
+  * implemented front-end filtering for cuisine and price range
+```javascript
+   const resSelector = (restaurants, cuisineFilter, priceFilter) => {
+    const newRes ={};
+    for (let key in restaurants) {
+        if (cuisineFilter.length && priceFilter.length) {
+            if (cuisineFilter.some(filter => Object.values(restaurants[key]).includes(filter))
+                && priceFilter.some(filter => Object.values(restaurants[key]).includes(parseInt(filter)))) {   
+                    newRes[key] = restaurants[key]
+                }
+        } else if (cuisineFilter.length && cuisineFilter.some(filter =>
+        Object.values(restaurants[key]).includes(filter))) {
+            newRes[key] = restaurants[key]
+        } else if (priceFilter.length && priceFilter.some(filter =>
+            Object.values(restaurants[key]).includes(parseInt(filter)))) {
+            newRes[key] = restaurants[key]
+        } 
+    }
+    return newRes;
+}
+
+export default resSelector;
+        
+};
+ ```
+### Timeslots for reservation
+#### Solution
+  ```javascript
+  getTimeSlots() {
+    let searchTime = parseInt(this.props.search.time);
+    let openTime = new Date(this.props.restaurant.open_hour).getHours();
+    let closeTime = new Date(this.props.restaurant.close_hour).getHours();
+    
+    const timeSlots = [];
+    for(let i = searchTime - 1; i <= searchTime + 1; i++){
+      if (i >= openTime && i<= closeTime){
+        timeSlots.push(i);
+      }
+    }
+    const full = timeSlots.map(time => {
+      return time < 10 ? `0${time}:00` : `${time}:00`
+    })
+
+    const half = timeSlots.map((time) => {
+      return time < 10 ? `0${time}:30` : `${time}:30`;
+    });
+
+    return [...full, ...half].sort();
+
+  }
+  ```
   
 ## Next Steps
 * build recommendations at front page.
