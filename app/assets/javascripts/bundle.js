@@ -312,18 +312,21 @@ var deleteReview = function deleteReview(reviewId) {
 /*!********************************************!*\
   !*** ./frontend/actions/search_actions.js ***!
   \********************************************/
-/*! exports provided: UPDATE_SEARCH, UPDATE_FILTER, updateSearch, default */
+/*! exports provided: UPDATE_SEARCH, UPDATE_FILTER, DELETE_FILTER, updateSearch, default, resetFilter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_SEARCH", function() { return UPDATE_SEARCH; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER", function() { return UPDATE_FILTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_FILTER", function() { return DELETE_FILTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSearch", function() { return updateSearch; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetFilter", function() { return resetFilter; });
 /* harmony import */ var _restaurants_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./restaurants_actions */ "./frontend/actions/restaurants_actions.js");
 
 var UPDATE_SEARCH = "UPDATE_SEARCH";
 var UPDATE_FILTER = "UPDATE_FILTER";
+var DELETE_FILTER = "UPDATE_FILTER";
 
 var changeSearch = function changeSearch(field, value) {
   return {
@@ -348,7 +351,16 @@ var updateFilter = function updateFilter(cuisineFilter, priceFilter) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (updateFilter);
+/* harmony default export */ __webpack_exports__["default"] = (updateFilter); // const deleteFilter = () => ({
+//     type: UPDATE_FILTER
+// })
+
+var resetFilter = function resetFilter() {
+  return function (dispatch, getState) {
+    // dispatch(deleteFilter());
+    return Object(_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["requestRestaurants"])(getState().ui.search)(dispatch);
+  };
+};
 
 /***/ }),
 
@@ -2318,6 +2330,18 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var _defaultState = {
+  "Wine bar": false,
+  "Japanese": false,
+  "Mexican": false,
+  "Modern French": false,
+  "New American": false,
+  "Contemporary": false,
+  1: false,
+  2: false,
+  3: false,
+  4: false
+};
 
 var Filters = /*#__PURE__*/function (_React$Component) {
   _inherits(Filters, _React$Component);
@@ -2330,20 +2354,10 @@ var Filters = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Filters);
 
     _this = _super.call(this, props);
-    _this.state = {
-      "Wine bar": false,
-      "Japanese": false,
-      "Mexican": false,
-      "Modern French": false,
-      "New American": false,
-      "Contemporary": false,
-      1: false,
-      2: false,
-      3: false,
-      4: false
-    };
+    _this.state = _defaultState;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.reset = _this.reset.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2369,8 +2383,14 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         }
       }
 
-      debugger;
       this.props.updateFilter(cuisineFilter, priceFilter);
+    }
+  }, {
+    key: "reset",
+    value: function reset(e) {
+      e.preventDefault;
+      this.setState(_defaultState);
+      this.props.resetFilter();
     }
   }, {
     key: "render",
@@ -2389,37 +2409,43 @@ var Filters = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUtensils"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cuisine")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Modern French",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["Modern French"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "French"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Japanese",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["Japanese"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Japanese"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Mexican",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["Mexican"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Mexican"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Wine bar",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["Wine bar"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Wine bar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "New American",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["New American"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "New American"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Contemporary",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["Contemporary"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Contemporary")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2431,31 +2457,38 @@ var Filters = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegMoneyBillAlt"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price Range")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "1",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["1"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "2",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["2"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "3",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["3"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "4",
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        checked: this.state["4"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "filter-button",
         type: "submit"
-      }, "Apply")));
+      }, "Apply")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "filter-button",
+        onClick: this.reset
+      }, "Reset"));
     }
   }]);
 
@@ -2574,7 +2607,8 @@ var Search = function Search(_ref) {
       updateSearch = _ref.updateSearch,
       requestRestaurant = _ref.requestRestaurant,
       requestRestaurants = _ref.requestRestaurants,
-      updateFilter = _ref.updateFilter;
+      updateFilter = _ref.updateFilter,
+      resetFilter = _ref.resetFilter;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2588,7 +2622,8 @@ var Search = function Search(_ref) {
     restaurants: restaurants,
     search: search,
     updateFilter: updateFilter,
-    updateSearch: updateSearch
+    updateSearch: updateSearch,
+    resetFilter: resetFilter
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     restaurants: restaurants,
     search: search,
@@ -2638,6 +2673,9 @@ var mDTP = function mDTP(dispatch) {
     },
     updateSearch: function updateSearch(field, value) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["updateSearch"])(field, value));
+    },
+    resetFilter: function resetFilter() {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["resetFilter"])());
     },
     updateFilter: function updateFilter(cuisineFilter, priceFilter) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["default"])(cuisineFilter, priceFilter));
@@ -4005,6 +4043,7 @@ var deleteReservation = function deleteReservation(reservationId) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var resSelector = function resSelector(restaurants, cuisineFilter, priceFilter) {
+  // if (!cuisineFilter.length && !priceFilter.length) return restaurants;
   var newRes = {};
 
   var _loop = function _loop(key) {
@@ -4014,7 +4053,6 @@ var resSelector = function resSelector(restaurants, cuisineFilter, priceFilter) 
       }) && priceFilter.some(function (filter) {
         return Object.values(restaurants[key]).includes(parseInt(filter));
       })) {
-        debugger;
         newRes[key] = restaurants[key];
       }
     } else if (cuisineFilter.length && cuisineFilter.some(function (filter) {

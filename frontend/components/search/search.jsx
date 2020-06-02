@@ -3,7 +3,7 @@ import RestaurantsIndex from "./restaurant_index";
 import SearchForm from "./search_form";
 import Filters from "./filters"
 
-const Search = ({ restaurants, search, updateSearch, requestRestaurant, requestRestaurants, updateFilter }) =>{
+const Search = ({ restaurants, search, updateSearch, requestRestaurant, requestRestaurants, updateFilter, resetFilter }) =>{
     
     return(
         <div className="search-container">
@@ -13,7 +13,8 @@ const Search = ({ restaurants, search, updateSearch, requestRestaurant, requestR
             <div className="res-main">
                 <Filters restaurants={restaurants} search={search}
                     updateFilter={updateFilter}
-                    updateSearch={updateSearch}/>
+                    updateSearch={updateSearch}
+                    resetFilter={resetFilter}/>
                 <RestaurantsIndex restaurants={restaurants} search={search}
                     updateSearch={updateSearch}
                     requestRestaurants={requestRestaurants}

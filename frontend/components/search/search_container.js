@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { requestRestaurants, requestRestaurant } from "../../actions/restaurants_actions";
 import Search from "./search";
-import {updateSearch} from "../../actions/search_actions"
+import {updateSearch, resetFilter} from "../../actions/search_actions"
 import updateFilter from "../../actions/search_actions";
 
 
@@ -14,6 +14,7 @@ const mDTP = (dispatch) => ({
     requestRestaurants: (filters) => dispatch(requestRestaurants(filters)),
     requestRestaurant: (restaurantId) => dispatch(requestRestaurant(restaurantId)),
     updateSearch: (field, value) => dispatch(updateSearch(field, value)),
+    resetFilter: () => dispatch(resetFilter()),
     updateFilter: (cuisineFilter, priceFilter) => dispatch(updateFilter(cuisineFilter, priceFilter))
 });
 
