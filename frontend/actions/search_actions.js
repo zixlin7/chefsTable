@@ -24,9 +24,7 @@ const updateFilter = (cuisineFilter, priceFilter) => ({
 
 export default updateFilter;
 
-// const deleteFilter = () => ({
-//     type: UPDATE_FILTER
-// })
+
 
 export const resetFilter = () => (dispatch, getState) => {
     // dispatch(deleteFilter());

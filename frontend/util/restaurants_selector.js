@@ -1,12 +1,10 @@
 
 const resSelector = (restaurants, cuisineFilter, priceFilter) => {
-    // if (!cuisineFilter.length && !priceFilter.length) return restaurants;
-    let newRes ={};
+    const newRes ={};
     for (let key in restaurants) {
         if (cuisineFilter.length && priceFilter.length) {
             if (cuisineFilter.some(filter => Object.values(restaurants[key]).includes(filter))
-                && priceFilter.some(filter => Object.values(restaurants[key]).includes(parseInt(filter)))) {
-                    
+                && priceFilter.some(filter => Object.values(restaurants[key]).includes(parseInt(filter)))) {   
                     newRes[key] = restaurants[key]
                 }
         } else if (cuisineFilter.length && cuisineFilter.some(filter =>

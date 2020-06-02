@@ -351,10 +351,7 @@ var updateFilter = function updateFilter(cuisineFilter, priceFilter) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (updateFilter); // const deleteFilter = () => ({
-//     type: UPDATE_FILTER
-// })
-
+/* harmony default export */ __webpack_exports__["default"] = (updateFilter);
 var resetFilter = function resetFilter() {
   return function (dispatch, getState) {
     // dispatch(deleteFilter());
@@ -4043,7 +4040,6 @@ var deleteReservation = function deleteReservation(reservationId) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var resSelector = function resSelector(restaurants, cuisineFilter, priceFilter) {
-  // if (!cuisineFilter.length && !priceFilter.length) return restaurants;
   var newRes = {};
 
   var _loop = function _loop(key) {
