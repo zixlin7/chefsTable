@@ -10,8 +10,8 @@ class Filters extends React.Component{
         super(props)
         this.state = {
             "Wine bar": false,
-            Japanese: false,
-            Mexican: false,
+            "Japanese": false,
+            "Mexican": false,
             "Modern French": false,
             "New American": false,
             "Contemporary" : false,
@@ -31,14 +31,20 @@ class Filters extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        const filter = []
+        const cuisineFilter = [];
+        const priceFilter = [];
         for (let key in this.state) {
             if(this.state[key]){
-                filter.push(key)
+              if(key.length === 1){
+                priceFilter.push(key)
+              } else {
+                cuisineFilter.push(key)
+              }
+                
             }
         }
-
-        this.props.updateSearch("moreFilter", filter)
+        debugger
+        this.props.updateFilter(cuisineFilter, priceFilter)
         
     }
     

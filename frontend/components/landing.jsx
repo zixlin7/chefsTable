@@ -21,7 +21,7 @@ class Landing extends React.Component{
       return <Redirect to={this.state.redirect} />;
      const landingStyle = {
        backgroundImage: `url(${window.landingURL})`,
-       height: '500px',
+       height: '550px',
        width: '100%',
        backgroundSize: 'cover',
        position: 'relative',

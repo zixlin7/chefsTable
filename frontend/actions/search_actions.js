@@ -12,14 +12,16 @@ const changeSearch = (field, value) => ({
 export const updateSearch = (field, value) => (dispatch, getState) => {
         dispatch(changeSearch(field, value));
         return requestRestaurants(getState().ui.search)(dispatch);
-        // delicious curry!
+        
 };
 
-const changeFilter = (cuisineFilter, priceFilter) => ({
+const updateFilter = (cuisineFilter, priceFilter) => ({
     type: UPDATE_FILTER,
     cuisineFilter,
     priceFilter
 })
+
+export default updateFilter;
 
 
 
