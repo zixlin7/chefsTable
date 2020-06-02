@@ -50,6 +50,10 @@
     height: fit-content;
 }
 
+.dropdown:hover{
+    cursor: pointer;
+}
+
 .dropdown-menu{
     /* top: -3px; */
     position: absolute;
@@ -68,6 +72,7 @@
     background-color: rgba(240, 240, 240, 0.7);
     border-radius: 3px;
     padding-right: 10px;
+    cursor: pointer;
     
 }
 

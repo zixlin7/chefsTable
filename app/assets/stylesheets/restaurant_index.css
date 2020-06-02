@@ -61,6 +61,7 @@
     background-color: #FF7C52;
     /* background-color: #C5D7D9; */
     color: #666;
+    cursor: pointer;
 }
 
 .time-slots div button {
@@ -78,7 +79,10 @@
     color: #333;
     font-size: 18px;
     font-weight: 600;
+   
 }
+
+
 .restaurant #res-name{
     margin-left: -5px;
     font-size: 21px;
@@ -95,6 +99,9 @@
     font-size: 14px;
 }
 
+.restaurant-info button:hover{
+    cursor: pointer;
+}
 .res-search{
     margin-top: 10px;
     display: flex;

@@ -103,6 +103,7 @@
     transform: rotateZ(360deg);
     /* transform: rotate(-10deg); */
     transition: transform 200ms linear;
+    cursor: pointer;
 
 }
 
