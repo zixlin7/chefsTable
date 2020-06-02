@@ -95,6 +95,7 @@
 .form-button:hover{
     color: #FF7C52;
     outline: #FF7C52;
+    cursor: pointer;
 }
 
 .sign-in div{
