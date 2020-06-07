@@ -8,7 +8,7 @@ class Api::ReservationsController < ApplicationController
     def create
         
         @reservation = Reservation.new(reservation_params)
-        if @reservation.save
+        if (Reservation.comfirm_availability(@reservation) && @reservation.save)
             render :show
         else 
             render json: @reservation.errors.full_messages, status: 400
@@ -17,7 +17,7 @@ class Api::ReservationsController < ApplicationController
 
     def update
         @reservation = Reservation.find_by(id: params[:id])
-        if @reservation.update(reservation_params)
+        if (Reservation.comfirm_availability(@reservation) &&@reservation.update(reservation_params))
             render :show
         else 
             render json: @reservation.errors.full_messages, status: 400
