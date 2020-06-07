@@ -117,6 +117,30 @@
     height: 32px;
     align-self: center;
   }
+
+  .restaurant {
+      flex-wrap: wrap;
+  }
+
+  .comfirm {
+      width: 95%;
+  }
+
+  .info{
+      flex-wrap: wrap;
+  }
+
+  .res-detail div{
+      flex-wrap: wrap;
+  }
+
+  #reservation-button{
+      width: 40%;
+  }
+
+  .input input{
+      margin-bottom: 20px;
+  }
 }
 
 
