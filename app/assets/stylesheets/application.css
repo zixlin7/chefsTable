@@ -107,5 +107,17 @@
 
 }
 
+@media only screen and (max-width: 850px) {
+  .select-container{
+      flex-wrap: wrap;
+      max-width: 350px;
+  }
+
+  .search-bar a{
+    height: 32px;
+    align-self: center;
+  }
+}
+
 
 
