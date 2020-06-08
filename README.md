@@ -73,7 +73,7 @@ export default resSelector;
     const closeTime = new Date(this.props.restaurant.close_hour).getHours();
     const timeSlots = [];
     for(let i = searchTime - 1; i <= searchTime + 1; i++){
-      if (i >= openTime && i<= closeTime){
+      if (i >= openTime && i< closeTime){
         timeSlots.push(i);
       }
     }
