@@ -63,7 +63,9 @@ export default resSelector;
 };
  ```
 ### Timeslots for reservation
+
 #### Solution
+  * Generating time slots in front-end based on user's search input
   ```javascript
   getTimeSlots() {
     const searchTime = parseInt(this.props.search.time);
@@ -83,6 +85,19 @@ export default resSelector;
     });
     return [...full, ...half].sort();
   }
+  ```
+   * Validate the availability for the timeslot user selected in the backend
+  ```ruby
+   def self.comfirm_availability(reservation)
+        start_time = reservation.time - 2.hours
+        end_time = reservation.time + 2.hours
+        reservations = reservation.restaurant.reservations.where("time BETWEEN ? AND ?", start_time, end_time)
+        number_of_people = 0
+        reservations.to_a.each do |reservation|
+            number_of_people += reservation.number_of_party
+        end
+        reservation.restaurant.capacity > (number_of_people + reservation.number_of_party)
+   end
   ```
   
 ## Next Steps
