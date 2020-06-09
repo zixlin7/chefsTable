@@ -9,14 +9,9 @@ import {
   BsStarFill
 } from "react-icons/fa";
 
-
-
-
 const handleChange = (field, updateSearch) => e => {
     return(updateSearch(field, e.currentTarget.value))
 }
-
-
 
 const getTimeSlots = ( ) => {
     let openTime = 15
@@ -44,7 +39,6 @@ const getParty = () => {
     }
     return arr;
 }
-
 
 const SearchForm = props => {
     

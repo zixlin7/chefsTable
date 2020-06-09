@@ -335,7 +335,7 @@ var deleteReview = function deleteReview(reviewId) {
 /*!********************************************!*\
   !*** ./frontend/actions/search_actions.js ***!
   \********************************************/
-/*! exports provided: UPDATE_SEARCH, UPDATE_FILTER, DELETE_FILTER, updateSearch, default, resetFilter */
+/*! exports provided: UPDATE_SEARCH, UPDATE_FILTER, DELETE_FILTER, updateSearch, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -344,7 +344,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER", function() { return UPDATE_FILTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_FILTER", function() { return DELETE_FILTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSearch", function() { return updateSearch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetFilter", function() { return resetFilter; });
 /* harmony import */ var _restaurants_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./restaurants_actions */ "./frontend/actions/restaurants_actions.js");
 /* harmony import */ var _util_restaurants_selector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/restaurants_selector */ "./frontend/util/restaurants_selector.js");
 /* harmony import */ var _filter_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filter_actions */ "./frontend/actions/filter_actions.js");
@@ -380,12 +379,6 @@ var updateFilter = function updateFilter(filterState) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (updateFilter);
-var resetFilter = function resetFilter() {
-  return function (dispatch, getState) {
-    // dispatch(deleteFilter());
-    return Object(_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["requestRestaurants"])(getState().ui.search)(dispatch);
-  };
-};
 
 /***/ }),
 
@@ -2326,8 +2319,7 @@ var Root = function Root(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _restaurant_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurant_index */ "./frontend/components/search/restaurant_index.jsx");
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2353,7 +2345,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var Filters = /*#__PURE__*/function (_React$Component) {
   _inherits(Filters, _React$Component);
 
@@ -2366,7 +2357,6 @@ var Filters = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.reset = _this.reset.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2375,13 +2365,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
     value: function handleChange(e) {
       var filterState = this.props.filter;
       filterState[e.target.value] = !filterState[e.target.value];
-      this.props.updateFilter(filterState); // const cuisineFilter = [];
-      // const priceFilter = [];
-    }
-  }, {
-    key: "reset",
-    value: function reset() {
-      this.props.resetFilter();
+      this.props.updateFilter(filterState);
     }
   }, {
     key: "render",
@@ -2396,7 +2380,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         className: "subtitle"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "icon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUtensils"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cuisine")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaUtensils"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cuisine")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Modern French",
         onChange: this.handleChange,
@@ -2444,7 +2428,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         className: "subtitle"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "icon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegMoneyBillAlt"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price Range")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaRegMoneyBillAlt"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price Range")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "1",
         onChange: this.handleChange,
@@ -4107,11 +4091,7 @@ var resSelector = function resSelector(restaurants, filterState) {
 
   for (var key in filterState) {
     if (filterState[key]) {
-      if (key.length === 1) {
-        priceFilter.push(key);
-      } else {
-        cuisineFilter.push(key);
-      }
+      key.length === 1 ? priceFilter.push(key) : cuisineFilter.push(key);
     }
   }
 
@@ -4120,18 +4100,18 @@ var resSelector = function resSelector(restaurants, filterState) {
   var _loop = function _loop(_key) {
     if (cuisineFilter.length && priceFilter.length) {
       if (cuisineFilter.some(function (filter) {
-        return Object.values(restaurants[_key]).includes(filter);
+        return restaurants[_key].cuisine === filter;
       }) && priceFilter.some(function (filter) {
-        return Object.values(restaurants[_key]).includes(parseInt(filter));
+        return restaurants[_key].price_range === parseInt(filter);
       })) {
         newRes[_key] = restaurants[_key];
       }
     } else if (cuisineFilter.length && cuisineFilter.some(function (filter) {
-      return Object.values(restaurants[_key]).includes(filter);
+      return restaurants[_key].cuisine === filter;
     })) {
       newRes[_key] = restaurants[_key];
     } else if (priceFilter.length && priceFilter.some(function (filter) {
-      return Object.values(restaurants[_key]).includes(parseInt(filter));
+      return restaurants[_key].price_range === parseInt(filter);
     })) {
       newRes[_key] = restaurants[_key];
     }

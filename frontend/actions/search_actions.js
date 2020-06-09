@@ -29,11 +29,6 @@ const updateFilter = (filterState) => ({
 export default updateFilter;
 
 
-export const resetFilter = () => (dispatch, getState) => {
-    // dispatch(deleteFilter());
-    return requestRestaurants(getState().ui.search)(dispatch);
-};
-
 
 
 

@@ -1,5 +1,4 @@
 import React from "react";
-import RestaurantsIndex from "./restaurant_index";
 import {
   FaRegMoneyBillAlt,
   FaUtensils,
@@ -10,28 +9,15 @@ class Filters extends React.Component{
     constructor(props){
         super(props)
         this.handleChange = this.handleChange.bind(this);
-        this.reset = this.reset.bind(this);
     }
 
     handleChange(e){
-        let filterState = this.props.filter;
+      const filterState = this.props.filter;
       filterState[e.target.value] = !filterState[e.target.value] 
-      
-        this.props.updateFilter(filterState)
-        // const cuisineFilter = [];
-        // const priceFilter = [];
-        
+      this.props.updateFilter(filterState)
     }
-
-
-    reset(){
-      
-      this.props.resetFilter();
-    }
-    
 
     render(){
-        
         return (
           <div className="filters-box">
             <form className="filter-form" >
