@@ -11,10 +11,10 @@ chef's Table is a full-stack project inspired by Opentable. It's a platform that
 ## Functionality
 This is the currently how the home page looks like:
 users can user the filters to search for restaurants
-![home page](https://github.com/zixlin7/aA_Homework/blob/master/chef-1.gif?raw=true)
+![home page](https://github.com/zixlin7/aA_Homework/blob/master/ct%20-1.gif?raw=true)
   
 they can apply filters on the list of restaurants:
-![ ](https://github.com/zixlin7/aA_Homework/blob/master/chef-2.gif?raw=true)
+![ ](https://github.com/zixlin7/aA_Homework/blob/master/ct%20-2.gif?raw=true)
   
 they can then make a reservation at the chosen time slot:
 ![ ](https://github.com/zixlin7/aA_Homework/blob/master/chef-3.gif?raw=true)
