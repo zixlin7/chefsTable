@@ -34,7 +34,6 @@ class SigninForm extends React.Component {
     }
 
     close(){
-        console.log('in close');
         this.setState({ redirect: '/' });
     }
 
