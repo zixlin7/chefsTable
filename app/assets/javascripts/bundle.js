@@ -3527,6 +3527,10 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
       // }; 
 
       var resProfile = Object.values(reservations).map(function (reservation) {
+        if (!reservation) {
+          return null;
+        }
+
         var imgStyle = {
           backgroundImage: "url(".concat(restaurants[reservation.restaurant_id].photoURL, ")"),
           height: '150px',

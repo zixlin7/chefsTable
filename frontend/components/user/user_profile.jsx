@@ -29,6 +29,7 @@ class UserProfile extends React.Component{
         // }; 
         
         const resProfile = Object.values(reservations).map((reservation) => {
+            if (!reservation) { return null}
             const imgStyle = {
                 backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
                 height: '150px',
@@ -61,7 +62,7 @@ class UserProfile extends React.Component{
                     </div>
                 </div>
             </div>
-    
+            
         )});
         return(
             <div className="profile-container">
