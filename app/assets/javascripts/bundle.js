@@ -86,6 +86,29 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/filter_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/filter_actions.js ***!
+  \********************************************/
+/*! exports provided: UPDATE_FILTER_RESTAURANTS, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER_RESTAURANTS", function() { return UPDATE_FILTER_RESTAURANTS; });
+var UPDATE_FILTER_RESTAURANTS = "UPDATE_FILTER_RESTAURANTS";
+
+var updateFilterRestaurants = function updateFilterRestaurants(restaurants) {
+  return {
+    type: UPDATE_FILTER_RESTAURANTS,
+    restaurants: restaurants
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (updateFilterRestaurants);
+
+/***/ }),
+
 /***/ "./frontend/actions/reservations_actions.js":
 /*!**************************************************!*\
   !*** ./frontend/actions/reservations_actions.js ***!
@@ -323,10 +346,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateSearch", function() { return updateSearch; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetFilter", function() { return resetFilter; });
 /* harmony import */ var _restaurants_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./restaurants_actions */ "./frontend/actions/restaurants_actions.js");
+/* harmony import */ var _util_restaurants_selector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/restaurants_selector */ "./frontend/util/restaurants_selector.js");
+/* harmony import */ var _filter_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filter_actions */ "./frontend/actions/filter_actions.js");
+
+
 
 var UPDATE_SEARCH = "UPDATE_SEARCH";
 var UPDATE_FILTER = "UPDATE_FILTER";
-var DELETE_FILTER = "UPDATE_FILTER";
+var DELETE_FILTER = "DELETE_FILTER";
 
 var changeSearch = function changeSearch(field, value) {
   return {
@@ -339,9 +366,11 @@ var changeSearch = function changeSearch(field, value) {
 var updateSearch = function updateSearch(field, value) {
   return function (dispatch, getState) {
     dispatch(changeSearch(field, value));
-    return Object(_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["requestRestaurants"])(getState().ui.search)(dispatch);
+    return Object(_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["requestRestaurants"])(getState().ui.search)(dispatch).then(function (res) {
+      return dispatch(Object(_filter_actions__WEBPACK_IMPORTED_MODULE_2__["default"])(Object(_util_restaurants_selector__WEBPACK_IMPORTED_MODULE_1__["default"])(res.restaurants, getState().ui.filter)));
+    });
   };
-};
+}; //updateFilter(getState().ui.filter)
 
 var updateFilter = function updateFilter(filterState) {
   return {
@@ -2301,12 +2330,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2330,18 +2353,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var _defaultState = {
-  "Wine bar": false,
-  "Japanese": false,
-  "Mexican": false,
-  "Modern French": false,
-  "New American": false,
-  "Contemporary": false,
-  1: false,
-  2: false,
-  3: false,
-  4: false
-};
 
 var Filters = /*#__PURE__*/function (_React$Component) {
   _inherits(Filters, _React$Component);
@@ -2354,7 +2365,6 @@ var Filters = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Filters);
 
     _this = _super.call(this, props);
-    _this.state = _defaultState;
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.reset = _this.reset.bind(_assertThisInitialized(_this));
     return _this;
@@ -2363,17 +2373,14 @@ var Filters = /*#__PURE__*/function (_React$Component) {
   _createClass(Filters, [{
     key: "handleChange",
     value: function handleChange(e) {
-      var filters = _objectSpread({}, this.state);
-
-      filters[e.target.value] = !filters[e.target.value];
-      this.props.updateFilter(filters);
-      this.setState(_defineProperty({}, e.target.value, !this.state[e.target.value])); // const cuisineFilter = [];
+      var filterState = this.props.filter;
+      filterState[e.target.value] = !filterState[e.target.value];
+      this.props.updateFilter(filterState); // const cuisineFilter = [];
       // const priceFilter = [];
     }
   }, {
     key: "reset",
     value: function reset() {
-      this.setState(_defaultState);
       this.props.resetFilter();
     }
   }, {
@@ -2393,42 +2400,42 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         type: "checkbox",
         value: "Modern French",
         onChange: this.handleChange,
-        checked: this.state["Modern French"] ? "checked" : ""
+        checked: this.props.filter["Modern French"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "French"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Japanese",
         onChange: this.handleChange,
-        checked: this.state["Japanese"] ? "checked" : ""
+        checked: this.props.filter["Japanese"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Japanese"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Mexican",
         onChange: this.handleChange,
-        checked: this.state["Mexican"] ? "checked" : ""
+        checked: this.props.filter["Mexican"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Mexican"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Wine bar",
         onChange: this.handleChange,
-        checked: this.state["Wine bar"] ? "checked" : ""
+        checked: this.props.filter["Wine bar"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Wine bar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "New American",
         onChange: this.handleChange,
-        checked: this.state["New American"] ? "checked" : ""
+        checked: this.props.filter["New American"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "New American"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Contemporary",
         onChange: this.handleChange,
-        checked: this.state["Contemporary"] ? "checked" : ""
+        checked: this.props.filter["Contemporary"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Contemporary")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2441,28 +2448,28 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         type: "checkbox",
         value: "1",
         onChange: this.handleChange,
-        checked: this.state["1"] ? "checked" : ""
+        checked: this.props.filter["1"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "2",
         onChange: this.handleChange,
-        checked: this.state["2"] ? "checked" : ""
+        checked: this.props.filter["2"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "3",
         onChange: this.handleChange,
-        checked: this.state["3"] ? "checked" : ""
+        checked: this.props.filter["3"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "4",
         onChange: this.handleChange,
-        checked: this.state["4"] ? "checked" : ""
+        checked: this.props.filter["4"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
@@ -2530,6 +2537,13 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
       this.props.requestRestaurants(this.props.search);
     }
   }, {
+    key: "checkFilter",
+    value: function checkFilter() {
+      return Object.values(this.props.filter).some(function (filter) {
+        return filter === true;
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -2537,20 +2551,14 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
           search = _this$props.search,
           updateSearch = _this$props.updateSearch,
           requestRestaurant = _this$props.requestRestaurant;
-      if (!Object.values(restaurants).length) return null;
       var allRestaurants = restaurants.allRestaurants,
           filterRestaurants = restaurants.filterRestaurants;
+      if (!Object.values(allRestaurants).length) return null;
       var result;
-
-      if (filterRestaurants && Object.values(filterRestaurants).length) {
-        result = filterRestaurants;
-      } else {
-        result = allRestaurants;
-      }
-
+      result = this.checkFilter() ? filterRestaurants : allRestaurants;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-index"
-      }, Object.values(result).map(function (restaurant, i) {
+      }, Object.values(result).length ? Object.values(result).map(function (restaurant, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurants_restaurant_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           restaurant: restaurant,
@@ -2558,7 +2566,7 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
           updateSearch: updateSearch,
           requestRestaurant: requestRestaurant
         });
-      }));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Nothing matches the filter"));
     }
   }]);
 
@@ -2616,6 +2624,7 @@ var Search = function Search(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurant_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
     restaurants: restaurants,
     search: search,
+    filter: filter,
     updateSearch: updateSearch,
     requestRestaurants: requestRestaurants,
     requestRestaurant: requestRestaurant
@@ -3473,6 +3482,47 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 
 /***/ }),
 
+/***/ "./frontend/reducers/filter_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/filter_reducer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+
+var _defaultState = {
+  "Wine bar": false,
+  "Japanese": false,
+  "Mexican": false,
+  "Modern French": false,
+  "New American": false,
+  "Contemporary": false,
+  1: false,
+  2: false,
+  3: false,
+  4: false
+};
+
+var filterReducer = function filterReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _defaultState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_FILTER"]:
+      return action.filterState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (filterReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/reservation_errors_reducer.js":
 /*!*********************************************************!*\
   !*** ./frontend/reducers/reservation_errors_reducer.js ***!
@@ -3564,13 +3614,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/restaurants_actions */ "./frontend/actions/restaurants_actions.js");
 /* harmony import */ var _actions_users_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/users_actions */ "./frontend/actions/users_actions.js");
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
-/* harmony import */ var _util_restaurants_selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/restaurants_selector */ "./frontend/util/restaurants_selector.js");
-/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+/* harmony import */ var _util_restaurants_selector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/restaurants_selector */ "./frontend/util/restaurants_selector.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3588,7 +3640,8 @@ var restaurantsReducer = function restaurantsReducer() {
   switch (action.type) {
     case _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_RESTAURANTS"]:
       return {
-        allRestaurants: action.restaurants
+        allRestaurants: action.restaurants,
+        filterRestaurants: {}
       };
 
     case _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANT"]:
@@ -3598,9 +3651,15 @@ var restaurantsReducer = function restaurantsReducer() {
       return nextState;
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["UPDATE_FILTER"]:
-      var newRestaurants = Object(_util_restaurants_selector__WEBPACK_IMPORTED_MODULE_3__["default"])(_objectSpread({}, state.allRestaurants), action.filterState);
+      var newRestaurants = Object(_util_restaurants_selector__WEBPACK_IMPORTED_MODULE_4__["default"])(_objectSpread({}, state.allRestaurants), action.filterState);
       return {
         filterRestaurants: newRestaurants,
+        allRestaurants: state.allRestaurants
+      };
+
+    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["UPDATE_FILTER_RESTAURANTS"]:
+      return {
+        filterRestaurants: action.restaurants,
         allRestaurants: state.allRestaurants
       };
 
@@ -3823,10 +3882,13 @@ var sessionReducer = function sessionReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+/* harmony import */ var _filter_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filter_reducer */ "./frontend/reducers/filter_reducer.js");
+
 
 
 var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  search: _search_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  search: _search_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  filter: _filter_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 

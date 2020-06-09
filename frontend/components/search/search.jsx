@@ -17,6 +17,7 @@ const Search = ({ restaurants, search, filter, updateSearch, requestRestaurant, 
                     updateSearch={updateSearch}
                     resetFilter={resetFilter}/>
                 <RestaurantsIndex restaurants={restaurants} search={search}
+                    filter={filter}
                     updateSearch={updateSearch}
                     requestRestaurants={requestRestaurants}
                     requestRestaurant={requestRestaurant} />

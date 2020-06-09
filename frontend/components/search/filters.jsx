@@ -5,31 +5,19 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 
-const _defaultState = {
-  "Wine bar": false,
-  "Japanese": false,
-  "Mexican": false,
-  "Modern French": false,
-  "New American": false,
-  "Contemporary": false,
-  1: false,
-  2: false,
-  3: false,
-  4: false
-}
+
 class Filters extends React.Component{
     constructor(props){
         super(props)
-        this.state = _defaultState;
         this.handleChange = this.handleChange.bind(this);
         this.reset = this.reset.bind(this);
     }
 
     handleChange(e){
-        const filters = {...this.state}
-        filters[e.target.value] = !filters[e.target.value]
-        this.props.updateFilter(filters)
-        this.setState({[e.target.value]: !this.state[e.target.value]})
+        let filterState = this.props.filter;
+      filterState[e.target.value] = !filterState[e.target.value] 
+      
+        this.props.updateFilter(filterState)
         // const cuisineFilter = [];
         // const priceFilter = [];
         
@@ -37,7 +25,7 @@ class Filters extends React.Component{
 
 
     reset(){
-      this.setState(_defaultState)
+      
       this.props.resetFilter();
     }
     
@@ -58,7 +46,7 @@ class Filters extends React.Component{
                   type="checkbox"
                   value="Modern French"
                   onChange={this.handleChange}
-                  checked={this.state["Modern French"] ? "checked" : ""}
+                  checked={this.props.filter["Modern French"] ? "checked" : ""}
                 />
                 <label className="label">French</label>
                 <br />
@@ -67,7 +55,7 @@ class Filters extends React.Component{
                   type="checkbox"
                   value="Japanese"
                   onChange={this.handleChange}
-                  checked={this.state["Japanese"] ? "checked" : ""}
+                  checked={this.props.filter["Japanese"] ? "checked" : ""}
                 />
                 <label className="label">Japanese</label>
                 <br />
@@ -76,7 +64,7 @@ class Filters extends React.Component{
                   type="checkbox"
                   value="Mexican"
                   onChange={this.handleChange}
-                  checked={this.state["Mexican"] ? "checked" : ""}
+                  checked={this.props.filter["Mexican"] ? "checked" : ""}
                 />
                 <label className="label">Mexican</label>
                 <br />
@@ -85,7 +73,7 @@ class Filters extends React.Component{
                   type="checkbox"
                   value="Wine bar"
                   onChange={this.handleChange}
-                  checked={this.state["Wine bar"] ? "checked" : ""}
+                  checked={this.props.filter["Wine bar"] ? "checked" : ""}
                 />
                 <label className="label">Wine bar</label>
                 <br />
@@ -94,7 +82,7 @@ class Filters extends React.Component{
                   type="checkbox"
                   value="New American"
                   onChange={this.handleChange}
-                  checked={this.state["New American"] ? "checked" : ""}
+                  checked={this.props.filter["New American"] ? "checked" : ""}
                 />
                 <label className="label">New American</label>
                 <br />
@@ -103,7 +91,7 @@ class Filters extends React.Component{
                   type="checkbox"
                   value="Contemporary"
                   onChange={this.handleChange}
-                  checked={this.state["Contemporary"] ? "checked" : ""}
+                  checked={this.props.filter["Contemporary"] ? "checked" : ""}
                 />
                 <label className="label">Contemporary</label>
               </div>
@@ -116,19 +104,19 @@ class Filters extends React.Component{
                   <p>Price Range</p>
                 </div>
                 <input type="checkbox" value="1" onChange={this.handleChange} 
-                  checked={this.state["1"] ? "checked" : ""}/>
+                  checked={this.props.filter["1"] ? "checked" : ""}/>
                 <label className="label">$</label>
                 <br />
                 <input type="checkbox" value="2" onChange={this.handleChange} 
-                  checked={this.state["2"] ? "checked" : ""}/>
+                  checked={this.props.filter["2"] ? "checked" : ""}/>
                 <label className="label">$$</label>
                 <br />
                 <input type="checkbox" value="3" onChange={this.handleChange}
-                  checked={this.state["3"] ? "checked" : ""} />
+                  checked={this.props.filter["3"] ? "checked" : ""} />
                 <label className="label">$$$</label>
                 <br />
                 <input type="checkbox" value="4" onChange={this.handleChange} 
-                  checked={this.state["4"] ? "checked" : ""}/>
+                  checked={this.props.filter["4"] ? "checked" : ""}/>
                 <label className="label">$$$$</label>
                 <br />
               </div>

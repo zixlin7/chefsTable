@@ -13,7 +13,7 @@ const _defaultState = {
     3: false,
     4: false
 }
-const searchReducer = (state = defaultState, action) => {
+const filterReducer = (state = _defaultState, action) => {
     switch (action.type) {
         case UPDATE_FILTER:
             return action.filterState;
@@ -22,4 +22,4 @@ const searchReducer = (state = defaultState, action) => {
     }
 }
 
-export default searchReducer;
+export default filterReducer;
