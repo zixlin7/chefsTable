@@ -15,13 +15,10 @@ class RestaurantsIndexItem extends React.Component {
     
   }
 
-
   mapPriceRange(price) {
     const range = ["", "$", "$$", "$$$", "$$$$"];
     return range[price];
   }
-
- 
 
   getTimeSlots() {
     const searchTime = parseInt(this.props.search.time);
@@ -43,12 +40,9 @@ class RestaurantsIndexItem extends React.Component {
   }
 
    goToEdit(e) {
-
     e.preventDefault();
-  
     this.props.updateSearch("time", e.currentTarget.innerHTML);
     this.props.toggleState();
-
   }
 
    handleShow(e){
@@ -58,15 +52,8 @@ class RestaurantsIndexItem extends React.Component {
    }
 
    handleClick (field){
-
      return e => this.props.updateSearch(field, e.currentTarget.innerHTML);
-
     }
-
-    // mapRatings(rating){
-    //   if 
-    // }
-
 
   render() {
     if (this.state.redirect)
@@ -76,16 +63,11 @@ class RestaurantsIndexItem extends React.Component {
     const rating = parseFloat(restaurant.average_rating).toFixed(1)
     const imgStyle = {
       backgroundImage: `url(${restaurant.photoURL})`,
-      height: '225px',
-      width: '350px',
-      backgroundSize: 'cover',
-      flex: '0 0 350px',
-      marginRight: '25px'
     }; 
   
     return (
       <div className="restaurant">
-        <div className="img" style={imgStyle}></div>
+        <div className="img" style={imgStyle} onClick={this.handleShow}></div>
         <div className="restaurant-info">
           <button onClick={this.handleShow} id="res-name" >{restaurant.name}</button>
           <br />

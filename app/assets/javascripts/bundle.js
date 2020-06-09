@@ -1601,10 +1601,7 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         return _this2.props.updateSearch(field, e.currentTarget.innerHTML);
       };
-    } // mapRatings(rating){
-    //   if 
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1616,18 +1613,14 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
       var restaurant = this.props.restaurant;
       var rating = parseFloat(restaurant.average_rating).toFixed(1);
       var imgStyle = {
-        backgroundImage: "url(".concat(restaurant.photoURL, ")"),
-        height: '225px',
-        width: '350px',
-        backgroundSize: 'cover',
-        flex: '0 0 350px',
-        marginRight: '25px'
+        backgroundImage: "url(".concat(restaurant.photoURL, ")")
       };
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img",
-        style: imgStyle
+        style: imgStyle,
+        onClick: this.handleShow
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1717,6 +1710,8 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
       "delete": false
     };
     _this.handleBack = _this.handleBack.bind(_assertThisInitialized(_this));
+    _this.reviews = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.scrollToReviews = _this.scrollToReviews.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1760,6 +1755,11 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
       this.props.history.push("/restaurants");
     }
   }, {
+    key: "scrollToReviews",
+    value: function scrollToReviews() {
+      window.scrollTo(0, this.reviews.current.offsetTop);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -1787,7 +1787,9 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
         className: "show-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Photos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Menu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        onClick: this.scrollToReviews
+      }, "Go to Reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "back-button",
         onClick: this.handleBack
       }, "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1810,7 +1812,8 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
         className: "menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Menu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: restaurant.website_url
-      }, "see the menu on restaurant's website")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "view the menu on restaurant's website")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        ref: this.reviews,
         className: "review"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-head"

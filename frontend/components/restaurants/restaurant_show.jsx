@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
     FaStar,
     FaStarHalfAlt,
@@ -15,9 +15,10 @@ class RestaurantShow extends React.Component{
         super(props);
         this.state = {delete: false}
         this.handleBack = this.handleBack.bind(this);
+        this.reviews = React.createRef();
+        this.scrollToReviews = this.scrollToReviews.bind(this)
     }
     componentDidMount(){
-        
         this.props.requestRestaurant(this.props.match.params.id)
     }
 
@@ -46,6 +47,10 @@ class RestaurantShow extends React.Component{
         this.props.history.push("/restaurants");
     }
 
+    scrollToReviews(){
+      window.scrollTo(0, this.reviews.current.offsetTop)
+    }
+
     render(){
         
         if (!this.props.restaurant) return null;
@@ -66,10 +71,10 @@ class RestaurantShow extends React.Component{
               <div className="content-box">
                 <nav className="show-nav">
                   <div className="show-link">
-                    <a>Overview</a>
-                    <a>Photos</a>
-                    <a>Menu</a>
-                    <a>Reviews</a>
+                    {/* <a onClick={this.scrollToOverview}>Overview</a>
+                    <a onClick={this.scrollToPhotos}>Photos</a>
+                    <a onClick={this.scrollToMenu}>Menu</a> */}
+                    <a onClick={this.scrollToReviews}>Go to Reviews</a>
                   </div>
                   <button id="back-button" onClick={this.handleBack}>
                     Back
@@ -123,11 +128,11 @@ class RestaurantShow extends React.Component{
                 <div className="menu">
                   <h2>Menu</h2>
                   <a href={restaurant.website_url}>
-                    see the menu on restaurant's website
+                    view the menu on restaurant's website
                   </a>
                 </div>
 
-                <div className="review">
+                <div ref={this.reviews} className="review">
                   <div className="review-head">
                     <h2>What people are saying</h2>
                     <Link to={`/restaurants/${restaurant.id}/reviews/new`}>

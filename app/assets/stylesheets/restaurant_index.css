@@ -119,3 +119,15 @@
 #edit-res-form{
     margin-left: 20px;
 }
+
+.img{
+    height: 225px;
+    width: 350px;
+    background-size: cover;
+    flex: 0 0 350px;
+    margin-right: 25px;
+}
+
+.img:hover{
+    cursor: pointer;
+}

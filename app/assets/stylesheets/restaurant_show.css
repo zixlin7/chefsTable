@@ -39,13 +39,14 @@
     margin:15px 20px;
     margin-left: 0;
     color: #333;
-    text-decoration: none;
+    text-decoration: underline;
     
 }
 
 .show-nav a:hover{
     color: #FF7C52;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .content-box h1{
@@ -96,6 +97,7 @@
 .menu a:hover{
     font-weight: 600;
     color:#FF7C52;
+    cursor: pointer;
 }
 
 .review{
@@ -159,11 +161,12 @@
 }
 
 .review-head a{
-    color: #FF7C52
+    color: #FF7C52;
 }
 
 .review-head a:hover{
     font-weight: 600;
+    cursor: pointer;
 }
 
 #delete-review{
