@@ -32,7 +32,7 @@ class RestaurantsIndex extends React.Component{
               updateSearch = {updateSearch}
               requestRestaurant={requestRestaurant}/>
             ))
-              : <p>Nothing matches the filter</p>}
+              : <p>Sorry, nothing matches your search</p>}
           </div>
         );
     }

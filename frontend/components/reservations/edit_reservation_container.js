@@ -11,7 +11,7 @@ import { updateSearch} from "../../actions/search_actions";
 const mSTP = (state, ownProps) => {
   return({
     reservation: Object.values(state.entities.reservations)[(Object.values(state.entities.reservations).length - 1)],
-    restaurant: state.entities.restaurants[ownProps.match.params.id],
+    restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id],
     search: state.ui.search,
     user: state.entities.users[state.session.id]
   })

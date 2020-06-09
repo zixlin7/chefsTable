@@ -6,7 +6,7 @@ import {fetchUser} from "../../actions/users_actions"
 const mSTP = state => ({
     user: state.entities.users[state.session.id],
     reservations: selectReservationsByUser(state, state.session.id),
-    restaurants: state.entities.restaurants
+    restaurants: state.entities.restaurants.allRestaurants
 });
 
 const mDTP = dispatch => ({

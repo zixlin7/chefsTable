@@ -6,7 +6,7 @@ import {deleteReview} from "../../actions/review_actions"
 
 const mSTP = (state, ownProps) => {
   
-  return {restaurant: state.entities.restaurants[ownProps.match.params.id],
+  return {restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id],
   reviews: state.entities.reviews,
   users: state.entities.users,
   currentUser: state.entities.users[state.session.id] }

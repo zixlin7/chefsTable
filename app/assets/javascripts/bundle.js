@@ -1119,7 +1119,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, ownProps) {
   return {
     reservation: Object.values(state.entities.reservations)[Object.values(state.entities.reservations).length - 1],
-    restaurant: state.entities.restaurants[ownProps.match.params.id],
+    restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id],
     search: state.ui.search,
     user: state.entities.users[state.session.id]
   };
@@ -1283,7 +1283,7 @@ var mSTP = function mSTP(state, ownProps) {
     // },
     search: state.ui.search,
     user: state.entities.users[state.session.id],
-    restaurant: state.entities.restaurants[parseInt(ownProps.match.params.id)],
+    restaurant: state.entities.restaurants.allRestaurants[parseInt(ownProps.match.params.id)],
     reservations: state.entities.reservations // formType: "Create Reservation",
 
   };
@@ -1879,7 +1879,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state, ownProps) {
   return {
-    restaurant: state.entities.restaurants[ownProps.match.params.id],
+    restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id],
     reviews: state.entities.reviews,
     users: state.entities.users,
     currentUser: state.entities.users[state.session.id]
@@ -1929,7 +1929,7 @@ var mSTP = function mSTP(state, ownProps) {
     formType: "update review",
     user: state.entities.users[state.session.id],
     userId: state.session.id,
-    restaurant: state.entities.restaurants[ownProps.match.params.id]
+    restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id]
   };
 };
 
@@ -2266,7 +2266,7 @@ var mSTP = function mSTP(state, ownProps) {
     formType: "create review",
     user: state.entities.users[state.session.id],
     userId: state.session.id,
-    restaurant: state.entities.restaurants[ownProps.match.params.id]
+    restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id]
   };
 };
 
@@ -2566,7 +2566,7 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
           updateSearch: updateSearch,
           requestRestaurant: requestRestaurant
         });
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Nothing matches the filter"));
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sorry, nothing matches your search"));
     }
   }]);
 
@@ -3287,7 +3287,7 @@ var mSTP = function mSTP(state) {
   return {
     user: state.entities.users[state.session.id],
     reservations: Object(_selector__WEBPACK_IMPORTED_MODULE_0__["default"])(state, state.session.id),
-    restaurants: state.entities.restaurants
+    restaurants: state.entities.restaurants.allRestaurants
   };
 };
 

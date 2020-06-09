@@ -16,7 +16,7 @@ const mSTP = (state, ownProps) => ({
     formType: "create review",
     user: state.entities.users[state.session.id],
     userId: state.session.id,
-    restaurant: state.entities.restaurants[ownProps.match.params.id]
+    restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id]
 })
 
 const mDTP = dispatch => ({
