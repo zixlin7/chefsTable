@@ -39,7 +39,13 @@
      flex: 1;
  }
 
-
+.landing-box{
+    height: 550px;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
 .overlay{
   background: rgba(0, 0, 0, 0.3);
   position: absolute;
