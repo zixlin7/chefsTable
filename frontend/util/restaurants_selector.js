@@ -1,5 +1,18 @@
 
-const resSelector = (restaurants, cuisineFilter, priceFilter) => {
+const resSelector = (restaurants, filterState) => {
+    const cuisineFilter = [];
+    const priceFilter = [];
+    for (let key in filterState) {
+        if (filterState[key]) {
+            if (key.length === 1) {
+                priceFilter.push(key)
+            } else {
+                cuisineFilter.push(key)
+            }
+
+        }
+    }
+    
     const newRes ={};
     for (let key in restaurants) {
         if (cuisineFilter.length && priceFilter.length) {
@@ -14,7 +27,7 @@ const resSelector = (restaurants, cuisineFilter, priceFilter) => {
             Object.values(restaurants[key]).includes(parseInt(filter)))) {
             newRes[key] = restaurants[key]
         } 
-    }
+    } 
     return newRes;
 }
 

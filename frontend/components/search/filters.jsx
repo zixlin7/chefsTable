@@ -21,35 +21,22 @@ class Filters extends React.Component{
     constructor(props){
         super(props)
         this.state = _defaultState;
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.reset = this.reset.bind(this);
     }
 
     handleChange(e){
+        const filters = {...this.state}
+        filters[e.target.value] = !filters[e.target.value]
+        this.props.updateFilter(filters)
         this.setState({[e.target.value]: !this.state[e.target.value]})
+        // const cuisineFilter = [];
+        // const priceFilter = [];
+        
     }
 
-    handleSubmit(e){
-        e.preventDefault();
-        const cuisineFilter = [];
-        const priceFilter = [];
-        for (let key in this.state) {
-            if(this.state[key]){
-              if(key.length === 1){
-                priceFilter.push(key)
-              } else {
-                cuisineFilter.push(key)
-              }
-                
-            }
-        }
 
-        this.props.updateFilter(cuisineFilter, priceFilter) 
-    }
-
-    reset(e){
-      e.preventDefault;
+    reset(){
       this.setState(_defaultState)
       this.props.resetFilter();
     }
@@ -59,7 +46,7 @@ class Filters extends React.Component{
         
         return (
           <div className="filters-box">
-            <form className="filter-form" onSubmit={this.handleSubmit}>
+            <form className="filter-form" >
               <div className="cuisine">
                 <div className="subtitle">
                   <span className="icon">
@@ -145,13 +132,9 @@ class Filters extends React.Component{
                 <label className="label">$$$$</label>
                 <br />
               </div>
-              <button id="filter-button" type="submit">
-                Apply
-              </button>
+              
             </form>
-              <button id="filter-button" onClick={this.reset}>
-                Reset
-              </button>
+             
           </div>
         );
     }

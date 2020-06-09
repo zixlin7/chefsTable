@@ -1,4 +1,4 @@
-import {UPDATE_SEARCH} from "../actions/search_actions";
+import {UPDATE_SEARCH, UPDATE_FILTER} from "../actions/search_actions";
 import getDate from "../util/date_util"
 
 const defaultState = {
@@ -12,8 +12,7 @@ const searchReducer = (state = defaultState, action) => {
         case UPDATE_SEARCH:
             const nextState = {...state}
             nextState[action.field] = action.value
-            return nextState;
-
+            return nextState; 
         default:
             return state;
     }

@@ -16,10 +16,9 @@ export const updateSearch = (field, value) => (dispatch, getState) => {
         
 };
 
-const updateFilter = (cuisineFilter, priceFilter) => ({
+const updateFilter = (filterState) => ({
     type: UPDATE_FILTER,
-    cuisineFilter,
-    priceFilter
+    filterState
 })
 
 export default updateFilter;

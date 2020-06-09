@@ -10,17 +10,18 @@ import {UPDATE_FILTER} from "../actions/search_actions"
 import resSelector from "../util/restaurants_selector"
 import { REMOVE_REVIEW } from "../actions/review_actions";
 
-const restaurantsReducer = (state={}, action) => {
+const restaurantsReducer = (state={allRestaurants: {}, filterRestaurants: {}}, action) => {
   
     switch (action.type) {
       case RECEIVE_ALL_RESTAURANTS:
-        return action.restaurants;
+        return {allRestaurants : action.restaurants};
       case RECEIVE_RESTAURANT:
         const nextState = {...state}
-        nextState[action.payload.restaurant.id] = action.payload.restaurant
+        nextState.allRestaurants[action.payload.restaurant.id] = action.payload.restaurant
         return nextState;
       case UPDATE_FILTER:
-        return resSelector({...state}, action.cuisineFilter, action.priceFilter)
+        let newRestaurants = resSelector({ ...state.allRestaurants }, action.filterState)
+        return {filterRestaurants: newRestaurants, allRestaurants: state.allRestaurants};
       case RECEIVE_USER:
         return {...state, ...action.payload.restaurants}
       

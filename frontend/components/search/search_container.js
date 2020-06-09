@@ -7,7 +7,10 @@ import updateFilter from "../../actions/search_actions";
 
 const mSTP = (state, ownProps) => {
     return({restaurants: state.entities.restaurants,
-    search: state.ui.search})
+    search: state.ui.search,
+    filter: state.ui.filter
+    })
+    
 };
 
 const mDTP = (dispatch) => ({
@@ -15,7 +18,7 @@ const mDTP = (dispatch) => ({
     requestRestaurant: (restaurantId) => dispatch(requestRestaurant(restaurantId)),
     updateSearch: (field, value) => dispatch(updateSearch(field, value)),
     resetFilter: () => dispatch(resetFilter()),
-    updateFilter: (cuisineFilter, priceFilter) => dispatch(updateFilter(cuisineFilter, priceFilter))
+    updateFilter: (filterState) => dispatch(updateFilter(filterState))
 });
 
 

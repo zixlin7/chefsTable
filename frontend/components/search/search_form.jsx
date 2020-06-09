@@ -70,9 +70,9 @@ const SearchForm = props => {
               </span>
             </div>
             <div className="select">
-              <span id="icon">
+              {/* <span id="icon">
                 <FaRegCalendarAlt />
-              </span>
+              </span> */}
               <input
                 defaultValue={props.search.date}
                 type="date"

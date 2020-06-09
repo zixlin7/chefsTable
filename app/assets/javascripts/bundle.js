@@ -343,11 +343,10 @@ var updateSearch = function updateSearch(field, value) {
   };
 };
 
-var updateFilter = function updateFilter(cuisineFilter, priceFilter) {
+var updateFilter = function updateFilter(filterState) {
   return {
     type: UPDATE_FILTER,
-    cuisineFilter: cuisineFilter,
-    priceFilter: priceFilter
+    filterState: filterState
   };
 };
 
@@ -2302,6 +2301,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2352,7 +2355,6 @@ var Filters = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = _defaultState;
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.reset = _this.reset.bind(_assertThisInitialized(_this));
     return _this;
@@ -2361,31 +2363,16 @@ var Filters = /*#__PURE__*/function (_React$Component) {
   _createClass(Filters, [{
     key: "handleChange",
     value: function handleChange(e) {
-      this.setState(_defineProperty({}, e.target.value, !this.state[e.target.value]));
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      var cuisineFilter = [];
-      var priceFilter = [];
+      var filters = _objectSpread({}, this.state);
 
-      for (var key in this.state) {
-        if (this.state[key]) {
-          if (key.length === 1) {
-            priceFilter.push(key);
-          } else {
-            cuisineFilter.push(key);
-          }
-        }
-      }
-
-      this.props.updateFilter(cuisineFilter, priceFilter);
+      filters[e.target.value] = !filters[e.target.value];
+      this.props.updateFilter(filters);
+      this.setState(_defineProperty({}, e.target.value, !this.state[e.target.value])); // const cuisineFilter = [];
+      // const priceFilter = [];
     }
   }, {
     key: "reset",
-    value: function reset(e) {
-      e.preventDefault;
+    value: function reset() {
       this.setState(_defaultState);
       this.props.resetFilter();
     }
@@ -2395,8 +2382,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "filters-box"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "filter-form",
-        onSubmit: this.handleSubmit
+        className: "filter-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cuisine"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2479,13 +2465,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         checked: this.state["4"] ? "checked" : ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
-      }, "$$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "filter-button",
-        type: "submit"
-      }, "Apply")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "filter-button",
-        onClick: this.reset
-      }, "Reset"));
+      }, "$$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
     }
   }]);
 
@@ -2558,9 +2538,19 @@ var RestaurantsIndex = /*#__PURE__*/function (_React$Component) {
           updateSearch = _this$props.updateSearch,
           requestRestaurant = _this$props.requestRestaurant;
       if (!Object.values(restaurants).length) return null;
+      var allRestaurants = restaurants.allRestaurants,
+          filterRestaurants = restaurants.filterRestaurants;
+      var result;
+
+      if (filterRestaurants && Object.values(filterRestaurants).length) {
+        result = filterRestaurants;
+      } else {
+        result = allRestaurants;
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "restaurant-index"
-      }, Object.values(restaurants).map(function (restaurant, i) {
+      }, Object.values(result).map(function (restaurant, i) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_restaurants_restaurant_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           restaurant: restaurant,
@@ -2601,6 +2591,7 @@ __webpack_require__.r(__webpack_exports__);
 var Search = function Search(_ref) {
   var restaurants = _ref.restaurants,
       search = _ref.search,
+      filter = _ref.filter,
       updateSearch = _ref.updateSearch,
       requestRestaurant = _ref.requestRestaurant,
       requestRestaurants = _ref.requestRestaurants,
@@ -2618,6 +2609,7 @@ var Search = function Search(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
     restaurants: restaurants,
     search: search,
+    filter: filter,
     updateFilter: updateFilter,
     updateSearch: updateSearch,
     resetFilter: resetFilter
@@ -2656,7 +2648,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, ownProps) {
   return {
     restaurants: state.entities.restaurants,
-    search: state.ui.search
+    search: state.ui.search,
+    filter: state.ui.filter
   };
 };
 
@@ -2674,8 +2667,8 @@ var mDTP = function mDTP(dispatch) {
     resetFilter: function resetFilter() {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["resetFilter"])());
     },
-    updateFilter: function updateFilter(cuisineFilter, priceFilter) {
-      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["default"])(cuisineFilter, priceFilter));
+    updateFilter: function updateFilter(filterState) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["default"])(filterState));
     }
   };
 };
@@ -2768,9 +2761,7 @@ var SearchForm = function SearchForm(props) {
     id: "arrow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "select"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "icon"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegCalendarAlt"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     defaultValue: props.search.date,
     type: "date",
     id: "date",
@@ -3588,21 +3579,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var restaurantsReducer = function restaurantsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    allRestaurants: {},
+    filterRestaurants: {}
+  };
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_RESTAURANTS"]:
-      return action.restaurants;
+      return {
+        allRestaurants: action.restaurants
+      };
 
     case _actions_restaurants_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_RESTAURANT"]:
       var nextState = _objectSpread({}, state);
 
-      nextState[action.payload.restaurant.id] = action.payload.restaurant;
+      nextState.allRestaurants[action.payload.restaurant.id] = action.payload.restaurant;
       return nextState;
 
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["UPDATE_FILTER"]:
-      return Object(_util_restaurants_selector__WEBPACK_IMPORTED_MODULE_3__["default"])(_objectSpread({}, state), action.cuisineFilter, action.priceFilter);
+      var newRestaurants = Object(_util_restaurants_selector__WEBPACK_IMPORTED_MODULE_3__["default"])(_objectSpread({}, state.allRestaurants), action.filterState);
+      return {
+        filterRestaurants: newRestaurants,
+        allRestaurants: state.allRestaurants
+      };
 
     case _actions_users_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USER"]:
       return _objectSpread({}, state, {}, action.payload.restaurants);
@@ -3921,7 +3921,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
@@ -4039,31 +4039,44 @@ var deleteReservation = function deleteReservation(reservationId) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var resSelector = function resSelector(restaurants, cuisineFilter, priceFilter) {
+var resSelector = function resSelector(restaurants, filterState) {
+  var cuisineFilter = [];
+  var priceFilter = [];
+
+  for (var key in filterState) {
+    if (filterState[key]) {
+      if (key.length === 1) {
+        priceFilter.push(key);
+      } else {
+        cuisineFilter.push(key);
+      }
+    }
+  }
+
   var newRes = {};
 
-  var _loop = function _loop(key) {
+  var _loop = function _loop(_key) {
     if (cuisineFilter.length && priceFilter.length) {
       if (cuisineFilter.some(function (filter) {
-        return Object.values(restaurants[key]).includes(filter);
+        return Object.values(restaurants[_key]).includes(filter);
       }) && priceFilter.some(function (filter) {
-        return Object.values(restaurants[key]).includes(parseInt(filter));
+        return Object.values(restaurants[_key]).includes(parseInt(filter));
       })) {
-        newRes[key] = restaurants[key];
+        newRes[_key] = restaurants[_key];
       }
     } else if (cuisineFilter.length && cuisineFilter.some(function (filter) {
-      return Object.values(restaurants[key]).includes(filter);
+      return Object.values(restaurants[_key]).includes(filter);
     })) {
-      newRes[key] = restaurants[key];
+      newRes[_key] = restaurants[_key];
     } else if (priceFilter.length && priceFilter.some(function (filter) {
-      return Object.values(restaurants[key]).includes(parseInt(filter));
+      return Object.values(restaurants[_key]).includes(parseInt(filter));
     })) {
-      newRes[key] = restaurants[key];
+      newRes[_key] = restaurants[_key];
     }
   };
 
-  for (var key in restaurants) {
-    _loop(key);
+  for (var _key in restaurants) {
+    _loop(_key);
   }
 
   return newRes;
