@@ -2,6 +2,8 @@
 
 chef's Table is a full-stack project inspired by Opentable. It's a platform that people can view a list of restaurants featured in Netflix's show Chef's Table and make reservations based on availability.
   
+Please check out the [live site](https://chefs-table.herokuapp.com/#/).
+  
   ## Technology
 * Ruby on rails
 * React & Redux
