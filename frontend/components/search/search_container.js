@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { requestRestaurants, requestRestaurant } from "../../actions/restaurants_actions";
 import Search from "./search";
-import {updateSearch, resetFilter} from "../../actions/search_actions"
+import {updateSearch} from "../../actions/search_actions"
 import updateFilter from "../../actions/search_actions";
 
 

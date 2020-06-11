@@ -2668,9 +2668,19 @@ var mDTP = function mDTP(dispatch) {
     updateSearch: function updateSearch(field, value) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["updateSearch"])(field, value));
     },
-    resetFilter: function resetFilter() {
-      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["resetFilter"])());
-    },
+    resetFilter: function (_resetFilter) {
+      function resetFilter() {
+        return _resetFilter.apply(this, arguments);
+      }
+
+      resetFilter.toString = function () {
+        return _resetFilter.toString();
+      };
+
+      return resetFilter;
+    }(function () {
+      return dispatch(resetFilter());
+    }),
     updateFilter: function updateFilter(filterState) {
       return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_3__["default"])(filterState));
     }
