@@ -2,6 +2,8 @@
 
 chef's Table is a full-stack project inspired by Opentable. It's a platform that people can view a list of restaurants featured in Netflix's show Chef's Table and make reservations based on availability.
   
+Please check out the [live site](https://chefs-table.herokuapp.com/#/).
+  
   ## Technology
 * Ruby on rails
 * React & Redux
@@ -11,10 +13,10 @@ chef's Table is a full-stack project inspired by Opentable. It's a platform that
 ## Functionality
 This is the currently how the home page looks like:
 users can user the filters to search for restaurants
-![home page](https://github.com/zixlin7/aA_Homework/blob/master/chef-1.gif?raw=true)
+![home page](https://github.com/zixlin7/aA_Homework/blob/master/ct%20-1.gif?raw=true)
   
 they can apply filters on the list of restaurants:
-![ ](https://github.com/zixlin7/aA_Homework/blob/master/chef-2.gif?raw=true)
+![ ](https://github.com/zixlin7/aA_Homework/blob/master/ct%20-%202.gif?raw=true)
   
 they can then make a reservation at the chosen time slot:
 ![ ](https://github.com/zixlin7/aA_Homework/blob/master/chef-3.gif?raw=true)
@@ -26,40 +28,44 @@ users can also review restaurants and update/delete their own reviews:
 ## Challenges
 ### Search/filters feature
 #### Solution
-  * Stored user's input for search in UI slice of state and passed it in AJAX call to handle search for location/availability in the backend
+  * Stored user's input for search and filters in UI slice of state. passed search query in AJAX call to backend to handle search and then filtering search results in the frontend.
  ```javascript
-  const changeSearch = (field, value) => ({
-    type: UPDATE_SEARCH,
-    field,
-    value
-});
-  export const updateSearch = (field, value) => (dispatch, getState) => {
+  export const updateSearch = (field, value) => (dispatch, getState) =>{
         dispatch(changeSearch(field, value));
-        return requestRestaurants(getState().ui.search)(dispatch);  
+        return (
+            requestRestaurants(getState().ui.search)(dispatch)
+            .then(res => dispatch(updateFilterRestaurants(resSelector(res.restaurants, getState().ui.filter))))
+        )
 };
  ```
     
-  * implemented front-end filtering for cuisine and price range
+  * real-time front-end filtering for cuisine and price range
 ```javascript
    const resSelector = (restaurants, cuisineFilter, priceFilter) => {
     const newRes ={};
     for (let key in restaurants) {
-        if (cuisineFilter.length && priceFilter.length) {
-            if (cuisineFilter.some(filter => Object.values(restaurants[key]).includes(filter))
-                && priceFilter.some(filter => Object.values(restaurants[key]).includes(parseInt(filter)))) {   
-                    newRes[key] = restaurants[key]
-                }
-        } else if (cuisineFilter.length && cuisineFilter.some(filter =>
-        Object.values(restaurants[key]).includes(filter))) {
-            newRes[key] = restaurants[key]
-        } else if (priceFilter.length && priceFilter.some(filter =>
-            Object.values(restaurants[key]).includes(parseInt(filter)))) {
-            newRes[key] = restaurants[key]
-        } 
+      if (cuisineFilter.length && priceFilter.length) {
+        if (
+          cuisineFilter.some((filter) => restaurants[key].cuisine === filter) &&
+          priceFilter.some((filter) => restaurants[key].price_range === parseInt(filter))
+        ) {
+          newRes[key] = restaurants[key];
+        }
+      } else if (
+        cuisineFilter.length &&
+        cuisineFilter.some((filter) => restaurants[key].cuisine === filter)
+      ) {
+        newRes[key] = restaurants[key];
+      } else if (
+        priceFilter.length &&
+        priceFilter.some((filter) => restaurants[key].price_range === parseInt(filter))
+      ) {
+        newRes[key] = restaurants[key];
+      }
     }
     return newRes;
-}
-export default resSelector;      
+  }
+  export default resSelector;      
 };
  ```
 ### Timeslots for reservation
