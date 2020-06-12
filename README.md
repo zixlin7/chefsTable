@@ -104,6 +104,5 @@ users can also review restaurants and update/delete their own reviews:
   ```
   
 ## Next Steps
-* build recommendations at front page.
-* wishlist feature which allows user to save restaurants to wishlist.
+* a wishlist feature that allows user to save restaurants to wishlist.
 * build a side bar in restaurant show page which includes a map and reservation widget.
