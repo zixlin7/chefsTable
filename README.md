@@ -74,9 +74,10 @@ users can also review restaurants and update/delete their own reviews:
   * Generating time slots in front-end based on user's search input
   ```javascript
   getTimeSlots() {
-    const searchTime = parseInt(this.props.search.time);
-    const openTime = new Date(this.props.restaurant.open_hour).getHours();
-    const closeTime = new Date(this.props.restaurant.close_hour).getHours();
+    const { restaurant, search } = this.props;
+    const searchTime = parseInt(search.time);
+    const openTime = new Date(restaurant.open_hour).getHours();
+    const closeTime = new Date(restaurant.close_hour).getHours();
     const timeSlots = [];
     for(let i = searchTime - 1; i <= searchTime + 1; i++){
       if (i >= openTime && i< closeTime){
