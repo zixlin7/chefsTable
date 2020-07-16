@@ -1,11 +1,10 @@
-import {connect} from "react-redux";
-import { login } from "../../actions/session_actions";
-import clearErrors from "../../actions/session_actions";
-import SigninForm from "./signin_form"
-
+import { connect } from 'react-redux';
+import { login } from '../../actions/session_actions';
+import clearErrors from '../../actions/session_actions';
+import SigninForm from './signin_form';
 
 const mSTP = (state, ownProps) => ({
-    errors: state.errors
+  errors: state.errors,
 });
 
 const mDTP = (dispatch) => ({

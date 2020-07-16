@@ -30,7 +30,6 @@ class Api::ReviewsController < ApplicationController
         render json: id
     end
 
-
     private
     def review_params
         params.require(:review).permit(:rating, :body, :restaurant_id, :title, :user_id)

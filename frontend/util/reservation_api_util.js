@@ -1,36 +1,36 @@
 export const fetchAllReservations = () => {
   return $.ajax({
     url: `api/reservations`,
-    method: "GET",
+    method: 'GET',
   });
 };
 
 export const fetchReservation = (reservationId) => {
   return $.ajax({
     url: `api/reservations/${reservationId}`,
-    method: "GET",
+    method: 'GET',
   });
 };
 
 export const createReservation = (reservation) => {
   return $.ajax({
     url: `api/reservations`,
-    method: "POST",
-    data: reservation
+    method: 'POST',
+    data: reservation,
   });
 };
 
 export const updateReservation = (reservation) => {
   return $.ajax({
     url: `api/reservations/${reservation.id}`,
-    method: "PATCH",
-    data: {reservation},
+    method: 'PATCH',
+    data: { reservation },
   });
 };
 
 export const deleteReservation = (reservationId) => {
   return $.ajax({
     url: `api/reservations/${reservationId}`,
-    method: "DELETE",
+    method: 'DELETE',
   });
 };

@@ -1,12 +1,15 @@
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import {createReservation, updateReservation, deleteReservation} from "../../actions/reservations_actions";
-import ReservationForm from "./reservation_form";
-import {requestRestaurant} from "../../actions/restaurants_actions";
+import {
+  createReservation,
+  updateReservation,
+  deleteReservation,
+} from '../../actions/reservations_actions';
+import ReservationForm from './reservation_form';
+import { requestRestaurant } from '../../actions/restaurants_actions';
 
-const mSTP = (state, ownProps) =>{
-    
-    return({
+const mSTP = (state, ownProps) => {
+  return {
     // reservation: {
     //     user_id: state.session.id,
     //     restaurant_id: ownProps.match.params.id,
@@ -16,19 +19,22 @@ const mSTP = (state, ownProps) =>{
     // },
     search: state.ui.search,
     user: state.entities.users[state.session.id],
-    restaurant: state.entities.restaurants.allRestaurants[parseInt(ownProps.match.params.id)],
-    reservations: state.entities.reservations
+    restaurant:
+      state.entities.restaurants.allRestaurants[
+        parseInt(ownProps.match.params.id)
+      ],
+    reservations: state.entities.reservations,
     // formType: "Create Reservation",
-   
-    })
-}
+  };
+};
 
-const mDTP = dispatch => ({
-    createReservation: reservation => dispatch(createReservation(reservation)),
-    updateReservation: reservation => dispatch(updateReservation(reservation)),
-    deleteReservation: reservationId => dispatch(deleteReservation(reservationId)),
-    requestRestaurant: restaurantId => dispatch(requestRestaurant(restaurantId))
-    
+const mDTP = (dispatch) => ({
+  createReservation: (reservation) => dispatch(createReservation(reservation)),
+  updateReservation: (reservation) => dispatch(updateReservation(reservation)),
+  deleteReservation: (reservationId) =>
+    dispatch(deleteReservation(reservationId)),
+  requestRestaurant: (restaurantId) =>
+    dispatch(requestRestaurant(restaurantId)),
 });
 
 export default connect(mSTP, mDTP)(ReservationForm);

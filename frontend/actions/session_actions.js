@@ -1,10 +1,9 @@
-import {signupUser, loginUser, logoutUser} from "../util/session_api_util"
+import { signupUser, loginUser, logoutUser } from '../util/session_api_util';
 
-export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
-export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS"
-
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const receiveCurrentUser = (payload) => ({
   type: RECEIVE_CURRENT_USER,
@@ -21,8 +20,8 @@ export const receiveErrors = (errors) => ({
 });
 
 const clearErrors = () => ({
-    type: CLEAR_ERRORS
-})
+  type: CLEAR_ERRORS,
+});
 
 export default clearErrors;
 
