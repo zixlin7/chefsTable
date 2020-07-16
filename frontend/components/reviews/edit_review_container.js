@@ -7,7 +7,6 @@ import EditReviewForm from './edit_review_form';
 
 
 const mSTP = (state, ownProps) => {
-    
     return{review: state.entities.reviews[ownProps.match.params.reviewId],
     formType:"update review",
     user: state.entities.users[state.session.id],

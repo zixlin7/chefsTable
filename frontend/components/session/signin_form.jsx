@@ -17,20 +17,17 @@ class SigninForm extends React.Component {
 
     componentDidMount(){
         this.props.clearErrors();
-        document.getElementById("darken").classList.add("modal-background");
-       
+        document.getElementById("darken").classList.add("modal-background");  
     }
 
     update(type){
         return e=> this.setState({[type]: e.target.value})
     }
 
-
     handleSubmit(e){
         e.preventDefault();
         const { email, password } = this.state;
         this.props.login({ email, password })
-        
     }
 
     close(){

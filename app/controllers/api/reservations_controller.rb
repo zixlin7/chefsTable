@@ -6,7 +6,6 @@ class Api::ReservationsController < ApplicationController
     end
 
     def create
-        
         @reservation = Reservation.new(reservation_params)
         if (Reservation.comfirm_availability(@reservation) && @reservation.save)
             render :show

@@ -11,7 +11,6 @@ class EditReviewForm extends React.Component{
     }
 
     render(){
-        
         // if(!this.props.review) return null;
         const {review, formType, user, userId, restaurant, action, requestRestaurant} = this.props
         return(<ReviewForm review={review}

@@ -3,9 +3,7 @@ import React from "react";
 class ReviewForm extends React.Component{
     constructor(props){
         super(props)
-
         this.state = this.props.review
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 

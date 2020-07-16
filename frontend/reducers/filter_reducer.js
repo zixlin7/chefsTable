@@ -1,6 +1,5 @@
 import { UPDATE_FILTER } from "../actions/search_actions";
 
-
 const _defaultState = {
     "Wine bar": false,
     "Japanese": false,
@@ -12,7 +11,8 @@ const _defaultState = {
     2: false,
     3: false,
     4: false
-}
+};
+
 const filterReducer = (state = _defaultState, action) => {
     switch (action.type) {
         case UPDATE_FILTER:
@@ -20,6 +20,6 @@ const filterReducer = (state = _defaultState, action) => {
         default:
             return state;
     }
-}
+};
 
 export default filterReducer;

@@ -1,14 +1,13 @@
 import React from "react";
 import GreetingContainer from "./greeting/greeting_container";
-import {Route, Link} from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import SigninFormContainer from "./session/signin_form_container";
 import SignupFormContainer from "./session/signup_form_container";
-import {AuthRoute,ProtectedRoute} from "../util/route_util";
+import { AuthRoute,ProtectedRoute } from "../util/route_util";
 import RestaurantShowContainer from "./restaurants/restaurant_show_container";
 import CreateReservationContainer from "./reservations/new_reservation_form_container";
 import EditReservationContainer from "./reservations/edit_reservation_container";
 import CancelReservationContainer from "./reservations/cancel_reservation_container"
-import Landing from "./landing"
 import SearchContainer from "../components/search/search_container";
 import Footer from "./footer";
 import UserContainer from "./user/user_container";
@@ -30,43 +29,40 @@ const App = () => (
       <GreetingContainer />
     </nav>
     <div className="main-content">
-      <Route exact path="/" component={LandingContainer} />
-      <AuthRoute exact path="/signIn" component={SigninFormContainer} />
-      <AuthRoute exact path="/signUp" component={SignupFormContainer} />
+      <Route exact path="/" component={ LandingContainer } />
+      <AuthRoute exact path="/signIn" component={ SigninFormContainer } />
+      <AuthRoute exact path="/signUp" component={ SignupFormContainer } />
       <ProtectedRoute
         exact
         path="/restaurants/:id"
-        component={RestaurantShowContainer}
+        component={ RestaurantShowContainer }
       />
       <ProtectedRoute exact path="/restaurants" component={SearchContainer} />
       <ProtectedRoute
         exact
         path="/restaurants/:id/reservations/new"
-        component={CreateReservationContainer}
+        component={ CreateReservationContainer }
       />
       <ProtectedRoute
         exact
         path="/restaurants/:id/reservations/edit"
-        component={EditReservationContainer}
+        component={ EditReservationContainer }
       />
       <ProtectedRoute
         exact
         path="/restaurants/:id/reservations/cancel"
-        component={CancelReservationContainer}
+        component={ CancelReservationContainer }
       />
-
-      <ProtectedRoute exact path="/users/:id" component={UserContainer} />
-
+      <ProtectedRoute exact path="/users/:id" component={ UserContainer } />
       <ProtectedRoute
         exact
         path="/restaurants/:id/reviews/new"
-        component={NewReviewContainer}
+        component={ NewReviewContainer }
       />
-
       <ProtectedRoute
         exact
         path="/restaurants/:id/reviews/:reviewId/edit"
-        component={EditReviewContainer}
+        component={ EditReviewContainer }
       />
     </div>
 

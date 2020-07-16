@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import searchReducers from "./search_reducer";
 import filterReducers from "./filter_reducer";
 

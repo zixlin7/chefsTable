@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
-import {requestRestaurants, requestRestaurant} from "../actions/restaurants_actions";
-import {updateSearch} from "../actions/search_actions";
+import { connect } from "react-redux";
+import { requestRestaurants, requestRestaurant } from "../actions/restaurants_actions";
+import { updateSearch } from "../actions/search_actions";
 import Landing from "./landing"
 
 const mSTP = state => ({
