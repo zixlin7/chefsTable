@@ -1,7 +1,7 @@
-import selectReservationsByUser from '../../selector';
-import { connect } from 'react-redux';
-import UserProfile from './user_profile';
-import { fetchUser } from '../../actions/users_actions';
+import selectReservationsByUser from "../../util/selector";
+import { connect } from "react-redux";
+import UserProfile from "./user_profile";
+import { fetchUser } from "../../actions/users_actions";
 
 const mSTP = (state) => ({
   user: state.entities.users[state.session.id],

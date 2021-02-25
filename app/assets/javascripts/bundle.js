@@ -96,7 +96,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER_RESTAURANTS", function() { return UPDATE_FILTER_RESTAURANTS; });
-var UPDATE_FILTER_RESTAURANTS = "UPDATE_FILTER_RESTAURANTS";
+var UPDATE_FILTER_RESTAURANTS = 'UPDATE_FILTER_RESTAURANTS';
 
 var updateFilterRestaurants = function updateFilterRestaurants(restaurants) {
   return {
@@ -129,10 +129,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteReservation", function() { return deleteReservation; });
 /* harmony import */ var _util_reservation_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/reservation_api_util */ "./frontend/util/reservation_api_util.js");
 
-var RECEIVE_ALL_RESERVATIONS = "RECEIVE_ALL_RESERVATIONS";
-var RECEIVE_RESERVATION = "RECEIVE_RESERVATION";
-var REMOVE_RESERVATION = "REMOVE_RESERVATION";
-var RECEIVE_RESERVATION_ERRORS = "RECEIVE_RESERVATION_ERRORS";
+var RECEIVE_ALL_RESERVATIONS = 'RECEIVE_ALL_RESERVATIONS';
+var RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
+var REMOVE_RESERVATION = 'REMOVE_RESERVATION';
+var RECEIVE_RESERVATION_ERRORS = 'RECEIVE_RESERVATION_ERRORS';
 
 var receiveAllReservations = function receiveAllReservations(reservations) {
   return {
@@ -219,8 +219,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestRestaurant", function() { return requestRestaurant; });
 /* harmony import */ var _util_res_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/res_api_util */ "./frontend/util/res_api_util.js");
 
-var RECEIVE_ALL_RESTAURANTS = "RECEIVE_ALL_RESTAURANTS";
-var RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
+var RECEIVE_ALL_RESTAURANTS = 'RECEIVE_ALL_RESTAURANTS';
+var RECEIVE_RESTAURANT = 'RECEIVE_RESTAURANT';
 
 var receiveAllRestaurants = function receiveAllRestaurants(restaurants) {
   return {
@@ -271,9 +271,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteReview", function() { return deleteReview; });
 /* harmony import */ var _util_review_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/review_util */ "./frontend/util/review_util.js");
 
-var RECEIVE_REVIEW = "RECEIVE_REVIEW";
-var REMOVE_REVIEW = "REMOVE_REVIEW";
-var CLEAR_REVIEWS = "CLEAR_REVIEWS";
+var RECEIVE_REVIEW = 'RECEIVE_REVIEW';
+var REMOVE_REVIEW = 'REMOVE_REVIEW';
+var CLEAR_REVIEWS = 'CLEAR_REVIEWS';
 
 var receiveReview = function receiveReview(payload) {
   return {
@@ -350,9 +350,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var UPDATE_SEARCH = "UPDATE_SEARCH";
-var UPDATE_FILTER = "UPDATE_FILTER";
-var DELETE_FILTER = "DELETE_FILTER";
+var UPDATE_SEARCH = 'UPDATE_SEARCH';
+var UPDATE_FILTER = 'UPDATE_FILTER';
+var DELETE_FILTER = 'DELETE_FILTER';
 
 var changeSearch = function changeSearch(field, value) {
   return {
@@ -403,10 +403,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
-var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
-var RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-var CLEAR_ERRORS = "CLEAR_ERRORS";
+var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(payload) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -473,7 +473,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
 /* harmony import */ var _util_user_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_api_util */ "./frontend/util/user_api_util.js");
 
-var RECEIVE_USER = "RECEIVE_USER";
+var RECEIVE_USER = 'RECEIVE_USER';
 
 var receiveUser = function receiveUser(payload) {
   return {
@@ -513,8 +513,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  var root = document.getElementById("root");
+document.addEventListener('DOMContentLoaded', function () {
+  var root = document.getElementById('root');
   var store;
 
   if (window.currentUser) {
@@ -561,14 +561,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reservations_new_reservation_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./reservations/new_reservation_form_container */ "./frontend/components/reservations/new_reservation_form_container.js");
 /* harmony import */ var _reservations_edit_reservation_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./reservations/edit_reservation_container */ "./frontend/components/reservations/edit_reservation_container.js");
 /* harmony import */ var _reservations_cancel_reservation_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./reservations/cancel_reservation_container */ "./frontend/components/reservations/cancel_reservation_container.js");
-/* harmony import */ var _landing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./landing */ "./frontend/components/landing.jsx");
-/* harmony import */ var _components_search_search_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/search/search_container */ "./frontend/components/search/search_container.js");
-/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer */ "./frontend/components/footer.jsx");
-/* harmony import */ var _user_user_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user/user_container */ "./frontend/components/user/user_container.js");
-/* harmony import */ var _landing_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./landing_container */ "./frontend/components/landing_container.js");
-/* harmony import */ var _components_reviews_reviews_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/reviews/reviews_container */ "./frontend/components/reviews/reviews_container.js");
-/* harmony import */ var _components_reviews_edit_review_container__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/reviews/edit_review_container */ "./frontend/components/reviews/edit_review_container.js");
-
+/* harmony import */ var _components_search_search_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/search/search_container */ "./frontend/components/search/search_container.js");
+/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./footer */ "./frontend/components/footer.jsx");
+/* harmony import */ var _user_user_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user/user_container */ "./frontend/components/user/user_container.js");
+/* harmony import */ var _landing_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./landing_container */ "./frontend/components/landing_container.js");
+/* harmony import */ var _components_reviews_reviews_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/reviews/reviews_container */ "./frontend/components/reviews/reviews_container.js");
+/* harmony import */ var _components_reviews_edit_review_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/reviews/edit_review_container */ "./frontend/components/reviews/edit_review_container.js");
 
 
 
@@ -602,7 +600,7 @@ var App = function App() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
-    component: _landing_container__WEBPACK_IMPORTED_MODULE_14__["default"]
+    component: _landing_container__WEBPACK_IMPORTED_MODULE_13__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/signIn",
@@ -618,7 +616,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants",
-    component: _components_search_search_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _components_search_search_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants/:id/reservations/new",
@@ -634,16 +632,16 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/users/:id",
-    component: _user_user_container__WEBPACK_IMPORTED_MODULE_13__["default"]
+    component: _user_user_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants/:id/reviews/new",
-    component: _components_reviews_reviews_container__WEBPACK_IMPORTED_MODULE_15__["default"]
+    component: _components_reviews_reviews_container__WEBPACK_IMPORTED_MODULE_14__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/restaurants/:id/reviews/:reviewId/edit",
-    component: _components_reviews_edit_review_container__WEBPACK_IMPORTED_MODULE_16__["default"]
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_12__["default"], null));
+    component: _components_reviews_edit_review_container__WEBPACK_IMPORTED_MODULE_15__["default"]
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_11__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -897,7 +895,7 @@ var Landing = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.requestRestaurants(this.props.search);
       this.setState({
-        redirect: "/restaurants"
+        redirect: '/restaurants'
       });
     }
   }, {
@@ -1386,7 +1384,7 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "combineDateTime",
     value: function combineDateTime() {
-      var data = this.props.search.date.split("/");
+      var data = this.props.search.date.split('/');
       var newData = "".concat(data[2], "-").concat(data[0], "-").concat(data[1]);
       var str = "".concat(newData, "T").concat(this.props.search.time, ":00");
       var date = new Date(str);
@@ -1449,11 +1447,11 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
         className: "res-detail"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegCalendarAlt"], {
         className: "res-icon"
-      }), "  ", this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], {
+      }), " ", this.formatDate()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], {
         className: "res-icon"
-      }), "  ", this.props.search.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUsers"], {
+      }), " ", this.props.search.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUsers"], {
         className: "res-icon"
-      }), "  party of ", this.props.search.party)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.success ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), " party of", ' ', this.props.search.party)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.success ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modify"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "edit"
@@ -1465,7 +1463,7 @@ var ReservationForm = /*#__PURE__*/function (_React$Component) {
         className: "name"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, user.firstname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, user.lastname)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaEnvelope"], {
         className: "res-icon"
-      }), "   ", user.email))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), " ", user.email))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -1560,15 +1558,18 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(RestaurantsIndexItem, [{
     key: "mapPriceRange",
     value: function mapPriceRange(price) {
-      var range = ["", "$", "$$", "$$$", "$$$$"];
+      var range = ['', '$', '$$', '$$$', '$$$$'];
       return range[price];
     }
   }, {
     key: "getTimeSlots",
     value: function getTimeSlots() {
-      var searchTime = parseInt(this.props.search.time);
-      var openTime = new Date(this.props.restaurant.open_hour).getHours();
-      var closeTime = new Date(this.props.restaurant.close_hour).getHours();
+      var _this$props = this.props,
+          restaurant = _this$props.restaurant,
+          search = _this$props.search;
+      var searchTime = parseInt(search.time);
+      var openTime = new Date(restaurant.open_hour).getHours();
+      var closeTime = new Date(restaurant.close_hour).getHours();
       var timeSlots = [];
 
       for (var i = searchTime - 1; i <= searchTime + 1; i++) {
@@ -1589,7 +1590,7 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "goToEdit",
     value: function goToEdit(e) {
       e.preventDefault();
-      this.props.updateSearch("time", e.currentTarget.innerHTML);
+      this.props.updateSearch('time', e.currentTarget.innerHTML);
       this.props.toggleState();
     }
   }, {
@@ -1650,7 +1651,7 @@ var RestaurantsIndexItem = /*#__PURE__*/function (_React$Component) {
         }, _this3.props.toggleState ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: _this3.goToEdit
         }, time) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          onClick: _this3.handleClick("time"),
+          onClick: _this3.handleClick('time'),
           to: "/restaurants/".concat(restaurant.id, "/reservations/new")
         }, time));
       }))));
@@ -1732,13 +1733,13 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
     key: "priceMapping",
     value: function priceMapping(price) {
       if (price === 1) {
-        return "$10 and under";
+        return '$10 and under';
       } else if (price === 2) {
-        return "$20 and under";
+        return '$20 and under';
       } else if (price === 3) {
-        return "$30 and under";
+        return '$30 and under';
       } else {
-        return "above $30";
+        return 'above $30';
       }
     }
   }, {
@@ -1760,7 +1761,7 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
     key: "handleBack",
     value: function handleBack(e) {
       e.preventDefault();
-      this.props.history.push("/restaurants");
+      this.props.history.push('/restaurants');
     }
   }, {
     key: "scrollToReviews",
@@ -1810,11 +1811,11 @@ var RestaurantShow = /*#__PURE__*/function (_React$Component) {
         id: "star"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info-span"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaRegCommentAlt"], null), " ", restaurant.review_ids.length, " reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaRegCommentAlt"], null), " ", restaurant.review_ids.length, " reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info-span"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaRegMoneyBillAlt"], null), " ", this.priceMapping(restaurant.price_range), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaRegMoneyBillAlt"], null), ' ', this.priceMapping(restaurant.price_range), ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "info-span"
-      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaUtensils"], null), " ", restaurant.cuisine, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaUtensils"], null), " ", restaurant.cuisine, ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "overview"
       }, restaurant.overview), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "menu"
@@ -1930,7 +1931,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state, ownProps) {
   return {
     review: state.entities.reviews[ownProps.match.params.reviewId],
-    formType: "update review",
+    formType: 'update review',
     user: state.entities.users[state.session.id],
     userId: state.session.id,
     restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id]
@@ -2123,9 +2124,9 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "review-form",
         onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.user.firstname, ", Share you experience at ", this.props.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Rating:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.user.firstname, ", Share you experience at", ' ', this.props.restaurant.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Rating:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
         className: "rating-input",
-        onChange: this.updateForm("rating"),
+        onChange: this.updateForm('rating'),
         defaultValue: this.state.rating
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
@@ -2220,11 +2221,11 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Title:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "title-input",
         type: "text",
-        onChange: this.updateForm("title"),
+        onChange: this.updateForm('title'),
         value: this.state.title
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "* Details:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         id: "body-input",
-        onChange: this.updateForm("body"),
+        onChange: this.updateForm('body'),
         value: this.state.body
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "reservation-button",
@@ -2264,10 +2265,10 @@ var mSTP = function mSTP(state, ownProps) {
       user_id: state.session.id,
       restaurant_id: ownProps.match.params.id,
       rating: 5,
-      title: "",
-      body: ""
+      title: '',
+      body: ''
     },
-    formType: "create review",
+    formType: 'create review',
     user: state.entities.users[state.session.id],
     userId: state.session.id,
     restaurant: state.entities.restaurants.allRestaurants[ownProps.match.params.id]
@@ -2395,42 +2396,42 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         type: "checkbox",
         value: "Modern French",
         onChange: this.handleChange,
-        checked: this.props.filter["Modern French"] ? "checked" : ""
+        checked: this.props.filter['Modern French'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "French"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Japanese",
         onChange: this.handleChange,
-        checked: this.props.filter["Japanese"] ? "checked" : ""
+        checked: this.props.filter['Japanese'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Japanese"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Mexican",
         onChange: this.handleChange,
-        checked: this.props.filter["Mexican"] ? "checked" : ""
+        checked: this.props.filter['Mexican'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Mexican"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Wine bar",
         onChange: this.handleChange,
-        checked: this.props.filter["Wine bar"] ? "checked" : ""
+        checked: this.props.filter['Wine bar'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Wine bar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "New American",
         onChange: this.handleChange,
-        checked: this.props.filter["New American"] ? "checked" : ""
+        checked: this.props.filter['New American'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "New American"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "Contemporary",
         onChange: this.handleChange,
-        checked: this.props.filter["Contemporary"] ? "checked" : ""
+        checked: this.props.filter['Contemporary'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "Contemporary")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2443,28 +2444,28 @@ var Filters = /*#__PURE__*/function (_React$Component) {
         type: "checkbox",
         value: "1",
         onChange: this.handleChange,
-        checked: this.props.filter["1"] ? "checked" : ""
+        checked: this.props.filter['1'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "2",
         onChange: this.handleChange,
-        checked: this.props.filter["2"] ? "checked" : ""
+        checked: this.props.filter['2'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "3",
         onChange: this.handleChange,
-        checked: this.props.filter["3"] ? "checked" : ""
+        checked: this.props.filter['3'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         value: "4",
         onChange: this.handleChange,
-        checked: this.props.filter["4"] ? "checked" : ""
+        checked: this.props.filter['4'] ? 'checked' : ''
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
       }, "$$$$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))));
@@ -2764,13 +2765,13 @@ var SearchForm = function SearchForm(props) {
     id: "icon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUser"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "party",
-    onChange: handleChange("party", props.updateSearch),
+    onChange: handleChange('party', props.updateSearch),
     defaultValue: props.search.party
   }, getParty().map(function (num, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: i,
       value: num
-    }, num, " people", " ");
+    }, num, " people", ' ');
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "arrow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2779,7 +2780,7 @@ var SearchForm = function SearchForm(props) {
     defaultValue: props.search.date,
     type: "date",
     id: "date",
-    onChange: handleChange("date", props.updateSearch)
+    onChange: handleChange('date', props.updateSearch)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "select"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -2787,12 +2788,12 @@ var SearchForm = function SearchForm(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "time",
     defaultValue: props.search.time,
-    onChange: handleChange("time", props.updateSearch)
+    onChange: handleChange('time', props.updateSearch)
   }, getTimeSlots().map(function (time, i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: i,
       value: time
-    }, " ", time, " ");
+    }, ' ', time, ' ');
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "arrow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaAngleDown"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2801,7 +2802,7 @@ var SearchForm = function SearchForm(props) {
     id: "icon"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaMapMarkerAlt"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     id: "city",
-    onChange: handleChange("city", props.updateSearch),
+    onChange: handleChange('city', props.updateSearch),
     defaultValue: props.search.city
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "Chicago"
@@ -2875,8 +2876,8 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       redirect: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -2889,7 +2890,7 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.clearErrors();
-      document.getElementById("darken").classList.add("modal-background");
+      document.getElementById('darken').classList.add('modal-background');
     }
   }, {
     key: "update",
@@ -2924,8 +2925,8 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
     value: function demo(e) {
       e.preventDefault();
       this.props.login({
-        email: "demo1@user.com",
-        password: "123456"
+        email: 'demo1@user.com',
+        password: '123456'
       });
     }
   }, {
@@ -2964,11 +2965,11 @@ var SigninForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
-        onChange: this.update("email")
+        onChange: this.update('email')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
-        onChange: this.update("password")
+        onChange: this.update('password')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "form-button",
         type: "submit"
@@ -3082,10 +3083,10 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
       redirect: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -3099,7 +3100,7 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.clearErrors();
-      document.getElementById("darken").classList.add("modal-background");
+      document.getElementById('darken').classList.add('modal-background');
     }
   }, {
     key: "update",
@@ -3136,15 +3137,15 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "togglePassword",
     value: function togglePassword(e) {
-      e.target.type = "password";
+      e.target.type = 'password';
     }
   }, {
     key: "demo",
     value: function demo(e) {
       e.preventDefault();
       this.props.login({
-        email: "demo1@user.com",
-        password: "123456"
+        email: 'demo1@user.com',
+        password: '123456'
       });
     }
   }, {
@@ -3190,24 +3191,24 @@ var SignupForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "First Name *",
-        onClick: this.addValue("firstname"),
-        onChange: this.update("firstname")
+        onClick: this.addValue('firstname'),
+        onChange: this.update('firstname')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Last Name *",
-        onClick: this.addValue("lastname"),
-        onChange: this.update("lastname")
+        onClick: this.addValue('lastname'),
+        onChange: this.update('lastname')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter email *",
-        onClick: this.addValue("email"),
-        onChange: this.update("email")
+        onClick: this.addValue('email'),
+        onChange: this.update('email')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter password *",
         value: this.state.password,
         onClick: this.togglePassword,
-        onChange: this.update("password")
+        onChange: this.update('password')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "form-button",
         type: "submit"
@@ -3285,7 +3286,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var selectRestaurants = function selectRestaurants(restaurants) {
-  var id = ["1", "3", "6", "8"];
+  var id = ['1', '3', '6', '8'];
   var result = [];
 
   for (var key in restaurants) {
@@ -3385,7 +3386,7 @@ var TrendingItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "mapPriceRange",
     value: function mapPriceRange(price) {
-      var range = ["", "$", "$$", "$$$", "$$$$"];
+      var range = ['', '$', '$$', '$$$', '$$$$'];
       return range[price];
     }
   }, {
@@ -3409,9 +3410,9 @@ var TrendingItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "res-name",
         onClick: this.handleClick
-      }, restaurant.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, restaurant.name, ' '), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rating"
-      }, rating >= 4 && rating <= 4.3 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null)) : rating >= 4.4 && rating <= 4.6 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStarHalfAlt"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "(", restaurant.review_ids.length, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, rating >= 4 && rating <= 4.3 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null)) : rating >= 4.4 && rating <= 4.6 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStarHalfAlt"], null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_1__["FaStar"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "( ", restaurant.review_ids.length, ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         name: "price"
       }, this.mapPriceRange(restaurant.price_range)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         name: "cuisine"
@@ -3437,7 +3438,7 @@ var TrendingItem = /*#__PURE__*/function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../selector */ "./frontend/selector.js");
+/* harmony import */ var _util_selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../util/selector */ "./frontend/util/selector.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _user_profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_profile */ "./frontend/components/user/user_profile.jsx");
 /* harmony import */ var _actions_users_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/users_actions */ "./frontend/actions/users_actions.js");
@@ -3449,7 +3450,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     user: state.entities.users[state.session.id],
-    reservations: Object(_selector__WEBPACK_IMPORTED_MODULE_0__["default"])(state, state.session.id),
+    reservations: Object(_util_selector__WEBPACK_IMPORTED_MODULE_0__["default"])(state, state.session.id),
     restaurants: state.entities.restaurants.allRestaurants
   };
 };
@@ -3534,7 +3535,7 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
           reservations = _this$props.reservations,
           restaurants = _this$props.restaurants; // const style = {
       //     backgroundImage: `url(${restaurants[reservation.restaurant_id].photoURL})`,
-      // }; 
+      // };
 
       var resProfile = Object.values(reservations).map(function (reservation) {
         if (!reservation) {
@@ -3568,11 +3569,11 @@ var UserProfile = /*#__PURE__*/function (_React$Component) {
             className: "res-detail"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, restaurants[reservation.restaurant_id].name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegCalendarAlt"], {
             className: "res-icon"
-          }), "  ", dateString), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], {
+          }), " ", dateString), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaRegClock"], {
             className: "res-icon"
-          }), "  ", timeString), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUsers"], {
+          }), " ", timeString), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__["FaUsers"], {
             className: "res-icon"
-          }), "  party of ", reservation.number_of_party)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }), " party of", ' ', reservation.number_of_party)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "modify",
             id: "profile"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -3661,12 +3662,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
 
 var _defaultState = {
-  "Wine bar": false,
-  "Japanese": false,
-  "Mexican": false,
-  "Modern French": false,
-  "New American": false,
-  "Contemporary": false,
+  'Wine bar': false,
+  Japanese: false,
+  Mexican: false,
+  'Modern French': false,
+  'New American': false,
+  Contemporary: false,
   1: false,
   2: false,
   3: false,
@@ -3941,9 +3942,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var defaultState = {
   party: 2,
-  time: "16:00",
+  time: '16:00',
   date: Object(_util_date_util__WEBPACK_IMPORTED_MODULE_1__["default"])(),
-  city: ""
+  city: ''
 };
 
 var searchReducer = function searchReducer() {
@@ -4109,26 +4110,6 @@ var usersReducer = function usersReducer() {
 
 /***/ }),
 
-/***/ "./frontend/selector.js":
-/*!******************************!*\
-  !*** ./frontend/selector.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var selectReservationsByUser = function selectReservationsByUser(state, userId) {
-  if (!state.entities.users[userId].reservation_ids) return [];
-  return state.entities.users[userId].reservation_ids.map(function (rId) {
-    return state.entities.reservations[rId];
-  });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (selectReservationsByUser);
-
-/***/ }),
-
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -4193,7 +4174,7 @@ __webpack_require__.r(__webpack_exports__);
 var fetchAllRestaurants = function fetchAllRestaurants(filters) {
   return $.ajax({
     url: "api/restaurants",
-    method: "GET",
+    method: 'GET',
     data: {
       filters: filters
     }
@@ -4202,7 +4183,7 @@ var fetchAllRestaurants = function fetchAllRestaurants(filters) {
 var fetchRestaurant = function fetchRestaurant(RestaurantId) {
   return $.ajax({
     url: "api/restaurants/".concat(RestaurantId),
-    method: "GET"
+    method: 'GET'
   });
 };
 
@@ -4225,26 +4206,26 @@ __webpack_require__.r(__webpack_exports__);
 var fetchAllReservations = function fetchAllReservations() {
   return $.ajax({
     url: "api/reservations",
-    method: "GET"
+    method: 'GET'
   });
 };
 var fetchReservation = function fetchReservation(reservationId) {
   return $.ajax({
     url: "api/reservations/".concat(reservationId),
-    method: "GET"
+    method: 'GET'
   });
 };
 var createReservation = function createReservation(reservation) {
   return $.ajax({
     url: "api/reservations",
-    method: "POST",
+    method: 'POST',
     data: reservation
   });
 };
 var updateReservation = function updateReservation(reservation) {
   return $.ajax({
     url: "api/reservations/".concat(reservation.id),
-    method: "PATCH",
+    method: 'PATCH',
     data: {
       reservation: reservation
     }
@@ -4253,7 +4234,7 @@ var updateReservation = function updateReservation(reservation) {
 var deleteReservation = function deleteReservation(reservationId) {
   return $.ajax({
     url: "api/reservations/".concat(reservationId),
-    method: "DELETE"
+    method: 'DELETE'
   });
 };
 
@@ -4327,13 +4308,13 @@ __webpack_require__.r(__webpack_exports__);
 var fetchReview = function fetchReview(reviewId) {
   return $.ajax({
     url: "api/reviews/".concat(reviewId),
-    method: "GET"
+    method: 'GET'
   });
 };
 var createReview = function createReview(review) {
   return $.ajax({
     url: "api/reviews",
-    method: "POST",
+    method: 'POST',
     data: {
       review: review
     }
@@ -4342,7 +4323,7 @@ var createReview = function createReview(review) {
 var updateReview = function updateReview(review) {
   return $.ajax({
     url: "api/reviews/".concat(review.id),
-    method: "PATCH",
+    method: 'PATCH',
     data: {
       review: review
     }
@@ -4351,7 +4332,7 @@ var updateReview = function updateReview(review) {
 var deleteReview = function deleteReview(reviewId) {
   return $.ajax({
     url: "api/reviews/".concat(reviewId),
-    method: "DELETE"
+    method: 'DELETE'
   });
 };
 
@@ -4419,6 +4400,26 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 
 /***/ }),
 
+/***/ "./frontend/util/selector.js":
+/*!***********************************!*\
+  !*** ./frontend/util/selector.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var selectReservationsByUser = function selectReservationsByUser(state, userId) {
+  if (!state.entities.users[userId].reservation_ids) return [];
+  return state.entities.users[userId].reservation_ids.map(function (rId) {
+    return state.entities.reservations[rId];
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (selectReservationsByUser);
+
+/***/ }),
+
 /***/ "./frontend/util/session_api_util.js":
 /*!*******************************************!*\
   !*** ./frontend/util/session_api_util.js ***!
@@ -4433,8 +4434,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutUser", function() { return logoutUser; });
 var signupUser = function signupUser(user) {
   return $.ajax({
-    url: "/api/users",
-    method: "POST",
+    url: '/api/users',
+    method: 'POST',
     data: {
       user: user
     }
@@ -4442,8 +4443,8 @@ var signupUser = function signupUser(user) {
 };
 var loginUser = function loginUser(user) {
   return $.ajax({
-    url: "/api/session",
-    method: "POST",
+    url: '/api/session',
+    method: 'POST',
     data: {
       user: user
     }
@@ -4451,8 +4452,8 @@ var loginUser = function loginUser(user) {
 };
 var logoutUser = function logoutUser() {
   return $.ajax({
-    url: "/api/session",
-    method: "DELETE"
+    url: '/api/session',
+    method: 'DELETE'
   });
 };
 
@@ -4471,7 +4472,7 @@ __webpack_require__.r(__webpack_exports__);
 var fetchUser = function fetchUser(userId) {
   return $.ajax({
     url: "/api/users/".concat(userId),
-    method: "GET"
+    method: 'GET'
   });
 };
 
